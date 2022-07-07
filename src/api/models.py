@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 class User(db.Model):
-    __tablename__ = 'User'
+    __tablename__ = "User"
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(120), unique=True, nullable=False)
@@ -19,7 +19,7 @@ class User(db.Model):
         }
 
 class Chore(db.Model):
-    __tablename__ = 'Chore'
+    __tablename__ = "Chore"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
     users = db.relationship(User)
@@ -37,7 +37,7 @@ class Chore(db.Model):
         }
 
 class Team(db.Model):
-    __tablename__ = 'Team'
+    __tablename__ = "Team"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column (db.Integer, db.ForeignKey('User.id'), nullable=False)
     users = db.relationship(User)
@@ -51,7 +51,7 @@ class Team(db.Model):
         }
 
 class Metrics(db.Model):
-    __tablename__ = 'Metrics'
+    __tablename__ = "Metrics"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
     chore_id = db.Column(db.Integer, db.ForeignKey('Chore.id'), nullable=False)

@@ -31,11 +31,11 @@ def createNewUser():
     is_active = True
 
     try:
-        newUser = User(email=email, password=hash_password, is_active=is_active)
+        User = User(email=email, password=hash_password, is_active=is_active)
     except SQLAlchemyError: 
         return jsonify("error creating the user"), 400
     try:
-        db.session.add(newUser)
+        db.session.add(User)
     except SQLAlchemyError: 
         return jsonify("error adding the user"), 400
     db.session.commit()
