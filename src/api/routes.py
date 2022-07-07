@@ -16,3 +16,16 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+# sign up end point (IN PROGESS)
+@api.route('/signup', methods=['POST'])
+def handle_signup():
+    email
+    username
+    password 
+
+    response_body = {
+        "msg": "User created"
+    }
+
+    return jsonify(response_body), 200
