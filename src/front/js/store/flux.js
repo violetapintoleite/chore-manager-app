@@ -45,15 +45,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					localStorage.setItem("token", data.access_token);
 					setStore({ token: data.access_token });
 					return true;
-				  } catch (error) {
+				  } 
+				  	catch (error) {
 					console.log("there's an error creating the account");
 				  }
 			},
 
 
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
+			// exampleFunction: () => {
+			// 	getActions().changeColor(0, "green");
+			// },
 
 			getMessage: async () => {
 				try{
