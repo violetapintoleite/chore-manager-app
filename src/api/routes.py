@@ -22,27 +22,30 @@ api = Blueprint('api', __name__)
 #     return jsonify(response_body), 200
 
 # sign up end point (IN PROGESS)
-@api.route('/signup', methods=['POST'])
-def handle_signup():
+@api.route("/signup", methods=["POST"])
+def createNewUser():
     request_body = request.get_json(force=True)
     email = request_body['email']
-    username = request_body['username']
     password = request_body['password']
     hash_password = generate_password_hash(password)
+    is_active = True
 
-    try: 
-        newUser = User(email = email, username = username, password = hash_password)
-        db.add(newUser)
-        db.commit()
-        access_token = create_access_token(identity=email)
-        jsonify(access_token = access_token)
-        return jsonify(
-            {"msg": "user created", "access_token" : access_token}, 201
-        )
+    try:
+        newUser = User(email=email, password=hash_password, is_active=is_active)
+    except SQLAlchemyError: 
+        return jsonify("error creating the user"), 400
+    try:
+        db.session.add(newUser)
+    except SQLAlchemyError: 
+        return jsonify("error adding the user"), 400
+    db.session.commit()
 
-    except exc.SQLAlchemyError:
-            return jsonify({"msg": "user already exists"}), 400
-            
-            pass 
+    access_token = create_access_token(identity=email)
+    return jsonify({"msg": "sign up complete", "access_token" : access_token}), 201
+
+    # except SQLAlchemyError: 
+    #     return jsonify({"msg": "user already exists"}), 400
         
+    #     pass
+
     return jsonify({"msg": "error signing up"}), 401
