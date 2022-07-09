@@ -19,9 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
-
 			createNewUser: async (email, username, password) => {
-				
 				const opts = {
 					method: "POST",
 					headers: { "Content-Type": "application/json"},
@@ -58,6 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			setToken: () => {
 
 				const token = localStorage.getItem("token") || null;
+				console.log("this is your token", token)
 				setStore(token);
 			},
 
@@ -77,6 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 		console.log("Error loading message from backend", error)
 			// 	}
 			// },
+			
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
