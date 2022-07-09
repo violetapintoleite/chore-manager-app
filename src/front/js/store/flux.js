@@ -21,9 +21,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// Use getActions to call a function within a fuction
 
 			createNewUser: async (email, username, password) => {
+				
 				const opts = {
 					method: "POST",
-					headers: { "Content-Type": "application/json" },
+					headers: { "Content-Type": "application/json"},
           			body: JSON.stringify({
 						email: email,
 						username: username,
@@ -33,13 +34,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				try {
 					const resp = await fetch(
-					  "https://3001-violetapint-choremanage-wth2flooiwp.ws-eu52.gitpod.io/api/signup",
+					  "https://3001-violetapint-choremanage-wth2flooiwp.ws-eu53.gitpod.io/api/signup",
 					  opts
 					);
 					
 				   
-					if (resp.status !== 200) {
-					  alert("error before initial 200 request");
+					if (resp.status !== 201) {
+					  alert("error before initial 201 request");
 					  return false;
 					}
 					const data = await resp.json();
@@ -53,7 +54,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("there's an error creating the account");
 				  }
 			},
+			//setting the token to the localstorage 
+			setToken: () => {
 
+				const token = localStorage.getItem("token") || null;
+				setStore(token);
+			},
 
 			// exampleFunction: () => {
 			// 	getActions().changeColor(0, "green");
