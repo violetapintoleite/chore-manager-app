@@ -10,7 +10,6 @@ export const AddChoreForm = () => {
   function addChore() {
     if (chore && date && time) {
       actions.setChoreList(chore, date, time);
-      console.log("addchore function - chore list", store.choreList);
     }
   }
 
