@@ -70,36 +70,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  },
 
 			// creating the login functionality - needs to verify if user exists in DB and generate access token
-			// login: async (email, password) => {
-			// 	const opts = {
-			// 	  method: "POST",
-			// 	  headers: { "Content-Type": "application/json" },
-			// 	  body: JSON.stringify({
-			// 		email: email,
-			// 		password: password
-			// 	  }),
-			// 	};
+			login: async (email, username, password) => {
+				const opts = {
+				  method: "POST",
+				  headers: { "Content-Type": "application/json" },
+				  body: JSON.stringify({
+					email: email,
+					username: username,
+					password: password
+				  }),
+				};
 		
-			// 	try {
-			// 	  const resp = await fetch(
-			// 		"https://3001-violetapint-choremanage-ng4vm0smnco.ws-eu53.gitpod.io/api/login",
-			// 		opts
-			//   )
+				try {
+				  const resp = await fetch(
+					"https://3001-violetapint-choremanage-ng4vm0smnco.ws-eu53.gitpod.io/api/login",
+					opts
+			  )
 			  
-			// 	  if (resp.status !== 201) {
-			// 		alert("there's an error before the 201");
-			// 		return false;
-			// 	  }
-			// 	  const data = await resp.json();
-			// 	  console.log("this came from the backend", data);
-			// 	  localStorage.setItem("token", data.access_token);
-			// 	  setStore({ token: data.access_token });
-			// 	  return true;
-			// 	} catch (error) {
-			// 	  console.log("there's an error logging in ");
-			// 	}
-			//   },
-			
+				  if (resp.status !== 201) {
+					alert("there's an error before the 201");
+					return false;
+				  }
+				  const data = await resp.json();
+				  console.log("this came from the backend", data);
+				  localStorage.setItem("token", data.access_token);
+				  setStore({ token: data.access_token });
+				  return true;
+				} catch (error) {
+				  console.log("there's an error logging in ");
+				}
+			  },
+
 		// checking logged in token and access to a restricted page
 			loggedInMessage: async () => {
 				const store = getStore();

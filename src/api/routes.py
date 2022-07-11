@@ -6,9 +6,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Chore, Team, Metrics
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from sqlalchemy import or_, exc
 
 api = Blueprint('api', __name__)
@@ -44,10 +42,18 @@ def createNewUser():
     return jsonify({"msg": "error signing up"}), 401
 
     # login end point
-# @api.route("/login", methods=["POST"])
-# def createNewUser():
-#     request_body = request.get_json(force=True)
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    username = request.json.get("username", None)
+    password = request.json.get("password", None)
+    hash_password = generate_password_hash(password)
+    # email and username are working but password is causing a 401 error
+    if email != email or username != username or password != "999":
+        return jsonify({"msg": "Bad username or password"}), 401
 
+    access_token = create_access_token(identity=username)
+    return jsonify(access_token=access_token), 201
 
 # protected page end point
 @api.route("/profile", methods=["GET"])
