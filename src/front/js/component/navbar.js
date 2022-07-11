@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-
-	
+	const { store, actions, token } = useContext(Context);
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
@@ -20,10 +20,15 @@ export const Navbar = () => {
 					<Link to="/signup">
 						<button className="btn btn-primary m-2">Sign Up </button>
 					</Link>
-					<Link to="/login">
-						<button className="btn btn-primary m-2">Login </button>
-					</Link>
-					
+					<div className="">
+                  		{!store.token ? (
+                    <Link to="/login">
+                      <button className="btn btn-primary m-2">Login</button>
+                    </Link>
+                  ) : (
+                    <button className="btn btn-primary m-2" onClick={() => actions.logout()}>Logout</button>
+                  )}
+                </div>
 				</div>
 			</div>
 		</nav>
