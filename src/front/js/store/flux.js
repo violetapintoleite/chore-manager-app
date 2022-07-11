@@ -128,8 +128,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// exampleFunction: () => {
 			// 	getActions().changeColor(0, "green");
 			// },
-
-			
+	
       changeColor: (index, color) => {
         //get the store
         const store = getStore();

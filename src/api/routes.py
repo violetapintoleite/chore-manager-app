@@ -50,8 +50,8 @@ def login():
    
     user = User.get_by_email(email)
     if user and username and check_password_hash(user.password, password):
-        token = create_access_token(identity=email)
-        return {"token": token},201
+        access_token = create_access_token(identity=email)
+        return {"access token": access_token},201
     else:
         return {"error":"user and password not valid"},400
     
