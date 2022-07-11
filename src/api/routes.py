@@ -13,6 +13,8 @@ from sqlalchemy import or_
 
 api = Blueprint('api', __name__)
 
+
+
 # sign up end point (IN PROGESS)
 @api.route("/signup", methods=["POST"])
 def createNewUser():
@@ -41,3 +43,14 @@ def createNewUser():
     #     pass
 
     return jsonify({"msg": "error signing up"}), 401
+
+
+@api.route('/chore', methods=['POST'])
+def postChore():
+  chore = request.json.get("chore", None)
+  duration = request.json.get("duration", None)
+  time = request.json.get("time", None)
+  try: Chore = Chore(chore=chore, duration=duration, time=time)
+  except SQLAlchemyError:
+    
+  return jsonify({"chore":chore, "duration":duration, "time":time})
