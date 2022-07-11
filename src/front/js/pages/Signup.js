@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
   const { store, actions } = useContext(Context);
@@ -8,7 +9,12 @@ function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState ("");
   // const token = localStorage.getItem("token");
-  // console.log("new user created", token)
+  
+
+    //redirect if token is present (i.e. they're logged in NEEDS FIGURING OUT)-
+  // const navigate = useNavigate();
+  // if(token && token != "" && token != undefined) navigate('/profile');
+  
 
   const handleClick = () => {
     actions.createNewUser(email, username, password);

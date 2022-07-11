@@ -13,7 +13,7 @@ from sqlalchemy import or_, exc
 
 api = Blueprint('api', __name__)
 
-# sign up end point (IN PROGESS)
+# sign up end point (DONE)
 @api.route("/signup", methods=["POST"])
 def createNewUser():
     request_body = request.get_json(force=True)
@@ -42,3 +42,22 @@ def createNewUser():
     #     pass
 
     return jsonify({"msg": "error signing up"}), 401
+
+    # login end point
+# @api.route("/signup", methods=["POST"])
+# def createNewUser():
+#     request_body = request.get_json(force=True)
+
+
+# protected page end point
+@api.route("/profile", methods=["GET"])
+@jwt_required()
+def get_hello():
+   # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
+
+if __name__ == "__main__":
+    app.run()
+
+

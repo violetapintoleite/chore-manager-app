@@ -11,7 +11,7 @@ function Login() {
   // console.log("new user created", token)
 
   const handleClick = () => {
-    // actions.createNewUser(email, username, password);
+    // actions.login(email, username, password);
 };
 
 return (

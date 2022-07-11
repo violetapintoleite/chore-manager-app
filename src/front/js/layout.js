@@ -6,6 +6,7 @@ import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import  Signup  from "./pages/Signup";
 import Login from "./pages/Login";
+import Profile from "./pages/profile";
 import { Single } from "./pages/single";
 import { History } from "./pages/history";
 import { Metrics } from "./pages/metrics";
@@ -30,9 +31,9 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Signup />} exact path="/signup" />
                         <Route element={<Login />} exact path="/login" />
-                         <Route element={<History />} path="/history" />
-            <Route element={<Metrics />} path="/metrics" />
-
+                        <Route element={<Profile />} exact path="/profile" />
+                        <Route element={<History />} path="/history" />
+                        <Route element={<Metrics />} path="/metrics" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
