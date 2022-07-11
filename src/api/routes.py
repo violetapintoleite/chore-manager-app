@@ -44,7 +44,7 @@ def createNewUser():
     return jsonify({"msg": "error signing up"}), 401
 
     # login end point
-# @api.route("/signup", methods=["POST"])
+# @api.route("/login", methods=["POST"])
 # def createNewUser():
 #     request_body = request.get_json(force=True)
 
