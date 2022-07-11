@@ -44,14 +44,15 @@ def createNewUser():
 # login end point
 @api.route("/login", methods=["POST"])
 def login():
-    email = request.json.get("email", None)
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
+    request_body = request.get_json(force=True)
+    email = request_body['email']
+    username = request_body['username']
+    password = request_body['password']
    
     user = User.get_by_email(email)
     if user and username and check_password_hash(user.password, password):
         access_token = create_access_token(identity=email)
-        return {"access token": access_token},201
+        return jsonify({"access token": access_token}),201
     else:
         return {"error":"user and password not valid"},400
     
