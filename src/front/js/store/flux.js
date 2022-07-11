@@ -35,7 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				try {
 					const resp = await fetch(
-					  "https://3001-violetapint-choremanage-wth2flooiwp.ws-eu53.gitpod.io/api/signup",
+					  "https://3001-violetapint-choremanage-ng4vm0smnco.ws-eu53.gitpod.io/api/signup",
 					  opts
 					);
 					

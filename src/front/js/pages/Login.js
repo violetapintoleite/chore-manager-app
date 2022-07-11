@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 
-function Signup() {
+function Login() {
   const { store, actions } = useContext(Context);
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -10,9 +10,9 @@ function Signup() {
   // const token = localStorage.getItem("token");
   // console.log("new user created", token)
 
-//   const handleClick = () => {
-//     actions.createNewUser(email, username, password);
-// };
+  const handleClick = () => {
+    // actions.createNewUser(email, username, password);
+};
 
 return (
     <div className="text-center mt-5">
@@ -28,4 +28,4 @@ return (
 )
 };
 
-export default Signup
+export default Login
