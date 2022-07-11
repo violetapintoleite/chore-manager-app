@@ -18,6 +18,15 @@ class User(db.Model):
             "is_active": self.is_active
         }
 
+    @staticmethod
+    def get_with_credentials(email, password):
+        return User.query.filter_by(email=email).filter_by(password=password).first()
+
+    @classmethod
+    def get_by_email(cls, email):
+        user = cls.query.filter_by(email=email).one_or_none()
+        return user
+
 class Chore(db.Model):
     __tablename__ = "Chore"
     id = db.Column(db.Integer, primary_key=True)

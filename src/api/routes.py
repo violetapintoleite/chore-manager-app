@@ -41,19 +41,26 @@ def createNewUser():
 
     return jsonify({"msg": "error signing up"}), 401
 
-    # login end point
+# login end point
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
     username = request.json.get("username", None)
     password = request.json.get("password", None)
-    hash_password = generate_password_hash(password)
+   
+    user = User.get_by_email(email)
+    if user and username and check_password_hash(user.password, password):
+        token = create_access_token(identity=email)
+        return {"token": token},201
+    else:
+        return {"error":"user and password not valid"},400
+    
     # email and username are working but password is causing a 401 error
-    if email != email or username != username or password != "999":
-        return jsonify({"msg": "Bad username or password"}), 401
+    # if email != email or username != username or password != "999":
+    #     return jsonify({"msg": "Bad username or password"}), 401
 
-    access_token = create_access_token(identity=username)
-    return jsonify(access_token=access_token), 201
+    # access_token = create_access_token(identity=username)
+    # return jsonify(access_token=access_token), 201
 
 # protected page end point
 @api.route("/profile", methods=["GET"])
