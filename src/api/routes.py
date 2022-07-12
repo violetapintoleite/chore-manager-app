@@ -9,8 +9,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
-from sqlalchemy import or_
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import or_, exc
 
 api = Blueprint('api', __name__)
 
@@ -21,17 +21,18 @@ api = Blueprint('api', __name__)
 def createNewUser():
     request_body = request.get_json(force=True)
     email = request_body['email']
+    username = request_body['username']
     password = request_body['password']
     hash_password = generate_password_hash(password)
     is_active = True
 
     try:
-        User = User(email=email, password=hash_password, is_active=is_active)
-    except SQLAlchemyError: 
+        user = User(email=email, username=username, password=hash_password, is_active=is_active)
+    except exc.SQLAlchemyError: 
         return jsonify("error creating the user"), 400
     try:
-        db.session.add(User)
-    except SQLAlchemyError: 
+        db.session.add(user)
+    except exc.SQLAlchemyError: 
         return jsonify("error adding the user"), 400
     db.session.commit()
 
