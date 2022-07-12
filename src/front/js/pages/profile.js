@@ -1,14 +1,26 @@
 import React, { useContext, useEffect } from 'react'
 import { Context } from "../store/appContext";
+import { useNavigate } from 'react-router-dom';
+
 
 function Profile() {
     const { store, actions } = useContext(Context);
+    const token = localStorage.getItem("token");
+    const navigate = useNavigate();
+    
+  
 
     useEffect(() => {
         if(store?.token ){
         actions.loggedInMessage()
         }
-	},[ store.token] )
+	  },[ store.token] )
+
+    useEffect(() => {
+      if(!token || token == "" || token == undefined) navigate('/login');
+      window.alert("Please log in first")
+    }, [ store.token])
+
 
   return (
     <div>
