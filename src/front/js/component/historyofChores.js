@@ -33,7 +33,7 @@ export const HistoryofChores = () => {
         <ul>
             
             <li>{listEntry.date}</li>
-            <li>{listEntry.time}H</li>
+            <li>{listEntry.duration}H</li>
             <li>{listEntry.chore}</li>
         </ul>
         
