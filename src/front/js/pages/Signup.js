@@ -8,12 +8,12 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState ("");
-  // const token = localStorage.getItem("token");
+  const token = localStorage.getItem("token");
   
-
     //redirect if token is present (i.e. they're logged in NEEDS FIGURING OUT)-
-  // const navigate = useNavigate();
-  // if(token && token != "" && token != undefined) navigate('/profile');
+  const navigate = useNavigate();
+  
+  if(token && token != "" && token != undefined) navigate('/profile');
   
 
   const handleClick = () => {

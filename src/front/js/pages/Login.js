@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
   const { store, actions } = useContext(Context);
@@ -9,8 +10,9 @@ function Login() {
   const [password, setPassword] = useState ("");
   // use this to then push to specific page if token is present
   const token = localStorage.getItem("token");
-  // console.log("new user created", token)
-
+  const navigate = useNavigate();
+  if(token && token != "" && token != undefined ) navigate('/profile');
+  
   const handleClick = () => {
     actions.login(email, username, password);
 };
