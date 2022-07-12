@@ -55,12 +55,12 @@ def postChore():
     duration = request.json.get("duration", None)
     date = request.json.get("date", None)
     try:
-        Chore = Chore(chore=chore, duration=duration, date=date)
-    except SQLAlchemyError: 
+        choreToAdd = Chore(name=chore, duration=duration, date=date)
+    except exc.SQLAlchemyError: 
         return jsonify("error creating the chore"), 400
     try:
-        db.session.add(Chore)
-    except SQLAlchemyError: 
+        db.session.add(choreToAdd)
+    except exc.SQLAlchemyError: 
         return jsonify("error adding the chore"), 400
     db.session.commit()
 
