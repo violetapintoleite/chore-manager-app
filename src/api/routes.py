@@ -47,20 +47,24 @@ def createNewUser():
 # post chore endpoint 
 @api.route('/chore', methods=['POST'])
 def postChore():
+    email = request.json.get("email", None)
     chore = request.json.get("chore", None)
     duration = request.json.get("duration", None)
     date = request.json.get("date", None)
-    try:
-        choreToAdd = Chore(name=chore, duration=duration, date=date)
-    except exc.SQLAlchemyError: 
-        return jsonify("error creating the chore"), 400
-    try:
-        db.session.add(choreToAdd)
-    except exc.SQLAlchemyError: 
-        return jsonify("error adding the chore"), 400
-    db.session.commit()
 
-    return jsonify({"chore": chore, "duration": duration, "date": date}), 201
+    user = User.get_by_email(email)
+    if user:
+        try:
+            choreToAdd = Chore(name=chore, duration=duration, date=date, user_id=user.id)
+        except exc.SQLAlchemyError: 
+            return jsonify("error creating the chore"), 400
+        try:
+            db.session.add(choreToAdd)
+        except exc.SQLAlchemyError: 
+            return jsonify("error adding the chore"), 400
+        db.session.commit()
+
+        return jsonify({"chore": chore, "duration": duration, "date": date, "email": email}), 201
         
     return jsonify({"msg": "error adding chore"}), 401
 # login end point

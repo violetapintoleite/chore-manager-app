@@ -34,7 +34,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				try {
 					const resp = await fetch(
-					  "https://3001-violetapint-choremanage-ng4vm0smnco.ws-eu53.gitpod.io/api/signup",
+					  "https://3001-violetapint-choremanage-oo09xmgh41v.ws-eu53.gitpod.io/api/signup",
 					  opts
 					);
 					
@@ -204,6 +204,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            email: "1",
             chore: chore,
             date: date,
             duration: duration,
