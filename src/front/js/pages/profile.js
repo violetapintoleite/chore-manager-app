@@ -17,8 +17,8 @@ function Profile() {
 	  },[ store.token] )
 
     useEffect(() => {
-      if(!token || token == "" || token == undefined) navigate('/login');
-      window.alert("Please log in first")
+      if(!token || token == "" || token == undefined) navigate('/login')
+      
     }, [ store.token])
 
 
