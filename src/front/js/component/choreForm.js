@@ -5,11 +5,11 @@ export const AddChoreForm = () => {
   const { store, actions } = useContext(Context);
   const [chore, setChore] = useState();
   const [date, setDate] = useState();
-  const [time, setTime] = useState();
+  const [duration, setDuration] = useState();
 
   function addChore() {
-    if (chore && date && time) {
-      actions.setChoreList(chore, date, time);
+    if (chore && date && duration) {
+      actions.setChoreList(chore, date, duration);
     }
   }
 
@@ -41,8 +41,8 @@ export const AddChoreForm = () => {
         <input
           type="time"
           className="form-control"
-          value={time || ""}
-          onChange={(e) => setTime(e.target.value)}
+          value={duration || ""}
+          onChange={(e) => setDuration(e.target.value)}
         ></input>
       </div>
       <button type="button" className="btn btn-primary" onClick={addChore}>

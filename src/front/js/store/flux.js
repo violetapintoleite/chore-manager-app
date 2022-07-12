@@ -35,12 +35,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-violetapint-choremanage-wth2flooiwp.ws-eu52.gitpod.io/api/signup",
+            "https://3001-violetapint-choremanage-oo09xmgh41v.ws-eu53.gitpod.io/api/signup",
             opts
           );
 
-          if (resp.status !== 200) {
-            alert("error before initial 200 request");
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
             return false;
           }
           const data = await resp.json();
@@ -101,21 +101,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
-      setChoreList: (chore, date, time) => {
+      setChoreList: (chore, date, duration) => {
         const store = getStore();
         let new_chore = store.choreList;
-        new_chore.push({ chore: chore, date: date, time: time });
+        new_chore.push({ chore: chore, date: date, duration: duration });
         setStore({ choreList: new_chore });
-        getActions().postChore(chore, date, time);
+        getActions().postChore(chore, date, duration);
       },
-      postChore: async (chore, date, time) => {
+      postChore: async (chore, date, duration) => {
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             chore: chore,
             date: date,
-            time: time,
+            duration: duration,
           }),
         };
 
@@ -125,13 +125,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             opts
           );
 
-          if (resp.status !== 200) {
-            alert("error before initial 200 request");
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
 
             return false;
           }
           const data = await resp.json();
           console.log("this came from the backend", data);
+
           return true;
         } catch (error) {
           console.log("there's an error adding the chore to the DB");

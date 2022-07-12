@@ -10,6 +10,7 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from sqlalchemy import or_
+from flask_sqlalchemy import SQLAlchemy
 
 api = Blueprint('api', __name__)
 
@@ -45,12 +46,23 @@ def createNewUser():
     return jsonify({"msg": "error signing up"}), 401
 
 
+
+# post chore endpoint 
 @api.route('/chore', methods=['POST'])
 def postChore():
-  chore = request.json.get("chore", None)
-  duration = request.json.get("duration", None)
-  time = request.json.get("time", None)
-  try: Chore = Chore(chore=chore, duration=duration, time=time)
-  except SQLAlchemyError:
-    
-  return jsonify({"chore":chore, "duration":duration, "time":time})
+    chore = request.json.get("chore", None)
+    duration = request.json.get("duration", None)
+    date = request.json.get("date", None)
+    try:
+        Chore = Chore(chore=chore, duration=duration, date=date)
+    except SQLAlchemyError: 
+        return jsonify("error creating the chore"), 400
+    try:
+        db.session.add(Chore)
+    except SQLAlchemyError: 
+        return jsonify("error adding the chore"), 400
+    db.session.commit()
+
+    return jsonify({"chore": chore, "duration": duration, "date": date}), 201
+        
+    return jsonify({"msg": "error adding chore"}), 401

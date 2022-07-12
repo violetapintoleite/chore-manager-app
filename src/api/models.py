@@ -21,7 +21,6 @@ class User(db.Model):
 class Chore(db.Model):
     __tablename__ = "Chore"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
     
     name = db.Column(db.String(120), unique=True, nullable=False)
     duration = db.Column(db.Integer, unique=False, nullable=False)
