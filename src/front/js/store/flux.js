@@ -85,8 +85,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const resp = await fetch(
 					"https://3001-violetapint-choremanage-ng4vm0smnco.ws-eu53.gitpod.io/api/login",
 					opts
-			  )
+			  		)
 			  
+				
 				  if (resp.status !== 201) {
 					alert("there's an error before the 201");
 					return false;
@@ -95,12 +96,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  console.log("this came from the backend", data);
 				  localStorage.setItem("token", data.access_token);
 				  setStore({ token: data.access_token });
+				  console.log("checking the stored token", store.token);
 				  return true;
 				} catch (error) {
 				  console.log("there's an error logging in ");
 				}
 			  },
 
+			  
 		// checking logged in token and access to a restricted page
 			loggedInMessage: async () => {
 				const store = getStore();

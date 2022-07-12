@@ -7,7 +7,8 @@ function Login() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState ("");
-  // const token = localStorage.getItem("token");
+  // use this to then push to specific page if token is present
+  const token = localStorage.getItem("token");
   // console.log("new user created", token)
 
   const handleClick = () => {
