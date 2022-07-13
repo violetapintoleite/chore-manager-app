@@ -27,11 +27,11 @@ return (
     <div className="text-center mt-5">
       <h1 className="mb-3">Sign Up</h1>
     <div>
-      <input type="text" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)}/> 
+      <input type="email" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)}/> 
       <input type="text" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
       <input type="password" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
-      <button onClick={handleClick} disabled={password.length < 8}> Submit </button>
-      {password == "" || password.length < 8 ? <p className="p-2">Password needs to be at least 8 characters long</p> : <p></p>}
+      <button onClick={handleClick} disabled={password.length < 8 || email.length < 5 || username.length < 5}> Submit </button>
+      { !! email.match(/.+@.+/) ? <p>"email is not valid"</p> : username == "" || username.length < 8 ? <p>"username needs to be at least 5 characters"</p> : password == "" || password.length < 8 ? <p className="p-2">Password needs to be at least 8 characters long</p> :  <p></p>}
     </div>   
     <h4 className="mt-3"> Already have an account? <a href= "/login"> Login through here </a></h4>  
    
