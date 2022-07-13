@@ -8,8 +8,6 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState ("");
-  const [btnDisabled, setbtnDisabled] = useState (true);
-  const [message, setMessage] = useState("");
   
   const token = localStorage.getItem("token");
   
