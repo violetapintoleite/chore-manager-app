@@ -1,6 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+
+		email: null,
       token: null,
       isLoggedIn: false,
       message: null,
@@ -54,6 +56,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("there's an error creating the account");
 				  }
 			},
+			//functionality to set email in store
+			setEmail: () => {
+				console.log("email stored", email)
+				setStore(email);
+					  
+			},
+
 			//setting the token to the localstorage 
 			setToken: () => {
 
@@ -102,7 +111,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			  },
 
-			  
 		// checking logged in token and access to a restricted page
 			loggedInMessage: async () => {
 				const store = getStore();
@@ -164,6 +172,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
+
       setChoreList: (chore, date, duration) => {
         const store = getStore();
         let new_chore = store.choreList;

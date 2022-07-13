@@ -15,11 +15,11 @@ function Signup() {
   
   const navigate = useNavigate();
   
-  if(token && token != "" && token != undefined) navigate('/profile');
-
-
+if(token && token != "" && token != undefined) navigate('/profile');
+  
+// onclick handler to submit info to backend
   const handleClick = () => {
-    
+
     actions.createNewUser(email, username, password);
 };
 
@@ -30,8 +30,8 @@ return (
       <input type="text" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)}/> 
       <input type="text" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
       <input type="password" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
-      <button onClick={handleClick} > Submit </button>
-      
+      <button onClick={handleClick} disabled={password.length < 8}> Submit </button>
+      {password == "" || password.length < 8 ? <p className="p-2">Password needs to be at least 8 characters long</p> : <p></p>}
     </div>   
     <h4 className="mt-3"> Already have an account? <a href= "/login"> Login through here </a></h4>  
    
@@ -42,3 +42,5 @@ return (
 };
 
 export default Signup
+
+
