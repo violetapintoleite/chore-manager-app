@@ -8,7 +8,7 @@ export const HistoryofChores = () => {
 
   /*useEffect(() => {
     teste = store.choreList.length;
-  }, [store.choreList]);*/
+  }, [store.choreList]);
 
   /*return (
     <div className="container">

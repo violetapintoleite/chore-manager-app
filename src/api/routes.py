@@ -42,6 +42,15 @@ def createNewUser():
 
     return jsonify({"msg": "error signing up"}), 401
 
+# get request from chore list
+@api.route('/chore', methods=['GET'])
+def getAllChores(): 
+    chores = Chore.get_chores()
+    serialized_chores = []
+    for chore in chores:
+        serialized_chores.append(chore.serialize())
+    return(jsonify(serialized_chores))
+ 
 
 
 # post chore endpoint 

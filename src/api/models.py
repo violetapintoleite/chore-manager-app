@@ -32,7 +32,7 @@ class Chore(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
     name = db.Column(db.String(120), unique=True, nullable=False)
-    duration = db.Column(db.Integer, unique=False, nullable=False)
+    duration = db.Column(db.Time, unique=False, nullable=False)
     date = db.Column(db.Date, unique=False, nullable=True)
 
     def serialize(chore):
@@ -44,6 +44,10 @@ class Chore(db.Model):
             "date": chore.date,
         }
 
+    @classmethod
+    def get_chores(cls):
+        chores = cls.query.all()
+        return chores
     
 
 class Team(db.Model):
