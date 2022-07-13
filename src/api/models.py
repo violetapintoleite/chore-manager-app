@@ -45,8 +45,8 @@ class Chore(db.Model):
         }
 
     @classmethod
-    def get_chores(cls):
-        chores = cls.query.all()
+    def get_chores_by_user_id(cls, user_id):
+        chores = cls.query.filter_by(user_id=user_id).all()
         return chores
     
 

@@ -194,9 +194,10 @@ const getState = ({ getStore, getActions, setStore }) => {
         new_chore.push({ chore: chore, date: date, duration: duration });
         setStore({ choreList: new_chore });
         getActions().postChore(chore, date, duration);
-        getActions().getAllChores();
+        getActions().getChoresByUserId("1");
+        
       },
-      getAllChores: async () => {
+      getChoresByUserId: async () => {
         const opts = { method: "GET" };
 
         try {
