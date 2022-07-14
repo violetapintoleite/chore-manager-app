@@ -15,11 +15,7 @@ function Profile() {
 	  },[ store.token] )
 
     //redirect to the /login page if there is no token present
-    useEffect(() => {
-      if(!token || token == "" || token == undefined) navigate('/login')
-      
-    }, [ store.token])
-
+  if(!token || token == "" || token == undefined) navigate('/login')
 
   return (
     <div>

@@ -59,10 +59,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			//setting the token to the localstorage 
 			setToken: () => {
-
 				const token = localStorage.getItem("token") || null;
 				console.log("this is your token", token)
-				setStore(token);
+				setStore({token});
 			},
 			// functionality to log out / remove token
 			logout: () => {
