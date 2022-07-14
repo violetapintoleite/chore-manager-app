@@ -49,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("this came from the backend", data);
 					// need to set up local storage function
 					localStorage.setItem("token", data.access_token);
-					setStore({ token: data.access_token });
+					setStore({ token: data.access_token, email: email, isLoggedIn: true });
 					return true;
 				  } 
 				  	catch (error) {
@@ -57,7 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  }
 			},
 			
-			//functionality to set email in store
+			// functionality to set email in store
 			// setEmailToStore: () => {
 			// 	console.log("email stored", email)
 			// 	setStore({email});
@@ -104,7 +104,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  const data = await resp.json();
 				  console.log("this came from the backend", data);
 				  localStorage.setItem("token", data.access_token);
-				  setStore({ token: data.access_token });
+				  setStore({ token: data.access_token, email: email, isLoggedIn: true  });
 				  console.log("checking the stored token", store.token);
 				  return true;
 				} catch (error) {

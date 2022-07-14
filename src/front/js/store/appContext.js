@@ -29,6 +29,7 @@ const injectContext = PassedComponent => {
 			 * store, instead use actions, like this:
 			 **/
 			state.actions.setToken();
+			state.actions.createNewUser();
 			// state.actions.getMessage(); // <---- calling this function from the flux.js actions
 
 		}, []);

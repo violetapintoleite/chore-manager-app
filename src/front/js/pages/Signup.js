@@ -11,14 +11,14 @@ function Signup() {
   const [password, setPassword] = useState ("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+  const isLoggedIn = isLoggedIn
   
-//redirects to profile page if there's a valid token
-if(token && token != "" && token != undefined) navigate('/profile');
+//redirects to profile page if there's a token
+if(token && token != "" && token != undefined ) navigate('/profile');
   
 // onclick handler to submit info to backend
   const handleClick = () => {
     actions.createNewUser(email, username, password);
-   
 };
 
 //email verification
@@ -31,7 +31,7 @@ const [emailError, setEmailError] = useState('')
     } else {
       setEmailError('Enter valid Email!')
     }
-  }
+  };
 
 return (
     <div className="text-center mt-5">
