@@ -56,13 +56,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log("there's an error creating the account");
 				  }
 			},
-			
-			// functionality to set email in store
-			// setEmailToStore: () => {
-			// 	console.log("email stored", email)
-			// 	setStore({email});
-					  
-			// },
 
 			//setting the token to the localstorage 
 			setToken: () => {
