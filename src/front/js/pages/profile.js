@@ -7,24 +7,14 @@ function Profile() {
     const { store, actions } = useContext(Context);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
-    
-  
 
-    useEffect(() => {
-        if(store?.token ){
-        actions.loggedInMessage()
-        }
-	  },[ store.token] )
 
-    useEffect(() => {
-      if(!token || token == "" || token == undefined) navigate('/login')
-      
-    }, [ store.token])
-
+    //redirect to the /login page if there is no token present
+  if(!token || token == "" || token == undefined) navigate('/login')
 
   return (
     <div>
-        <h1>{store.message}</h1>
+        <h1>{store.email}</h1>
         <div className='card'>
         <p>Click to access your token {store.token}</p>
         </div>

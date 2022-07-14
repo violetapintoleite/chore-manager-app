@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      email: null,
       token: null,
       isLoggedIn: false,
       message: null,
@@ -34,7 +35,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-violetapint-choremanage-3mtfu8tjb1v.ws-eu53.gitpod.io/api/signup",
+
+            process.env.BACKEND_URL + "/api/signup",
+
             opts
           );
 
@@ -46,17 +49,25 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("this came from the backend", data);
           // need to set up local storage function
           localStorage.setItem("token", data.access_token);
-          setStore({ token: data.access_token });
+          setStore({
+            token: data.access_token,
+            email: email,
+            isLoggedIn: true,
+          });
+
           return true;
         } catch (error) {
           console.log("there's an error creating the account");
         }
       },
+
       //setting the token to the localstorage
       setToken: () => {
         const token = localStorage.getItem("token") || null;
         console.log("this is your token", token);
-        setStore(token);
+
+        setStore({ token });
+
       },
       // functionality to log out / remove token
       logout: () => {
@@ -79,7 +90,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-violetapint-choremanage-3mtfu8tjb1v.ws-eu53.gitpod.io/api/login",
+
+            process.env.BACKEND_URL + "/api/login",
+
             opts
           );
 
@@ -90,7 +103,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await resp.json();
           console.log("this came from the backend", data);
           localStorage.setItem("token", data.access_token);
-          setStore({ token: data.access_token });
+
+          setStore({
+            token: data.access_token,
+            email: email,
+            isLoggedIn: true,
+          });
+
+
           console.log("checking the stored token", store.token);
           return true;
         } catch (error) {
@@ -99,7 +119,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // checking logged in token and access to a restricted page
-      loggedInMessage: async () => {
+
+      checkIfAuthorized: async () => {
+
         const store = getStore();
         const opts = {
           headers: {
@@ -109,12 +131,16 @@ const getState = ({ getStore, getActions, setStore }) => {
         try {
           // fetching data from the backend
           const resp = await fetch(
-            "https://3001-violetapint-choremanage-3mtfu8tjb1v.ws-eu53.gitpod.io/api/profile",
+
+            process.env.BACKEND_URL + "/api/profile",
+
             opts
           );
 
           const data = await resp.json();
-          setStore({ message: data.message });
+
+          setStore({ message: data.message, email: data.logged_in_as });
+
           // don't forget to return something, that is how the async resolves
           return data;
         } catch (error) {
@@ -126,23 +152,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       // 	getActions().changeColor(0, "green");
       // },
 
-      // getMessage: async () => {
-      // 	try{
-      // 		// fetching data from the backend
-      // 		const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-      // 		const data = await resp.json()
-      // 		setStore({ message: data.message })
-      // 		// don't forget to return something, that is how the async resolves
-      // 		return data;
-      // 	}catch(error){
-      // 		console.log("Error loading message from backend", error)
-      // 	}
-      // },
-
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
-      },
 
       // getMessage: async () => {
       // 	try{
@@ -156,27 +165,12 @@ const getState = ({ getStore, getActions, setStore }) => {
       // 		console.log("Error loading message from backend", error)
       // 	}
       // },
+ 
+      // },
       changeColor: (index, color) => {
         //get the store
         const store = getStore();
       },
-
-      getMessage: async () => {
-        try {
-          // fetching data from the backend
-          const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
-          const data = await resp.json();
-          setStore({ message: data.message });
-          // don't forget to return something, that is how the async resolves
-          return data;
-        } catch (error) {
-          console.log("Error loading message from backend", error);
-        }
-      },
-
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
 
         //we have to loop the entire demo array to look for the respective index
         //and change its color
@@ -188,6 +182,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         //reset the global store
         setStore({ demo: demo });
       },
+
       setChoreList: (chore, date, duration) => {
         const store = getStore();
         let new_chore = store.choreList;
@@ -235,7 +230,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            "https://3001-violetapint-choremanage-3mtfu8tjb1v.ws-eu53.gitpod.io/api/chore",
+
+            process.env.BACKEND_URL + "/api/chore",
+
             opts
           );
 

@@ -11,11 +11,15 @@ function Login() {
   // use this to then push to specific page if token is present
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  //redirects to protected page is token is present in localstorage
   if(token && token != "" && token != undefined ) navigate('/profile');
   
   const handleClick = () => {
     actions.login(email, username, password);
+    
 };
+
 
 return (
     <div className="text-center mt-5">
