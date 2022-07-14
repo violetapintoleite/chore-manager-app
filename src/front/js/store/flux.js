@@ -36,7 +36,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				try {
 					const resp = await fetch(
-						process.env.BACKEND_URL + "api/signup",
+						process.env.BACKEND_URL + "/api/signup",
 					  opts
 					);
 					
@@ -92,7 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		
 				try {
 				  const resp = await fetch(
-					process.env.BACKEND_URL + "api/login",
+					process.env.BACKEND_URL + "/api/login",
 					opts
 			  		)
 			  
@@ -123,7 +123,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 				  // fetching data from the backend
 				  const resp = await fetch(
-					process.env.BACKEND_URL + "api/profile",
+					process.env.BACKEND_URL + "/api/profile",
 					opts
 				  );
 				  
@@ -195,7 +195,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "api/chore",
+            process.env.BACKEND_URL + "/api/chore",
             opts
           );
 
