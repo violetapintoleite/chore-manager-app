@@ -36,11 +36,12 @@ class Chore(db.Model):
     date = db.Column(db.Date, unique=False, nullable=True)
 
     def serialize(chore):
+
         return {
             "id": chore.id,
             "user_id": chore.user_id,
             "name": chore.name,
-            "duration": chore.duration,
+            "duration": chore.duration.isoformat(),
             "date": chore.date,
         }
 

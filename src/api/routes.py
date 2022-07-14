@@ -44,12 +44,15 @@ def createNewUser():
 
 # get request from chore list
 @api.route('/chore', methods=['GET'])
-def getChoresByUserId(): 
-    chores = Chore.get_chores_by_user_id("1")
+def getChoresByEmail(): 
+    email = request.args.get("email", None)
+    user = User.get_by_email(email)
+    chores = Chore.get_chores_by_user_id(user.id)
     serialized_chores = []
     for chore in chores:
         serialized_chores.append(chore.serialize())
-    return(jsonify(serialized_chores))
+    return jsonify({"chores": serialized_chores})
+  
  
 
 
