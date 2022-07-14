@@ -1,8 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-
-		email: null,
+      email: null,
       token: null,
       isLoggedIn: false,
       message: null,
@@ -20,117 +19,122 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       choreList: [],
       testeList: [],
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			createNewUser: async (email, username, password) => {
-				const opts = {
-					method: "POST",
-					headers: { "Content-Type": "application/json"},
-          			body: JSON.stringify({
-						email: email,
-						username: username,
-						password: password,
-          			}),
-				};
+    },
+    actions: {
+      // Use getActions to call a function within a fuction
+      createNewUser: async (email, username, password) => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            username: username,
+            password: password,
+          }),
+        };
 
-				try {
-					const resp = await fetch(
-						process.env.BACKEND_URL + "/api/signup",
-					  opts
-					);
-					
-				   
-					if (resp.status !== 201) {
-					  alert("error before initial 201 request");
-					  return false;
-					}
-					const data = await resp.json();
-					console.log("this came from the backend", data);
-					// need to set up local storage function
-					localStorage.setItem("token", data.access_token);
-					setStore({ token: data.access_token, email: email, isLoggedIn: true });
-					return true;
-				  } 
-				  	catch (error) {
-					console.log("there's an error creating the account");
-				  }
-			},
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/signup",
+            opts
+          );
 
-			//setting the token to the localstorage 
-			setToken: () => {
-				const token = localStorage.getItem("token") || null;
-				console.log("this is your token", token)
-				setStore({token});
-			},
-			// functionality to log out / remove token
-			logout: () => {
-				localStorage.removeItem("token");
-				console.log("log out triggered");
-				setStore({ token: null });
-			  },
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
+            return false;
+          }
+          const data = await resp.json();
+          console.log("this came from the backend", data);
+          // need to set up local storage function
+          localStorage.setItem("token", data.access_token);
+          setStore({
+            token: data.access_token,
+            email: email,
+            isLoggedIn: true,
+          });
+          return true;
+        } catch (error) {
+          console.log("there's an error creating the account");
+        }
+      },
 
-			// creating the login functionality - needs to verify if user exists in DB and generate access token
-			login: async (email, username, password) => {
-				const opts = {
-				  method: "POST",
-				  headers: { "Content-Type": "application/json" },
-				  body: JSON.stringify({
-					email: email,
-					username: username,
-					password: password
-				  }),
-				};
-		
-				try {
-				  const resp = await fetch(
-					process.env.BACKEND_URL + "/api/login",
-					opts
-			  		)
-			  
-				
-				  if (resp.status !== 201) {
-					alert("there's an error before the 201");
-					return false;
-				  }
-				  const data = await resp.json();
-				  console.log("this came from the backend", data);
-				  localStorage.setItem("token", data.access_token);
-				  setStore({ token: data.access_token, email: email, isLoggedIn: true  });
-				  console.log("checking the stored token", store.token);
-				  return true;
-				} catch (error) {
-				  console.log("there's an error logging in ");
-				}
-			  },
+      //setting the token to the localstorage
+      setToken: () => {
+        const token = localStorage.getItem("token") || null;
+        console.log("this is your token", token);
+        setStore({ token });
+      },
+      // functionality to log out / remove token
+      logout: () => {
+        localStorage.removeItem("token");
+        console.log("log out triggered");
+        setStore({ token: null });
+      },
 
-		// checking logged in token and access to a restricted page
-			checkIfAuthorized: async () => {
-				const store = getStore();
-				const opts = {
-				  headers: {
-					Authorization: "Bearer " + store.token,
-				  },
-				};
-				try {
-				  // fetching data from the backend
-				  const resp = await fetch(
-					process.env.BACKEND_URL + "/api/profile",
-					opts
-				  );
-				  
-				  const data = await resp.json();
-				  setStore({ message: data.message });
-				  // don't forget to return something, that is how the async resolves
-				  return data;
-				} catch (error) {
-				  console.log("Error loading message from backend", error);
-				}
-			  },
+      // creating the login functionality - needs to verify if user exists in DB and generate access token
+      login: async (email, username, password) => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            username: username,
+            password: password,
+          }),
+        };
 
-			// exampleFunction: () => {
-			// 	getActions().changeColor(0, "green");
-			// },
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/login",
+            opts
+          );
+
+          if (resp.status !== 201) {
+            alert("there's an error before the 201");
+            return false;
+          }
+          const data = await resp.json();
+          console.log("this came from the backend", data);
+          localStorage.setItem("token", data.access_token);
+          setStore({
+            token: data.access_token,
+            email: email,
+            isLoggedIn: true,
+          });
+          console.log("checking the stored token", store.token);
+          return true;
+        } catch (error) {
+          console.log("there's an error logging in ");
+        }
+      },
+
+      // checking logged in token and access to a restricted page
+      checkIfAuthorized: async () => {
+        const store = getStore();
+        const opts = {
+          headers: {
+            Authorization: "Bearer " + store.token,
+          },
+        };
+        try {
+          // fetching data from the backend
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/profile",
+            opts
+          );
+
+          const data = await resp.json();
+          setStore({ message: data.message, email: data.logged_in_as });
+          // don't forget to return something, that is how the async resolves
+          return data;
+        } catch (error) {
+          console.log("Error loading message from backend", error);
+        }
+      },
+
+      // exampleFunction: () => {
+      // 	getActions().changeColor(0, "green");
+      // },
 
       // },
       changeColor: (index, color) => {
@@ -150,7 +154,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("Error loading message from backend", error);
         }
       },
-	
+
       changeColor: (index, color) => {
         //get the store
         const store = getStore();

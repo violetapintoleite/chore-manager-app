@@ -19,7 +19,7 @@ function Profile() {
 
   return (
     <div>
-        <h1>{store.message}</h1>
+        <h1>{store.email}</h1>
         <div className='card'>
         <p>Click to access your token {store.token}</p>
         </div>
