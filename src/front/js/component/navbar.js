@@ -1,9 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
 	const { store, actions, token } = useContext(Context);
+
+	useEffect(() => {
+        if(store?.token && token != "" ){
+        actions.checkIfAuthorized()
+        }
+	  },[ store.token] );
+
 	return (
 		<nav className="navbar navbar-light bg-light">
 			<div className="container">
