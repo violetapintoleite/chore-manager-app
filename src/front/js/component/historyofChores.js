@@ -4,8 +4,6 @@ import { Context } from "../store/appContext";
 export const HistoryofChores = () => {
   const { store, actions } = useContext(Context);
 
-
-
   /*useEffect(() => {
     teste = store.choreList.length;
   }, [store.choreList]);
@@ -25,26 +23,25 @@ export const HistoryofChores = () => {
     </div>
   );*/
 
-  return(<>
-  {store.choreList.length > 0 ? (
-   store.choreList.map((listEntry, i) => {
-    return (<>
-    
-        <ul>
-            
-            <li>{listEntry.date}</li>
-            <li>{listEntry.duration}H</li>
-            <li>{listEntry.chore}</li>
-        </ul>
-        
-    
-    
+  return (
+    <>
+      {store.choreList.length > 0
+        ? store.choreList.map((listEntry, i) => {
+            return (
+              <>
+                <div class="list-group">
+                  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{listEntry.chore}</h5>
+                      <small>{listEntry.date}</small>
+                    </div>
+                    <small>{listEntry.duration}H</small>
+                  </a>
+                </div>
+              </>
+            );
+          })
+        : "Add a chore"}
     </>
-    )
-  })
-
-  
-  ):("Add a chore")}
-  </>)
-  
+  );
 };

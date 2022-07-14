@@ -45,7 +45,7 @@ def createNewUser():
 # get request from chore list
 @api.route('/chore', methods=['GET'])
 def getChoresByUserId(): 
-    chores = Chore.get_chores_by_user_id("2")
+    chores = Chore.get_chores_by_user_id("1")
     serialized_chores = []
     for chore in chores:
         serialized_chores.append(chore.serialize())
@@ -76,6 +76,33 @@ def postChore():
         return jsonify({"chore": chore, "duration": duration, "date": date, "email": email}), 201
         
     return jsonify({"msg": "error adding chore"}), 401
+
+# delete a chore 
+@api.route('/chore', methods=['DELETE'])
+def delete_chore():
+    email = request.json.get("email", None)
+    chore = request.json.get("chore", None)
+    duration = request.json.get("duration", None)
+    date = request.json.get("date", None)
+
+    user = User.get_by_email(email)
+    if user:
+        try:
+            choreToDelete = Chore.query.filter_by(id="4").first()
+        except exc.SQLAlchemyError: 
+            return jsonify("error finding the chore to delete"), 400
+        try:
+            db.session.delete(choreToDelete)
+        except exc.SQLAlchemyError: 
+            return jsonify("error deleting the chore"), 400
+        db.session.commit()
+
+        return jsonify({"chore": chore, "duration": duration, "date": date, "email": email}), 201
+        
+    return jsonify({"msg": "error adding chore"}), 401
+
+
+
 # login end point
 @api.route("/login", methods=["POST"])
 def login():

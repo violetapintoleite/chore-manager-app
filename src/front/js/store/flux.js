@@ -195,7 +195,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         setStore({ choreList: new_chore });
         getActions().postChore(chore, date, duration);
         getActions().getChoresByUserId("1");
-        
       },
       getChoresByUserId: async () => {
         const opts = { method: "GET" };
@@ -213,7 +212,10 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("this came from the backend", data);
-
+          // const store = getStore();
+          // let new_chore_list = store.choreList;
+          // new_chore_list.push({ data });
+          // setStore({ choreList: new_chore_list });
           return true;
         } catch (error) {
           console.log("there's an error fetching the chores");
