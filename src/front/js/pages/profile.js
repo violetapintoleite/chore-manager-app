@@ -7,12 +7,7 @@ function Profile() {
     const { store, actions } = useContext(Context);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        if(store?.token && token != "" ){
-        actions.checkIfAuthorized()
-        }
-	  },[ store.token] )
+
 
     //redirect to the /login page if there is no token present
   if(!token || token == "" || token == undefined) navigate('/login')
