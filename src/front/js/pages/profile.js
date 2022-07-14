@@ -8,14 +8,13 @@ function Profile() {
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
     
-  
-
     useEffect(() => {
-        if(store?.token ){
-        actions.loggedInMessage()
+        if(store?.token && token != "" ){
+        actions.checkIfAuthorized()
         }
 	  },[ store.token] )
 
+    //redirect to the /login page if there is no token present
     useEffect(() => {
       if(!token || token == "" || token == undefined) navigate('/login')
       

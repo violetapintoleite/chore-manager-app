@@ -113,7 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  },
 
 		// checking logged in token and access to a restricted page
-			loggedInMessage: async () => {
+			checkIfAuthorized: async () => {
 				const store = getStore();
 				const opts = {
 				  headers: {
