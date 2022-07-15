@@ -31,7 +31,7 @@ class Chore(db.Model):
     __tablename__ = "Chore"
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
-    name = db.Column(db.String(120), unique=True, nullable=False)
+    name = db.Column(db.String(120), unique=False, nullable=False)
     duration = db.Column(db.Time, unique=False, nullable=False)
     date = db.Column(db.Date, unique=False, nullable=True)
 
@@ -65,22 +65,5 @@ class Team(db.Model):
             "name": team.name,
         }
 
-class Metrics(db.Model):
-    __tablename__ = "Metrics"
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
-    chore_id = db.Column(db.Integer, db.ForeignKey('Chore.id'), nullable=False)
-    chore_name = db.Column(db.String(120),db.ForeignKey('Chore.name'), nullable=False)
-    total_duration = db.Column(db.Integer, unique=False, nullable=False)
-    time_range = db.Column(db.Date, unique=False, nullable=True)
-
-    def serialize(metrics):
-            return{
-                "user_id": metrics.user_id,
-                "chore_id": metrics.chore_id,
-                "chore_name": metrics.chore_name,
-                "total_duration": metrics.total_duration,
-                "time_range": metrics.time_range,
-            }
         
    

@@ -18,7 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       choreList: [],
-      testeList: [],
+      chore: null,
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -167,13 +167,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       setChoreList: (chore, date, duration) => {
         const store = getStore();
-        let new_chore = store.choreList;
-        new_chore.push({ chore: chore, date: date, duration: duration });
-        setStore({ choreList: new_chore });
         getActions().postChore(chore, date, duration, store.email);
         getActions().getChoresByUserEmail(store.email);
       },
       getChoresByUserEmail: async () => {
+        const store = getStore();
         const opts = { method: "GET" };
 
         try {
@@ -182,17 +180,16 @@ const getState = ({ getStore, getActions, setStore }) => {
             opts
           );
 
-          if (resp.status !== 201) {
-            alert("error before initial 201 request");
+          if (resp.status !== 200) {
+            alert("error before initial 200 request of GET request");
 
             return false;
           }
           const data = await resp.json();
-          console.log("this came from the backend", data);
-          // const store = getStore();
-          // let new_chore_list = store.choreList;
-          // new_chore_list.push({ data });
-          // setStore({ choreList: new_chore_list });
+          console.log("here are the user chores", data.chores);
+
+          setStore({ choreList: data.chores });
+          console.log("this is your user chore list", store.choreList);
           return true;
         } catch (error) {
           console.log("there's an error fetching the chores");

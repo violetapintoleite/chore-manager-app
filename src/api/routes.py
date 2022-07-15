@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Chore, Team, Metrics
+from api.models import db, User, Chore, Team
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -51,7 +51,7 @@ def getChoresByEmail():
     serialized_chores = []
     for chore in chores:
         serialized_chores.append(chore.serialize())
-    return jsonify({"chores": serialized_chores})
+    return jsonify({"chores" : serialized_chores})
   
  
 

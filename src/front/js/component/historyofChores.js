@@ -32,7 +32,7 @@ export const HistoryofChores = () => {
                 <div class="list-group">
                   <a href="#" class="list-group-item list-group-item-action" aria-current="true">
                     <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">{listEntry.chore}</h5>
+                      <h5 class="mb-1">{listEntry.name}</h5>
                       <small>{listEntry.date}</small>
                     </div>
                     <small>{listEntry.duration}H</small>
