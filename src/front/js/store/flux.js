@@ -168,7 +168,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       setChoreList: (chore, date, duration) => {
         const store = getStore();
         getActions().postChore(chore, date, duration, store.email);
-        getActions().getChoresByUserEmail();
+        getActions().getChoresByUserEmail(store.email);
       },
       getChoresByUserEmail: async () => {
         const store = getStore();
@@ -189,7 +189,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("here are the user chores", data.chores);
 
           setStore({ choreList: data.chores });
-          console.log("this is your user chore list", store.choreList);
           return true;
         } catch (error) {
           console.log("there's an error fetching the chores");
@@ -203,7 +202,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             email: email,
             chore: chore,
             date: date,
-            duration: duration + ":00",
+            duration: "00:" + duration ,
           }),
         };
 
