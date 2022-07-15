@@ -168,7 +168,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       setChoreList: (chore, date, duration) => {
         const store = getStore();
         getActions().postChore(chore, date, duration, store.email);
-        getActions().getChoresByUserEmail(store.email);
+        getActions().getChoresByUserEmail();
       },
       getChoresByUserEmail: async () => {
         const store = getStore();

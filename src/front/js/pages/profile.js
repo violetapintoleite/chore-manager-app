@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom';
 
 
+
 function Profile() {
     const { store, actions } = useContext(Context);
     const token = localStorage.getItem("token");

@@ -4,9 +4,9 @@ import { Context } from "../store/appContext";
 export const HistoryofChores = () => {
   const { store, actions } = useContext(Context);
 
-  /*useEffect(() => {
-    teste = store.choreList.length;
-  }, [store.choreList]);
+  useEffect(() => {
+    actions.getChoresByUserEmail(store.email)
+  }, [store.email]);
 
   /*return (
     <div className="container">
