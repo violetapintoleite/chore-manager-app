@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import Popup from "./popup";
+
 
 export const Navbar = () => {
 	const { store, actions, token } = useContext(Context);
@@ -18,7 +18,6 @@ export const Navbar = () => {
 				<Link to="/">
 					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
 				</Link>
-				<Popup></Popup>
 				<div className="">
 				{store.token ? (
 					<Link to="/profile">
