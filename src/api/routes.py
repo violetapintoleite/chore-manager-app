@@ -105,7 +105,6 @@ def delete_chore():
     return jsonify({"msg": "error adding chore"}), 401
 
 
-
 # login end point
 @api.route("/login", methods=["POST"])
 def login():
