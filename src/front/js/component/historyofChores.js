@@ -5,8 +5,8 @@ export const HistoryofChores = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getChoresByUserEmail(store.email)
-  }, [store.email]);
+    actions.getChoresByUserEmail(store.email);
+  }, [store.email, store.choreList]);
 
   /*return (
     <div className="container">
@@ -30,7 +30,11 @@ export const HistoryofChores = () => {
             return (
               <>
                 <div class="list-group">
-                  <a href="#" class="list-group-item list-group-item-action" aria-current="true">
+                  <a
+                    href="#"
+                    class="list-group-item list-group-item-action"
+                    aria-current="true"
+                  >
                     <div class="d-flex w-100 justify-content-between">
                       <h5 class="mb-1">{listEntry.name}</h5>
                       <small>{listEntry.date}</small>
