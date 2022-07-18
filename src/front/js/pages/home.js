@@ -9,7 +9,7 @@ export const Home = () => {
 
 	return (
 		<div className="text-center mt-5">
-			<h2>Inspirational Quote</h2>
+			
 			<InspoQuote></InspoQuote>
 			<p>
 				<img src={rigoImageUrl} />

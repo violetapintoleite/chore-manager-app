@@ -19,6 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       choreList: [],
       testeList: [],
+      quote: [],
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -244,6 +245,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // youtubevideo
+  
       
     },
   };
