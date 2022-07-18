@@ -165,7 +165,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         //get the store
         const store = getStore();
       },
-
+      
       // getMessage: async () => {
       // 	try{
       // 		// fetching data from the backend
@@ -184,6 +184,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         //get the store
         const store = getStore();
       },
+
 
       setChoreList: (chore, date, duration) => {
         const store = getStore();
@@ -251,6 +252,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error adding the chore to the DB");
         }
       },
+
       deleteChoresByUserEmail: async (chore_id) => {
         const store = getStore();
         const actions = getActions();
@@ -279,6 +281,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+
     },
   };
 };
