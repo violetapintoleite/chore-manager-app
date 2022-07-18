@@ -15,7 +15,7 @@ useEffect(() => {
     //check that only getting one number back
     // console.log(data[Math.floor(Math.random() * data.length)]);
   
-    let quoteNumber = Math.floor(Math.random() * data.length);
+    // let quoteNumber = Math.floor(Math.random() * data.length);
     //check that only getting one quote back
     // console.log(quoteNumber);
     let oneQuote = data[Math.floor(Math.random() * data.length)];
