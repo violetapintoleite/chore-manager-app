@@ -11,7 +11,7 @@ function Signup() {
   const [password, setPassword] = useState ("");
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-  const isLoggedIn = isLoggedIn
+  const isLoggedIn = isLoggedIn;
   
 //redirects to profile page if there's a token
 if(token && token != "" && token != undefined ) navigate('/profile');

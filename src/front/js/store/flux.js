@@ -19,7 +19,9 @@ const getState = ({ getStore, getActions, setStore }) => {
       ],
       choreList: [],
 
-      chore: null,
+      testeList: [],
+      quote: [],
+
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -253,6 +255,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+
       deleteChoresByUserEmail: async (chore_id) => {
         const store = getStore();
         const actions = getActions();
@@ -281,6 +284,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+
 
     },
   };
