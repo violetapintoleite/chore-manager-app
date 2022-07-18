@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 
 export const AddChoreForm = () => {
-  const { store, actions } = useContext(Context);
+  const { actions } = useContext(Context);
   const [chore, setChore] = useState();
   const [date, setDate] = useState();
   const [duration, setDuration] = useState();
