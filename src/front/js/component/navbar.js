@@ -21,9 +21,11 @@ export const Navbar = () => {
 				</Link>
 				<div className="">
 				{store.token ? (
-					<Link to="/profile">
+					<><Link to="/profile">
 						<button className="btn btn-primary m-2">Profile</button>
-					</Link> ) : (
+					</Link><Link to="/history">
+						<button className="btn btn-primary m-2">My Chores</button>
+					</Link></> ) : (
 						<p></p>
 					) }
 				</div>
