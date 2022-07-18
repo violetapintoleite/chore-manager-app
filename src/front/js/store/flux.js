@@ -188,7 +188,6 @@ const getState = ({ getStore, getActions, setStore }) => {
       setChoreList: (chore, date, duration) => {
         const store = getStore();
         let new_chores = store.choreList;
-        console.log(typeof new_chores);
         new_chores.push({ name: chore, date: date, duration: duration });
         setStore({ choreList: new_chores });
         getActions().postChore(chore, date, duration, store.email);
@@ -220,6 +219,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       postChore: async (chore, date, duration, email) => {
         const store = getStore();
+        const actions = getActions();
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -245,14 +245,15 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("this came from the backend", data);
-
+          actions.getChoresByUserEmail();
           return true;
         } catch (error) {
           console.log("there's an error adding the chore to the DB");
         }
       },
-      deleteChoresByUserEmail: async () => {
+      deleteChoresByUserEmail: async (chore_id) => {
         const store = getStore();
+        const actions = getActions();
         const opts = {
           method: "DELETE",
         };
@@ -261,7 +262,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           const resp = await fetch(
             process.env.BACKEND_URL +
               "/api/chore" +
-              `?email=${store.email}?chore_id=40`,
+              `?email=${store.email}&chore_id=${chore_id}`,
             opts
           );
 
@@ -272,7 +273,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("this came from the backend", data);
-
+          actions.getChoresByUserEmail();
           return true;
         } catch (error) {
           console.log("there's an error deleting the chore");

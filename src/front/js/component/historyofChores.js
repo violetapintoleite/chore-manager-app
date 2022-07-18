@@ -6,6 +6,7 @@ export const HistoryofChores = () => {
 
   function deleteChore(chore_id){
 console.log(chore_id)
+actions.deleteChoresByUserEmail(chore_id)
   }
 
   useEffect(() => {
