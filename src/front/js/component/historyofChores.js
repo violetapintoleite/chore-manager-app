@@ -4,9 +4,9 @@ import { Context } from "../store/appContext";
 export const HistoryofChores = () => {
   const { store, actions } = useContext(Context);
 
-  function deleteChore(chore_id){
-console.log(chore_id)
-actions.deleteChoresByUserEmail(chore_id)
+  function deleteChore(chore_id) {
+    console.log(chore_id);
+    actions.deleteChoresByUserEmail(chore_id);
   }
 
   useEffect(() => {
@@ -31,33 +31,36 @@ actions.deleteChoresByUserEmail(chore_id)
   return (
     <>
       {store.choreList.length > 0
-        ? store.choreList.map((listEntry, i) => {
-            return (
-              <>
-                <div class="list-group">
-                  <a
-                    href="#"
-                    class="list-group-item list-group-item-action"
-                    aria-current="true"
-                  >
-                    <div class="d-flex w-100 justify-content-between">
-                      <h5 class="mb-1">{listEntry.name}</h5>
-                      <small>{listEntry.date}</small>
-                    </div>
-                    <div class="d-flex w-100 justify-content-between">
-                      <small>{listEntry.duration}H</small>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        aria-label="Close"
-                        onClick={() => deleteChore(listEntry.id)}
-                      ></button>
-                    </div>
-                  </a>
-                </div>
-              </>
-            );
-          })
+        ? store.choreList
+            .slice(0)
+            .reverse()
+            .map((listEntry, i) => {
+              return (
+                <>
+                  <div class="list-group">
+                    <a
+                      href="#"
+                      class="list-group-item list-group-item-action"
+                      aria-current="true"
+                    >
+                      <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{listEntry.name}</h5>
+                        <small>{listEntry.date}</small>
+                      </div>
+                      <div class="d-flex w-100 justify-content-between">
+                        <small>{listEntry.duration}H</small>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          aria-label="Close"
+                          onClick={() => deleteChore(listEntry.id)}
+                        ></button>
+                      </div>
+                    </a>
+                  </div>
+                </>
+              );
+            })
         : "Add a chore"}
     </>
   );

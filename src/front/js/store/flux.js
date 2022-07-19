@@ -167,7 +167,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         //get the store
         const store = getStore();
       },
-      
+
       // getMessage: async () => {
       // 	try{
       // 		// fetching data from the backend
@@ -186,7 +186,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         //get the store
         const store = getStore();
       },
-
 
       setChoreList: (chore, date, duration) => {
         const store = getStore();
