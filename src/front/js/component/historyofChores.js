@@ -45,10 +45,10 @@ export const HistoryofChores = () => {
                     >
                       <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{listEntry.name}</h5>
-                        <small>{listEntry.date}</small>
+                        <small>{listEntry.date.slice(0, -13)}</small>
                       </div>
                       <div class="d-flex w-100 justify-content-between">
-                        <small>{listEntry.duration}H</small>
+                        <small>{listEntry.duration.slice(0, -3)}H</small>
                         <button
                           type="button"
                           class="btn-close"
