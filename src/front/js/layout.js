@@ -14,6 +14,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import VideoSearch from "./component/YTSearch";
 
 
 //create your first component
@@ -36,6 +37,7 @@ const Layout = () => {
             <Route element={<History />} path="/history" />
             <Route element={<Metrics />} path="/metrics" />
             <Route element={<Single />} path="/single/:theid" />
+            <Route element={<VideoSearch />} path="/YTSearch" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
