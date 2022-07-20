@@ -26,6 +26,9 @@ export const Navbar = () => {
               <Link to="/history">
                 <button className="btn btn-primary m-2">My Chores</button>
               </Link>
+              <Link to="/metrics">
+                <button className="btn btn-primary m-2">Metrics</button>
+              </Link>
             </>
           ) : (
             <p></p>

@@ -21,7 +21,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       testeList: [],
       quote: [],
-
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -212,7 +211,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("here are the user chores", data.chores);
-
+          console.log("from today", data.dates);
           setStore({ choreList: data.chores });
           return true;
         } catch (error) {
@@ -254,7 +253,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-
       deleteChoresByUserEmail: async (chore_id) => {
         const store = getStore();
         const actions = getActions();
@@ -283,8 +281,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
-
-
     },
   };
 };
