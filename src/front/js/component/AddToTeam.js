@@ -1,7 +1,11 @@
 import React from "react";
 
 function AddToTeam() {
-  return (
+
+    // note will need to add conditional that if there is a team selected then to remove the dropdown option
+  // team cannot be saved only to state, needs to be passed and fetched from the backend
+  //add this to the flux file and set store
+    return (
     <div>
       <h2>Select a team</h2>
       <div className="container mb-2">
