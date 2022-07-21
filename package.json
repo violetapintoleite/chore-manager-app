@@ -73,8 +73,11 @@
     ]
   },
   "dependencies": {
+    "chart.js": "^3.8.0",
+    "mdb-react-ui-kit": "^4.1.0",
     "prop-types": "^15.6.1",
     "react": "^18.2.0",
+    "react-chartjs-2": "^4.3.1",
     "react-dom": "^18.2.0",
     "react-polyfills": "0.0.1",
     "react-rainbow-components": "^1.30.1",

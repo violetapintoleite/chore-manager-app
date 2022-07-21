@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
+import { Line } from "react-chartjs-2";
+import { Chart } from "chart.js/auto";
 
 export const MetricsData = () => {
   const { store, actions } = useContext(Context);
@@ -64,7 +66,7 @@ export const MetricsData = () => {
       cleaning++;
     }
   }
-  var total_amount_of_chores = dishes + laundry + shopping + cleaning
+  var total_amount_of_chores = dishes + laundry + shopping + cleaning;
   var total_time = formatTime(time);
   var total_dishes = formatTime(dishes_time);
   var total_laundry = formatTime(laundry_time);
@@ -74,7 +76,9 @@ export const MetricsData = () => {
   return (
     <>
       <div className="card">
-        <div className="card-header">Total chores you did : {total_amount_of_chores}</div>
+        <div className="card-header">
+          Total chores you did : {total_amount_of_chores}
+        </div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             {" "}
@@ -119,6 +123,24 @@ export const MetricsData = () => {
           </li>
         </ul>
       </div>
+      <Line
+        datasetIdKey="id"
+        data={{
+          labels: ["Jun", "Jul", "Aug"],
+          datasets: [
+            {
+              id: 1,
+              label: "",
+              data: [5, 6, 7],
+            },
+            {
+              id: 2,
+              label: "",
+              data: [3, 2, 1],
+            },
+          ],
+        }}
+      />
     </>
   );
 };
