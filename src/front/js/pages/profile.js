@@ -16,11 +16,10 @@ function Profile() {
 
   return (
     <div>
-        <h1>{store.email}</h1>
+        <h5>Logged in as {store.email}</h5>
         <AddToTeam></AddToTeam>
         <div className='card'>
-        <p>Your token {store.token}</p>
-        <YTiframe></YTiframe>
+          <YTiframe></YTiframe>
         </div>
     </div>
   )

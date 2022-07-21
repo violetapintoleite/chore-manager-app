@@ -9,6 +9,7 @@ class User(db.Model):
     username = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(250), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
+    team_name = db.Column (db.String, db.ForeignKey('Team.name'), nullable=True)
 
     def serialize(self):
         return {
@@ -64,5 +65,8 @@ class Team(db.Model):
             "name": team.name,
         }
 
-        
+    @classmethod
+    def get_team_by_user_id(cls, user_id):
+        team = cls.query.filter_by(user_id=user_id).all()
+        return team
    

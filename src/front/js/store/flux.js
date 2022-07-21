@@ -146,47 +146,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      // exampleFunction: () => {
-      // 	getActions().changeColor(0, "green");
-      // },
-
-      // getMessage: async () => {
-      // 	try{
-      // 		// fetching data from the backend
-      // 		const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-      // 		const data = await resp.json()
-      // 		setStore({ message: data.message })
-      // 		// don't forget to return something, that is how the async resolves
-      // 		return data;
-      // 	}catch(error){
-      // 		console.log("Error loading message from backend", error)
-      // 	}
-      // },
-
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
-      },
-
-      // getMessage: async () => {
-      // 	try{
-      // 		// fetching data from the backend
-      // 		const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
-      // 		const data = await resp.json()
-      // 		setStore({ message: data.message })
-      // 		// don't forget to return something, that is how the async resolves
-      // 		return data;
-      // 	}catch(error){
-      // 		console.log("Error loading message from backend", error)
-      // 	}
-      // },
-
-      // },
-      changeColor: (index, color) => {
-        //get the store
-        const store = getStore();
-      },
-
       setChoreList: (chore, date, duration) => {
         const store = getStore();
         let new_chores = store.choreList;
@@ -283,7 +242,41 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+    
+      // function to add to a team (in progress)
+      postTeam: async (name, email) => {
+        
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            name: name,
+          }),
+        };
 
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}`,
+
+            opts
+          );
+
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
+
+            return false;
+          }
+          const data = await resp.json();
+          console.log("this came from the backend", data);
+          return true;
+        } catch (error) {
+          console.log("there's an error adding the person to the team DB");
+        }
+      },
+
+      // to get all metrics, filter by user.id and team.id and make the calculation
+      //get a list of users that belong to team and then query the chores that belong to the user.id
 
     },
   };
