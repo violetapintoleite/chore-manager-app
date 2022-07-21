@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Line } from "react-chartjs-2";
+import { PolarArea } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
 
 export const MetricsData = () => {
@@ -75,72 +75,93 @@ export const MetricsData = () => {
 
   return (
     <>
-      <div className="card">
-        <div className="card-header">
-          Total chores you did : {total_amount_of_chores}
+      <div class="row">
+        <div class="col-sm-6">
+          <div
+            className="card"
+            style={{
+              width: "50%",
+              height: "100%",
+            }}
+          >
+            <div className="card-header">
+              Total chores you did : {total_amount_of_chores}
+            </div>
+            <PolarArea
+              datasetIdKey="id"
+              data={{
+                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+                datasets: [
+                  {
+                    id: 1,
+                    label: "Amount of times you did each chore",
+                    data: [dishes, laundry, cleaning, shopping],
+                    backgroundColor: [
+                      "rgba(255, 99, 132, 0.2)",
+                      "rgba(54, 162, 235, 0.2)",
+                      "rgba(255, 206, 86, 0.2)",
+                      "rgba(75, 192, 192, 0.2)",
+                    ],
+                    borderColor: [
+                      "rgba(255, 99, 132, 1)",
+                      "rgba(54, 162, 235, 1)",
+                      "rgba(255, 206, 86, 1)",
+                      "rgba(75, 192, 192, 1)",
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              }}
+            />
+          </div>
         </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            {" "}
-            Total times you did <strong>DISHES</strong>: {dishes}
-          </li>
-          <li className="list-group-item">
-            Total times you did <strong>LAUNDRY</strong>: {laundry}
-          </li>
-          <li className="list-group-item">
-            Total times you <strong>CLEANED</strong>: {cleaning}
-          </li>
-          <li className="list-group-item">
-            Total times you <strong>SHOPPED</strong>: {shopping}
-          </li>
-        </ul>
-      </div>
-      <br></br>
-      <div className="card">
-        <div className="card-header">
-          Total time spent on all chores: {total_time.slice(0, -3)}H
+        <br></br>
+        <div class="col-sm-6">
+          <div
+            className="card"
+            style={{
+              width: "50%",
+              height: "100%",
+            }}
+          >
+            <div className="card-header">
+              Total time spent on all chores: {total_time.slice(0, -3)}H
+            </div>
+
+            <PolarArea
+              datasetIdKey="id"
+              data={{
+                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+                datasets: [
+                  {
+                    id: 1,
+                    label: "Amount of times you did each chore",
+                    data: [
+                      dishes_time,
+                      laundry_time,
+                      cleaning_time,
+                      shopping_time,
+                    ],
+                    backgroundColor: [
+                      "rgba(255, 99, 132, 0.2)",
+                      "rgba(54, 162, 235, 0.2)",
+                      "rgba(255, 206, 86, 0.2)",
+                      "rgba(75, 192, 192, 0.2)",
+                    ],
+                    borderColor: [
+                      "rgba(255, 99, 132, 1)",
+                      "rgba(54, 162, 235, 1)",
+                      "rgba(255, 206, 86, 1)",
+                      "rgba(75, 192, 192, 1)",
+                    ],
+                    borderWidth: 1,
+                  },
+                ],
+              }}
+            />
+          </div>
         </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item">
-            {" "}
-            Total time spent doing <strong>DISHES</strong>:{" "}
-            {total_dishes.slice(0, -3)}H
-          </li>
-          <li className="list-group-item">
-            {" "}
-            Total time spent doing <strong>LAUNDRY</strong>:{" "}
-            {total_laundry.slice(0, -3)}H
-          </li>
-          <li className="list-group-item">
-            {" "}
-            Total time spent <strong>CLEANING</strong>:{" "}
-            {total_cleaning.slice(0, -3)}H
-          </li>
-          <li className="list-group-item">
-            {" "}
-            Total time spent <strong>SHOPPING</strong>:{" "}
-            {total_shopping.slice(0, -3)}H
-          </li>
-        </ul>
       </div>
-      <Line
-        datasetIdKey="id"
-        data={{
-          labels: ["Jun", "Jul", "Aug"],
-          datasets: [
-            {
-              id: 1,
-              label: "",
-              data: [5, 6, 7],
-            },
-            {
-              id: 2,
-              label: "",
-              data: [3, 2, 1],
-            },
-          ],
-        }}
-      />
     </>
   );
 };
