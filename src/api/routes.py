@@ -139,4 +139,24 @@ if __name__ == "__main__":
     app.run()
 
 
-#request to quote api
+# post team endpoint 
+@api.route('/team', methods=['POST'])
+def addToTeam():
+    email = request.json.get("email", None)
+    name = request.json.get("name", None)
+
+    user = User.get_by_email(email)
+    if user:
+        try:
+            addToTeam = Name(name=name, user_id=user.id)
+        except exc.SQLAlchemyError: 
+            return jsonify("error creating the chore"), 400
+        try:
+            db.session.add(addToTeam)
+        except exc.SQLAlchemyError: 
+            return jsonify("error adding person to team"), 400
+        db.session.commit()
+
+        return jsonify({"name": name, "email": email}), 201
+        
+    return jsonify({"msg": "error adding person to team"}), 401
