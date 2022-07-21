@@ -14,23 +14,11 @@ export const MetricsData = () => {
   var laundry = 0;
   var shopping = 0;
   var cleaning = 0;
-
-  for (let i = 0; i < store.choreList.length; i++) {
-    if (store.choreList[i].name === "Dishes") {
-      dishes++;
-    }
-    if (store.choreList[i].name === "Laundry") {
-      laundry++;
-    }
-    if (store.choreList[i].name === "Shopping") {
-      shopping++;
-    }
-    if (store.choreList[i].name === "Cleaning") {
-      cleaning++;
-    }
-  }
-
-  // get total type spent on all chores
+  var time = 0;
+  var dishes_time = 0;
+  var cleaning_time = 0;
+  var shopping_time = 0;
+  var laundry_time = 0;
 
   function timestrToSec(timestr) {
     var parts = timestr.split(":");
@@ -52,17 +40,41 @@ export const MetricsData = () => {
       pad(seconds % 60),
     ].join(":");
   }
-  var time = 0;
   for (let i = 0; i < store.choreList.length; i++) {
     var formatted = timestrToSec(store.choreList[i].duration);
     time += formatted;
+    if (store.choreList[i].name === "Dishes") {
+      var formatDishes = timestrToSec(store.choreList[i].duration);
+      dishes_time += formatDishes;
+      dishes++;
+    }
+    if (store.choreList[i].name === "Laundry") {
+      var formatLaundry = timestrToSec(store.choreList[i].duration);
+      laundry_time += formatLaundry;
+      laundry++;
+    }
+    if (store.choreList[i].name === "Shopping") {
+      var formatShopping = timestrToSec(store.choreList[i].duration);
+      shopping_time += formatShopping;
+      shopping++;
+    }
+    if (store.choreList[i].name === "Cleaning") {
+      var formatCleaning = timestrToSec(store.choreList[i].duration);
+      cleaning_time += formatCleaning;
+      cleaning++;
+    }
   }
+  var total_amount_of_chores = dishes + laundry + shopping + cleaning
   var total_time = formatTime(time);
-  console.log(total_time);
+  var total_dishes = formatTime(dishes_time);
+  var total_laundry = formatTime(laundry_time);
+  var total_cleaning = formatTime(cleaning_time);
+  var total_shopping = formatTime(shopping_time);
+
   return (
     <>
       <div className="card">
-        <div className="card-header">Total times X chore</div>
+        <div className="card-header">Total chores you did : {total_amount_of_chores}</div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">
             {" "}
@@ -82,8 +94,30 @@ export const MetricsData = () => {
       <br></br>
       <div className="card">
         <div className="card-header">
-          Total times spent on chores: {total_time.slice(0, -3)}H
+          Total time spent on all chores: {total_time.slice(0, -3)}H
         </div>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">
+            {" "}
+            Total time spent doing <strong>DISHES</strong>:{" "}
+            {total_dishes.slice(0, -3)}H
+          </li>
+          <li className="list-group-item">
+            {" "}
+            Total time spent doing <strong>LAUNDRY</strong>:{" "}
+            {total_laundry.slice(0, -3)}H
+          </li>
+          <li className="list-group-item">
+            {" "}
+            Total time spent <strong>CLEANING</strong>:{" "}
+            {total_cleaning.slice(0, -3)}H
+          </li>
+          <li className="list-group-item">
+            {" "}
+            Total time spent <strong>SHOPPING</strong>:{" "}
+            {total_shopping.slice(0, -3)}H
+          </li>
+        </ul>
       </div>
     </>
   );
