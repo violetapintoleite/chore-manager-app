@@ -25,20 +25,19 @@ const VideoSearch = () => {
   };
 
   return (
-    <div>
-      <p>VideoSearch</p>
-      <p>{videoID}</p>
+    <div className="container"> 
       <div class="input-group mb-3">
-        <form className="d-flex">
+        <form className="d-flex container">
           <input
             type="text"
-            class="form-control"
+            className="form-control"
             placeholder="Search in Youtube"
             aria-label="Recipient's username"
             aria-describedby="button-addon2"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
           ></input>
+          <p>&nbsp;</p>
           <button
             class="btn btn-outline-secondary"
             onSubmit={handleSubmit}
@@ -51,9 +50,11 @@ const VideoSearch = () => {
         </form>
       </div>
       {console.log(videoID)}
+      { !videoCode || videoCode== "" ? "" : 
       <div class="ratio ratio-16x9">
         <iframe src={videoCode} allow="autoplay;" value="player"></iframe>
       </div>
+}
     </div>
   );
 };
