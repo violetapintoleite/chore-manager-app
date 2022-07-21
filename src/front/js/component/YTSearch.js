@@ -27,7 +27,9 @@ const VideoSearch = () => {
   return (
     <div className="container"> 
       <div class="input-group mb-3">
+      <p>Need help with how to do a chore? Search for tutorial below ...or want to listen to a song, search for that instead!</p>
         <form className="d-flex container">
+          
           <input
             type="text"
             className="form-control"
