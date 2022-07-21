@@ -53,13 +53,8 @@ def getChoresByUserEmail():
         serialized_chores = []
         for chore in chores:
             serialized_chores.append(chore.serialize())
-        #im getting all users chores from the date passed, instead of the specific user
-        date_of_chores = date(2022, 7, 20)
-        dates = Chore.query.filter_by(date=date_of_chores).all()
-        serialized_dates = []
-        for one_date in dates:
-            serialized_dates.append(one_date.serialize())
-        return jsonify({"chores" : serialized_chores, "dates": serialized_dates})
+      
+        return jsonify({"chores" : serialized_chores})
 
     return jsonify({"msg": "no user"}), 404
 
