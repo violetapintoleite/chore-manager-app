@@ -150,7 +150,7 @@ def addToTeam():
         try:
             addToTeam = Name(name=name, user_id=user.id)
         except exc.SQLAlchemyError: 
-            return jsonify("error creating the chore"), 400
+            return jsonify("error add the team"), 400
         try:
             db.session.add(addToTeam)
         except exc.SQLAlchemyError: 

@@ -9,14 +9,15 @@ class User(db.Model):
     username = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(250), unique=False, nullable=False)
     is_active = db.Column(db.Boolean(), unique=False, nullable=False)
-    team_name = db.Column (db.String, db.ForeignKey('Team.name'), nullable=True)
+    team_name = db.Column (db.String, db.ForeignKey('Team.name', use_alter=True))
 
     def serialize(self):
         return {
             "id": self.id,
             "email": self.email,
             "username": self.username,
-            "is_active": self.is_active
+            "is_active": self.is_active,
+            "team_name": self.team_name
         }
 
     @staticmethod
@@ -55,7 +56,7 @@ class Chore(db.Model):
 class Team(db.Model):
     __tablename__ = "Team"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column (db.Integer, db.ForeignKey('User.id'), nullable=False)
+    user_id = db.Column (db.Integer, db.ForeignKey('User.id'))
     name = db.Column(db.String(120), unique=True, nullable=False)
     
     def serialize(team):
