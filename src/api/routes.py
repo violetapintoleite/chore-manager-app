@@ -9,6 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from sqlalchemy import or_, exc
+from datetime import date, datetime
 
 api = Blueprint('api', __name__)
 
@@ -52,8 +53,11 @@ def getChoresByUserEmail():
         serialized_chores = []
         for chore in chores:
             serialized_chores.append(chore.serialize())
+      
         return jsonify({"chores" : serialized_chores})
+
     return jsonify({"msg": "no user"}), 404
+
   
  
 
