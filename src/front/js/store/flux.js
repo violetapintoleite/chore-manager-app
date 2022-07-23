@@ -257,8 +257,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}`,
-
+            process.env.BACKEND_URL + "/api/team" ,
+            // + `?email=${store.email}`
             opts
           );
 

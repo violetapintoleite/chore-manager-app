@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Chore, Team
+from api.models import db, User, Chore, Team, UsersInTeam
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -130,8 +130,7 @@ def get_hello():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
 
-if __name__ == "__main__":
-    app.run()
+
 
 
 # post team endpoint 
@@ -143,15 +142,21 @@ def addToTeam():
     user = User.get_by_email(email)
     if user:
         try:
-            addToTeam = Name(name=name, user_id=user.id)
+            addUserToTeam = UsersInTeam(team_name=name, user_id=user.id)
+
         except exc.SQLAlchemyError: 
             return jsonify("error add the team"), 400
         try:
-            db.session.add(addToTeam)
+            db.session.add(addUserToTeam)
+            db.session.commit()
         except exc.SQLAlchemyError: 
             return jsonify("error adding person to team"), 400
-        db.session.commit()
+       
 
         return jsonify({"name": name, "email": email}), 201
         
     return jsonify({"msg": "error adding person to team"}), 401
+
+
+if __name__ == "__main__":
+    app.run()

@@ -63,22 +63,22 @@ class Team(db.Model):
             "name": team.name,
         }
 
-    @classmethod
-    def get_team_by_user_id(cls, user_id):
-        team = cls.query.filter_by(user_id=user_id).all()
-        return team
+    # @classmethod
+    # def get_team_by_user_id(cls, user_id):
+    #     team = cls.query.filter_by(user_id=user_id).all()
+    #     return team
    
 
    # set up a relational table 
 class UsersInTeam(db.Model):
     __tablename__ = "UsersInTeam"
     id = db.Column(db.Integer, primary_key=True)
-    team_id = db.Column (db.Integer, db.ForeignKey('Team.id'), nullable=False)
-    user_id = db.Column (db.Integer, db.ForeignKey('User.id'), nullable=False)
+    team_name = db.Column(db.String(80), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
 
-    def serialize(team):
+    def serialize(usersInTeam):
         return{
             "id": usersInTeam.id,
-            "team_id": usersInTeam.team_id,
+            "team_name": usersInTeam.team_name,
             "user_id": usersInTeam.user_id,
         }
