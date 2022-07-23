@@ -55,13 +55,11 @@ class Chore(db.Model):
 class Team(db.Model):
     __tablename__ = "Team"
     id = db.Column(db.Integer, primary_key=True)
-  
     name = db.Column(db.String(120), unique=True, nullable=False)
     
     def serialize(team):
         return{
             "id": team.id,
-            "user_id": team.user_id,
             "name": team.name,
         }
 
@@ -72,6 +70,15 @@ class Team(db.Model):
    
 
    # set up a relational table 
+class UsersInTeam(db.Model):
+    __tablename__ = "UsersInTeam"
+    id = db.Column(db.Integer, primary_key=True)
+    team_id = db.Column (db.Integer, db.ForeignKey('Team.id'), nullable=False)
+    user_id = db.Column (db.Integer, db.ForeignKey('User.id'), nullable=False)
 
-#    teamid as ForeignKey team_id = db.Column (db.Integer, db.ForeignKey('Team.id', use_alter=True))
-#    userid as ForeignKey   user_id = db.Column (db.Integer, db.ForeignKey('User.id'))
+    def serialize(team):
+        return{
+            "id": usersInTeam.id,
+            "team_id": usersInTeam.team_id,
+            "user_id": usersInTeam.user_id,
+        }
