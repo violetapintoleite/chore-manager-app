@@ -103,10 +103,27 @@ def deleteChoresByUserEmail():
             db.session.delete(choreToDelete)
             db.session.commit()
             return jsonify({"msg": "success deleting the chore"}), 201
+
         
         return jsonify("There is no chore to delete"), 404
 
     return jsonify({"msg": "error deleting the chore after 201"}), 401
+
+# delete all chores
+@api.route('/chores', methods=['DELETE'])
+def deleteAllChores():
+    email = request.args.get("email", None)
+
+    user = User.get_by_email(email.replace("%40", "@"))
+    if user:
+        try:
+            Chore.query.filter_by(user_id=user.id).delete()
+            db.session.commit()
+            return jsonify({"msg": "success clearing user chores list"}), 201
+        except exc.SQLAlchemyError:
+            return jsonify({"msg": "error deleting the user chores list"}), 404
+     
+    return jsonify({"msg": "there is no user"}), 401
 
 
 # login end point

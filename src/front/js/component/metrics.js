@@ -66,12 +66,18 @@ export const MetricsData = () => {
       cleaning++;
     }
   }
+
+  function secondsToMinutes(seconds) {
+    var minutes = Math.floor(seconds / 60);
+    return minutes;
+  }
+
   var total_amount_of_chores = dishes + laundry + shopping + cleaning;
   var total_time = formatTime(time);
-  var total_dishes = formatTime(dishes_time);
-  var total_laundry = formatTime(laundry_time);
-  var total_cleaning = formatTime(cleaning_time);
-  var total_shopping = formatTime(shopping_time);
+  var dishes_min = secondsToMinutes(dishes_time);
+  var laundry_min = secondsToMinutes(laundry_time);
+  var cleaning_min = secondsToMinutes(cleaning_time);
+  var shopping_min = secondsToMinutes(shopping_time);
 
   return (
     <>
@@ -136,12 +142,7 @@ export const MetricsData = () => {
                   {
                     id: 1,
                     label: "Amount of times you did each chore",
-                    data: [
-                      dishes_time,
-                      laundry_time,
-                      cleaning_time,
-                      shopping_time,
-                    ],
+                    data: [dishes_min, laundry_min, cleaning_min, shopping_min],
                     backgroundColor: [
                       "rgba(255, 99, 132, 0.2)",
                       "rgba(54, 162, 235, 0.2)",
