@@ -281,6 +281,32 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+      deleteAllChores: async () => {
+        const store = getStore();
+        const actions = getActions();
+        const opts = {
+          method: "DELETE",
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/chores" + `?email=${store.email}`,
+            opts
+          );
+
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
+
+            return false;
+          }
+          const data = await resp.json();
+          console.log("this came from the backend", data);
+          actions.getChoresByUserEmail();
+          return true;
+        } catch (error) {
+          console.log("there's an error deleting the chore");
+        }
+      },
     },
   };
 };
