@@ -120,12 +120,7 @@ def login():
     else:
         return {"error":"user and password not valid"},400
     
-    # email and username are working but password is causing a 401 error
-    # if email != email or username != username or password != "999":
-    #     return jsonify({"msg": "Bad username or password"}), 401
-
-    # access_token = create_access_token(identity=username)
-    # return jsonify(access_token=access_token), 201
+   
 
 # protected page end point
 @api.route("/profile", methods=["GET"])
