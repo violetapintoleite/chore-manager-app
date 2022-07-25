@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom';
 import YTiframe from '../component/YTiframe';
+import VideoSearch from '../component/YTSearch';
 
 
 
@@ -16,10 +17,8 @@ function Profile() {
   return (
     <div>
         <h1>{store.email}</h1>
-        <div className='card'>
-        <p>Your token {store.token}</p>
-        <YTiframe></YTiframe>
-        </div>
+        
+        <VideoSearch></VideoSearch>
     </div>
   )
 }
