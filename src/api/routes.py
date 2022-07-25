@@ -55,9 +55,6 @@ def getChoresByUserEmail():
         return jsonify({"chores" : serialized_chores})
     return jsonify({"msg": "no user"}), 404
   
- 
-
-
 # post chore endpoint 
 @api.route('/chore', methods=['POST'])
 def postChore():
@@ -129,8 +126,6 @@ def get_hello():
    # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
-
-
 
 
 # post team endpoint 

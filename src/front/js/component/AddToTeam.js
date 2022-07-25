@@ -13,6 +13,14 @@ function AddToTeam() {
 console.log("Selected team is:", teamName);
 console.log(store.team);
 
+// need to add a useEffect with getTeam function with a GET request to make sure 
+// users who already have a team do not get the option to add another
+
+useEffect(() => {
+  actions.getTeamByUserEmail(store.email);
+}, [store.email]);
+
+
     return (
     <div>
       { !store.team || store.team == "" ? (

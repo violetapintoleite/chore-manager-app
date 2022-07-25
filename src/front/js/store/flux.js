@@ -276,7 +276,31 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error adding the person to the team DB");
         }
       },
+ //get request to get the saved team from the backend
+      getTeamByUserEmail: async () => {
+        const store = getStore();
+        const opts = { method: "GET" };
 
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}`,
+            opts
+          );
+
+          if (resp.status !== 200) {
+            alert("error before initial 200 request of GET request");
+
+            return false;
+          }
+          const data = await resp.json();
+          console.log("here's the user's team", data.team);
+
+          setStore({ team: data.team });
+          return true;
+        } catch (error) {
+          console.log("there's an error fetching the team");
+        }
+      },
       // to get all metrics, filter by user.id and team.id and make the calculation
       //get a list of users that belong to team and then query the chores that belong to the user.id
 
