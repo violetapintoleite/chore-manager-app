@@ -6,24 +6,20 @@ function AddToTeam() {
   const { store, actions } = useContext(Context);
   const [teamName, setTeamName] = useState("");
 
- 
-
-
-
-const handleSubmit = () => {
+  const handleSubmit = () => {
   actions.postTeam(teamName, store.email)
 };
 
 console.log("Selected team is:", teamName);
+console.log(store.team);
 
     return (
     <div>
-      <h2>Select a team</h2>
-      <div className="container mb-2">
       { !store.team || store.team == "" ? (
+      <div className="container mb-2">
+      <h2>Select a team</h2>
         <form>
           <div class="input-group">
-            
           <select
             class="form-select"
             id="inputGroupSelect04"
@@ -42,8 +38,8 @@ console.log("Selected team is:", teamName);
           </button>          
           </div>
         </form>
-        ) : (<p>""</p>)   }  
       </div>
+      ) : (<p></p>)   }  
     </div>
   );
 }
