@@ -5,6 +5,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
       isLoggedIn: false,
       message: null,
+      team: null, 
       demo: [
         {
           title: "FIRST",
@@ -257,8 +258,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/team" ,
-            // + `?email=${store.email}`
+            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}` ,  
             opts
           );
 
@@ -269,6 +269,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("this came from the backend", data);
+          setStore({ team: team });
           return true;
         } catch (error) {
           console.log("there's an error adding the person to the team DB");

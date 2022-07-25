@@ -6,6 +6,8 @@ function AddToTeam() {
   const { store, actions } = useContext(Context);
   const [teamName, setTeamName] = useState("");
 
+ 
+
 
 
 const handleSubmit = () => {
@@ -18,8 +20,10 @@ console.log("Selected team is:", teamName);
     <div>
       <h2>Select a team</h2>
       <div className="container mb-2">
+      { !store.team || store.team == "" ? (
         <form>
           <div class="input-group">
+            
           <select
             class="form-select"
             id="inputGroupSelect04"
@@ -35,9 +39,10 @@ console.log("Selected team is:", teamName);
           </select>
           <button class="btn btn-outline-secondary" type="button" onClick={handleSubmit}>
             Confirm
-          </button>
+          </button>          
           </div>
         </form>
+        ) : (<p>""</p>)   }  
       </div>
     </div>
   );

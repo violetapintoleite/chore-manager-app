@@ -10,6 +10,7 @@ function Profile() {
     const { store, actions } = useContext(Context);
     const token = localStorage.getItem("token");
     const navigate = useNavigate();
+    console.log( store.team)
 
     //redirect to the /login page if there is no token present
   if(!token || token == "" || token == undefined) navigate('/login')
