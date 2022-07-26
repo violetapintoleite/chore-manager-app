@@ -85,6 +85,6 @@ class UsersInTeam(db.Model):
 
     @classmethod
     def get_team_by_user_id(cls, user_id):
-        team = cls.query.filter_by(user_id=user_id).first()
+        team = cls.query.filter_by(user_id=user_id).one_or_none()
         return team
    
