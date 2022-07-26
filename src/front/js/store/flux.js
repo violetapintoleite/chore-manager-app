@@ -258,8 +258,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/team"  ,
-            // + `?email=${store.email}`  
+            process.env.BACKEND_URL + "/api/team" , 
+            // + `?email=${store.email}`
             opts
           );
 
@@ -283,7 +283,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}`,
+            process.env.BACKEND_URL + "/api/team"  + `?email=${store.email}`,
             opts
           );
 
@@ -293,9 +293,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await resp.json();
-          console.log("here's the user's team", data.team);
+          console.log("here's the user's team", data);
 
-          setStore({ team: data.team });
+          setStore({ team: data});
           return true;
         } catch (error) {
           console.log("there's an error fetching the team");

@@ -152,6 +152,18 @@ def addToTeam():
         
     return jsonify({"msg": "error adding person to team"}), 401
 
+# get end point to pull team 
+@api.route('/team', methods=['GET'])
+def getTeamByUserEmail(): 
+    email = request.args.get("email", None)
+    user = User.get_by_email(email)
+
+    if user: 
+        team = Team.get_team_by_user_id(user.id)
+        return jsonify({"team" : team})
+
+    return jsonify({"msg": "no user"}), 404
+
 
 if __name__ == "__main__":
     app.run()
