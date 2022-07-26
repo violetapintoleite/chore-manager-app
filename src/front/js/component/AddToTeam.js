@@ -25,7 +25,7 @@ useEffect(() => {
 
     return (
     <div>
-      { !store.team || store.team == "" ? (
+      {/* { !store.team || store.team == "" ? ( */}
       <div className="container mb-2">
       <h2>Select a team</h2>
         <form>
@@ -38,10 +38,10 @@ useEffect(() => {
             onChange={(e) => setTeamName(e.target.value)}
           >
             <option selected>Choose your team...</option>
-            <option value="Panda">Panda</option>
-            <option value="Fox">Fox</option>
-            <option value="Bald Eagle">Bald Eagle</option>
-            <option value="Mountain Goat">Mountain Goat</option>
+            <option value="Panda">The Flinstones</option>
+            <option value="Fox"> The Addams</option>
+            <option value="Bald Eagle">The Simpsons</option>
+            <option value="Mountain Goat">The Incredibles</option>
           </select>
           <button class="btn btn-outline-secondary" type="button" onClick={handleSubmit}>
             Confirm
@@ -49,7 +49,7 @@ useEffect(() => {
           </div>
         </form>
       </div>
-      ) : (<p></p>)   }  
+      {/* ) : (<p></p>)   }   */}
     </div>
   );
 }
