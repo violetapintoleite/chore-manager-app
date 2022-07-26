@@ -9,6 +9,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from sqlalchemy import or_, exc
+from datetime import date, datetime
 
 api = Blueprint('api', __name__)
 
@@ -52,8 +53,11 @@ def getChoresByUserEmail():
         serialized_chores = []
         for chore in chores:
             serialized_chores.append(chore.serialize())
+      
         return jsonify({"chores" : serialized_chores})
+
     return jsonify({"msg": "no user"}), 404
+
   
 # post chore endpoint 
 @api.route('/chore', methods=['POST'])
@@ -96,10 +100,27 @@ def deleteChoresByUserEmail():
             db.session.delete(choreToDelete)
             db.session.commit()
             return jsonify({"msg": "success deleting the chore"}), 201
+
         
         return jsonify("There is no chore to delete"), 404
 
     return jsonify({"msg": "error deleting the chore after 201"}), 401
+
+# delete all chores
+@api.route('/chores', methods=['DELETE'])
+def deleteAllChores():
+    email = request.args.get("email", None)
+
+    user = User.get_by_email(email.replace("%40", "@"))
+    if user:
+        try:
+            Chore.query.filter_by(user_id=user.id).delete()
+            db.session.commit()
+            return jsonify({"msg": "success clearing user chores list"}), 201
+        except exc.SQLAlchemyError:
+            return jsonify({"msg": "error deleting the user chores list"}), 404
+     
+    return jsonify({"msg": "there is no user"}), 401
 
 
 # login end point

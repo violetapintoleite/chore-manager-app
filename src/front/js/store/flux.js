@@ -22,7 +22,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       testeList: [],
       quote: [],
-
     },
     actions: {
       // Use getActions to call a function within a fuction
@@ -172,7 +171,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("here are the user chores", data.chores);
-
+          console.log("from today", data.dates);
           setStore({ choreList: data.chores });
           return true;
         } catch (error) {
@@ -214,7 +213,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-
       deleteChoresByUserEmail: async (chore_id) => {
         const store = getStore();
         const actions = getActions();
@@ -243,6 +241,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+
     
       // function to add to a team 
       postTeam: async (name, email) => {
@@ -304,6 +303,33 @@ const getState = ({ getStore, getActions, setStore }) => {
       // to get all metrics, filter by user.id and team.id and make the calculation
       //get a list of users that belong to team and then query the chores that belong to the user.id
 
+      deleteAllChores: async () => {
+        const store = getStore();
+        const actions = getActions();
+        const opts = {
+          method: "DELETE",
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/chores" + `?email=${store.email}`,
+            opts
+          );
+
+
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
+
+            return false;
+          }
+          const data = await resp.json();
+          console.log("this came from the backend", data);
+          actions.getChoresByUserEmail();
+          return true;
+        } catch (error) {
+          console.log("there's an error deleting the chore");
+        }
+      },
     },
   };
 };

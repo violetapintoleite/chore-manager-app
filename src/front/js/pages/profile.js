@@ -3,6 +3,8 @@ import { Context } from "../store/appContext";
 import { useNavigate } from 'react-router-dom';
 import YTiframe from '../component/YTiframe';
 import AddToTeam from '../component/AddToTeam';
+import VideoSearch from '../component/YTSearch';
+
 
 
 
@@ -17,11 +19,16 @@ function Profile() {
 
   return (
     <div>
+
         <h5>Logged in as {store.email}</h5>
         <AddToTeam></AddToTeam>
         <div className='card'>
           <YTiframe></YTiframe>
-        </div>
+
+        <h1>{store.email}</h1>
+        
+        <VideoSearch></VideoSearch>
+
     </div>
   )
 }

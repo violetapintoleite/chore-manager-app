@@ -48,6 +48,13 @@ export const AddChoreForm = () => {
       <button type="button" className="btn btn-primary" onClick={addChore}>
         Add a chore
       </button>
+      <button
+        type="button"
+        className="btn btn-primary"
+        onClick={() => actions.deleteAllChores()}
+      >
+        Clear List
+      </button>
     </form>
   );
 };
