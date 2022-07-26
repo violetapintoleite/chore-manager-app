@@ -159,8 +159,8 @@ def getTeamByUserEmail():
     user = User.get_by_email(email)
 
     if user: 
-        team = Team.get_team_by_user_id(user.id)
-        return jsonify({"team" : team})
+        usersInTeam = UsersInTeam.get_team_by_user_id(user.id)
+        return jsonify({"team" : usersInTeam.team_name})
 
     return jsonify({"msg": "no user"}), 404
 

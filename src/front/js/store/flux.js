@@ -293,9 +293,9 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await resp.json();
-          console.log("here's the user's team", data);
+          console.log("here's the user's team", data.team);
 
-          setStore({ team: data});
+          setStore({ team: data.team});
           return true;
         } catch (error) {
           console.log("there's an error fetching the team");

@@ -17,7 +17,9 @@ console.log(store.team);
 // users who already have a team do not get the option to add another
 
 useEffect(() => {
-  actions.getTeamByUserEmail(store.email);
+  if (store.email){
+    actions.getTeamByUserEmail(store.email);
+  }
 }, [store.email]);
 
 
