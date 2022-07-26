@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 import os
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Chore, Team
+from api.models import db, User, Chore, Team, UsersInTeam
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -59,9 +59,6 @@ def getChoresByUserEmail():
     return jsonify({"msg": "no user"}), 404
 
   
- 
-
-
 # post chore endpoint 
 @api.route('/chore', methods=['POST'])
 def postChore():
@@ -141,12 +138,7 @@ def login():
     else:
         return {"error":"user and password not valid"},400
     
-    # email and username are working but password is causing a 401 error
-    # if email != email or username != username or password != "999":
-    #     return jsonify({"msg": "Bad username or password"}), 401
-
-    # access_token = create_access_token(identity=username)
-    # return jsonify(access_token=access_token), 201
+   
 
 # protected page end point
 @api.route("/profile", methods=["GET"])
@@ -156,8 +148,43 @@ def get_hello():
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
 
+
+# post team endpoint 
+@api.route('/team', methods=['POST'])
+def addToTeam():
+    email = request.json.get("email", None)
+    name = request.json.get("name", None)
+
+    user = User.get_by_email(email)
+    if user:
+        try:
+            addUserToTeam = UsersInTeam(team_name=name, user_id=user.id)
+
+        except exc.SQLAlchemyError: 
+            return jsonify("error add the team"), 400
+        try:
+            db.session.add(addUserToTeam)
+            db.session.commit()
+        except exc.SQLAlchemyError: 
+            return jsonify("error adding person to team"), 400
+       
+
+        return jsonify({"name": name, "email": email}), 201
+        
+    return jsonify({"msg": "error adding person to team"}), 401
+
+# get end point to pull team 
+@api.route('/team', methods=['GET'])
+def getTeamByUserEmail(): 
+    email = request.args.get("email", None)
+    user = User.get_by_email(email)
+
+    if user: 
+        usersInTeam = UsersInTeam.get_team_by_user_id(user.id)
+        return jsonify({"team" : usersInTeam.team_name})
+
+    return jsonify({"msg": "no user"}), 404
+
+
 if __name__ == "__main__":
     app.run()
-
-
-#request to quote api
