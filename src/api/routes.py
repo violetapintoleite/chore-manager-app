@@ -137,7 +137,6 @@ def login():
         return jsonify({"access_token": access_token}),201
     else:
         return {"error":"user and password not valid"},400
-    
    
 
 # protected page end point
@@ -159,7 +158,6 @@ def addToTeam():
     if user:
         try:
             addUserToTeam = UsersInTeam(team_name=name, user_id=user.id)
-
         except exc.SQLAlchemyError: 
             return jsonify("error add the team"), 400
         try:
