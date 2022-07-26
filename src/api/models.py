@@ -87,4 +87,9 @@ class UsersInTeam(db.Model):
     def get_team_by_user_id(cls, user_id):
         team = cls.query.filter_by(user_id=user_id).first()
         return team
+
+    @classmethod
+    def get_user_ids_by_team(cls, team):
+        users = cls.query.filter_by(team_name=team).all()
+        return users
    

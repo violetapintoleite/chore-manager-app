@@ -29,6 +29,9 @@ export const Navbar = () => {
               <Link to="/metrics">
                 <button className="btn btn-primary m-2">Metrics</button>
               </Link>
+              <Link to="/teamMetrics">
+                <button className="btn btn-primary m-2">My Team Metrics</button>
+              </Link>
             </>
           ) : (
             <p></p>
