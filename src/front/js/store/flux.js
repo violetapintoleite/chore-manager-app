@@ -2,6 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       email: null,
+      username: null,
       token: null,
       isLoggedIn: false,
       message: null,
@@ -55,6 +56,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             token: data.access_token,
             email: email,
+            username: username,
             isLoggedIn: true,
           });
 
@@ -75,7 +77,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       logout: () => {
         localStorage.removeItem("token");
         console.log("log out triggered");
-        setStore({ token: null });
+        setStore({ token: null, team: null });
       },
 
       // creating the login functionality - needs to verify if user exists in DB and generate access token

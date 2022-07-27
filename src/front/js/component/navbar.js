@@ -15,28 +15,38 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">Chore Manager</span>
+          <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span>
         </Link>
-        {store.token ? (
-        <p class="nav-item dropdown">
-          {" "}
-          Menu
-          <a
-            class="nav-link dropdown-toggle"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M4 6h16M4 10h16M4 14h16M4 18h16"
-            />
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            
-              <>
+        <div className="d-flex">
+          {store.token ? (
+            <p class="nav-item dropdown">
+              {" "}
+              <a
+                class="dropdown-toggle"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
                 <li>
                   {" "}
                   <Link to="/profile">
@@ -72,28 +82,26 @@ export const Navbar = () => {
                     </button>
                   </Link>
                 </li>
-              </>
-          
-            
-          </ul>
-        </p>
-        ) : (
-          <p></p> )}
-        {!store.token ? (
-          <Link to="/login">
-            <button className="btn btn-primary m-2 nav-link">Login </button>
-          </Link>
-        ) : (
-          <p></p>
-        )}
-        {!store.token ? (
-          <Link to="/signup">
-            <button className="btn btn-primary m-2 nav-link">Sign Up</button>
-          </Link>
-        ) : (
-          <p></p>
-        )}
-        <div className=""></div>
+              </ul>
+            </p>
+          ) : (
+            <p></p>
+          )}
+          {!store.token ? (
+            <Link to="/login">
+              <button className="btn btn-primary m-2 nav-link">Login </button>
+            </Link>
+          ) : (
+            <p></p>
+          )}
+          {!store.token ? (
+            <Link to="/signup">
+              <button className="btn btn-primary m-2 nav-link">Sign Up</button>
+            </Link>
+          ) : (
+            <p></p>
+          )}
+        </div>
       </div>
     </nav>
   );

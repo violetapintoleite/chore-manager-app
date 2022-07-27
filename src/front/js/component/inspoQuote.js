@@ -32,8 +32,8 @@ getQuote();
   return (
     <div>
       <div className="">
-        <h3>{quote.text}</h3>
-        <h4>{quote.author}</h4>
+        <h5 className="quote">{quote.text}</h5>
+        <h5 className="quote">{quote.author}</h5>
       </div>
     </div>
   )

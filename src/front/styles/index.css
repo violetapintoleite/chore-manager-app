@@ -3,4 +3,185 @@
 */
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  background-color: rgb(104, 102, 102);
+}
+
+ /* h5 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: #cf1b1b;
+  font-size: 50px;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+h5::before {
+  content: "Chore Manager";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    white 2px,
+    white 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+h5::after {
+  content: "Chore Manager";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    black 2px,
+    black 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+h5:hover:before {
+  top: 30px;
+  left: 30px;
+}
+
+h5:hover:after {
+  top: -30px;
+  left: -30px;
+}  */
+
+/* this is the styling for the navbar logo area */
+/* #logo{
+  color:transparent;
+}
+
+span{
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: #cf1b1b;
+  font-size: 50px;
+  letter-spacing: 3px;
+}
+
+span::before {
+  content: "Chore Manager";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    rgb(14, 6, 108) 2px,
+    rgb(14, 6, 108) 4px
+  );
+
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+span::after {
+  content: "Chore Manager";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    rgb(86, 94, 152) 2px,
+    rgb(86, 94, 152) 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+span:hover:before {
+  top: 10px;
+  left: 10px;
+}
+
+span:hover:after {
+  top: -10px;
+  left: -10px;
+}  */
+
+  
+  .hometext{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    color: #6f1097;
+    font-size: 124px;
+    letter-spacing: 8px;
+  }
+  
+  .hometext::before {
+    content: "Chore Manager";
+    position: absolute;
+    color: transparent;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 2px,
+      white 2px,
+      white 4px
+    );
+    -webkit-background-clip: text;
+    top: 0px;
+    left: 0;
+    z-index: -1;
+    transition: 1s;
+  }
+  
+  .hometext::after {
+    content: "Chore Manager";
+    position: absolute;
+    color: transparent;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 2px,
+      white 2px,
+      white 4px
+    );
+    -webkit-background-clip: text;
+    top: 0px;
+    left: 0px;
+    transition: 1s;
+  }
+  
+  .hometext:hover:before {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .hometext:hover:after {
+    top: -10px;
+    left: -10px;
+  } 
+
+
+
+.home-button{
+  position: relative;
 }
