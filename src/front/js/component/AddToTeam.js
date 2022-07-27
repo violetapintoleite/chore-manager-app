@@ -38,10 +38,10 @@ useEffect(() => {
             onChange={(e) => setTeamName(e.target.value)}
           >
             <option selected>Choose your team...</option>
-            <option value="Panda">Panda</option>
-            <option value="Fox">Fox</option>
-            <option value="Bald Eagle">Bald Eagle</option>
-            <option value="Mountain Goat">Mountain Goat</option>
+            <option value="The Flinstones">The Flinstones</option>
+            <option value="The Addams">The Addams</option>
+            <option value="The Simpsons">The Simpsons</option>
+            <option value="The Incredibles">The Incredibles</option>
           </select>
           <button class="btn btn-outline-secondary" type="button" onClick={handleSubmit}>
             Confirm
