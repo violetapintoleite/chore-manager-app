@@ -12,7 +12,7 @@ export const Navbar = () => {
   }, [store.token]);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container">
         <Link to="/">
           <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span>

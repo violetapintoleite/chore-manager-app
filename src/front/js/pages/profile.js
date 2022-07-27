@@ -20,9 +20,9 @@ function Profile() {
       <AddToTeam></AddToTeam>
       <div className="card">
       
-      {/* {!store.team ? (<p></p>) : (
+      {!store.team ? (<p></p>) : (
         <h2>Your team is {store.team}</h2>)
-      } */}
+      }
         <VideoSearch></VideoSearch>
       </div>
     </div>

@@ -4,65 +4,10 @@
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   background-color: rgb(104, 102, 102);
+  padding: 5vmin;
+  min-block-size: 150vh;
+  min-inline-size: 100%;
 }
-
- /* h5 {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  display: block;
-  color: #cf1b1b;
-  font-size: 50px;
-  letter-spacing: 3px;
-  cursor: pointer;
-}
-
-h5::before {
-  content: "Chore Manager";
-  position: absolute;
-  color: transparent;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent 0,
-    transparent 2px,
-    white 2px,
-    white 4px
-  );
-  -webkit-background-clip: text;
-  top: 0px;
-  left: 0;
-  z-index: -1;
-  transition: 1s;
-}
-
-h5::after {
-  content: "Chore Manager";
-  position: absolute;
-  color: transparent;
-  background-image: repeating-linear-gradient(
-    135deg,
-    transparent 0,
-    transparent 2px,
-    black 2px,
-    black 4px
-  );
-  -webkit-background-clip: text;
-  top: 0px;
-  left: 0px;
-  transition: 1s;
-}
-
-h5:hover:before {
-  top: 30px;
-  left: 30px;
-}
-
-h5:hover:after {
-  top: -30px;
-  left: -30px;
-}  */
-
 /* this is the styling for the navbar logo area */
 /* #logo{
   color:transparent;
@@ -123,7 +68,7 @@ span:hover:after {
   left: -10px;
 }  */
 
-  
+/* styling for a large graphic on the homepage with multi-layer text animation */
   .hometext{
     position: absolute;
     left: 50%;
@@ -180,8 +125,16 @@ span:hover:after {
     left: -10px;
   } 
 
+  .home-btn-learnmore{
+    position: absolute;
+    width: 10%;
+    bottom: 10px;
+    border: 3px solid #8AC007;
+  }
 
-
-.home-button{
-  position: relative;
-}
+  .home-btn-mission{
+    position: absolute;
+    width: 10%;
+    bottom: 10px;
+    border: 3px solid #8AC007;
+  }
