@@ -12,46 +12,42 @@ export const Navbar = () => {
   }, [store.token]);
 
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
-        <Link to="/">
-          <span className="navbar-brand mb-0 h1">React Boilerplate</span>
-        </Link>
-        <div className="">
-          {store.token ? (
-            <>
-              <Link to="/profile">
-                <button className="btn btn-primary m-2">Profile</button>
-              </Link>
-              <Link to="/history">
-                <button className="btn btn-primary m-2">My Chores</button>
-              </Link>
-              <Link to="/metrics">
-                <button className="btn btn-primary m-2">Metrics</button>
-              </Link>
-            </>
-          ) : (
-            <p></p>
-          )}
-        </div>
-        <div className="ml-auto">
-          <Link to="/demo">
-            <button className="btn btn-primary">
-              Check the Context in action
-            </button>
+       
+          <Link to="/">
+            <span className="navbar-brand mb-0 h1">Chore Manager</span>
           </Link>
+          <div className="">
+            {store.token ? (
+              <>
+                <Link to="/profile">
+                  <button className="btn btn-primary m-2 nav-link">Dashboard</button>
+                </Link>
+                <Link to="/history">
+                  <button className="btn btn-primary m-2 nav-link">My Chores</button>
+                </Link>
+                <Link to="/metrics">
+                  <button className="btn btn-primary m-2 nav-link">Metrics</button>
+                </Link>
+              </>
+            ) : (
+              <p></p>
+            )}
+          </div>
+
           <Link to="/signup">
-            <button className="btn btn-primary m-2">Sign Up </button>
+            <button className="btn btn-primary m-2 nav-link">Sign Up</button>
           </Link>
           <div className="">
             {!store.token ? (
               <Link to="/login">
-                <button className="btn btn-primary m-2">Login</button>
+                <button className="btn btn-primary m-2 nav-link">Login</button>
               </Link>
             ) : (
               <Link to="/">
                 <button
-                  className="btn btn-primary m-2"
+                  className="btn btn-primary m-2 nav-link"
                   onClick={() => actions.logout()}
                 >
                   Logout
@@ -60,7 +56,7 @@ export const Navbar = () => {
             )}
           </div>
         </div>
-      </div>
+     
     </nav>
   );
 
