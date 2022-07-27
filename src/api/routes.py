@@ -137,7 +137,6 @@ def login():
         return jsonify({"access_token": access_token}),201
     else:
         return {"error":"user and password not valid"},400
-    
    
 
 # protected page end point
@@ -157,9 +156,11 @@ def addToTeam():
 
     user = User.get_by_email(email)
     if user:
+        userInTeam = UsersInTeam.get_team_by_user_id(user.id)
+        if userInTeam:
+            return jsonify("email already has a team"), 409
         try:
             addUserToTeam = UsersInTeam(team_name=name, user_id=user.id)
-
         except exc.SQLAlchemyError: 
             return jsonify("error add the team"), 400
         try:
@@ -181,7 +182,9 @@ def getTeamByUserEmail():
 
     if user: 
         usersInTeam = UsersInTeam.get_team_by_user_id(user.id)
-        return jsonify({"team" : usersInTeam.team_name})
+        if usersInTeam:
+            return jsonify({"team" : usersInTeam.team_name})
+
 
     return jsonify({"msg": "no user"}), 404
 
