@@ -62,6 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           return true;
         } catch (error) {
           console.log("there's an error creating the account");
+          alert("email or username already exists");
         }
       },
 

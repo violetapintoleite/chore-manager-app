@@ -1,8 +1,14 @@
 """empty message
 
-Revision ID: 7f728624656b
+<<<<<<<< HEAD:migrations/versions/8905ca065c31_.py
+Revision ID: 8905ca065c31
 Revises: 
-Create Date: 2022-07-26 17:43:37.678204
+Create Date: 2022-07-26 17:35:50.445886
+========
+Revision ID: 721a35cc2fa4
+Revises: 
+Create Date: 2022-07-26 18:04:26.311639
+>>>>>>>> ec4fa0e (added functionality in the routes to check if email already exists for the usersinteam table and to throw a 409 error if so. Team implementation is now complete):migrations/versions/721a35cc2fa4_.py
 
 """
 from alembic import op
@@ -10,7 +16,11 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7f728624656b'
+<<<<<<<< HEAD:migrations/versions/8905ca065c31_.py
+revision = '8905ca065c31'
+========
+revision = '721a35cc2fa4'
+>>>>>>>> ec4fa0e (added functionality in the routes to check if email already exists for the usersinteam table and to throw a 409 error if so. Team implementation is now complete):migrations/versions/721a35cc2fa4_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -48,7 +58,8 @@ def upgrade():
     sa.Column('team_name', sa.String(length=80), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['user_id'], ['User.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('user_id')
     )
     # ### end Alembic commands ###
 
