@@ -1,0 +1,63 @@
+/* styling for a large graphic on the homepage with multi-layer text animation */
+.hometext-container{
+    position: relative;
+    height: 50vh;
+}
+
+.hometext{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    
+    transform: translate(-50%, -50%);
+    font-family: 'Poppins', sans-serif;
+    display: block;
+    color: #cfcecf;
+    font-size: 124px;
+    letter-spacing: 8px;
+  }
+  
+  .hometext::before {
+    content: "CHORE MANAGER";
+    position: absolute;
+    color: transparent;
+    background-image: repeating-linear-gradient(
+      45deg,
+      transparent 0,
+      transparent 2px,
+      rgb(63, 62, 62) 2px,
+      rgb(63, 62, 62) 4px
+    );
+    -webkit-background-clip: text;
+    top: 0px;
+    left: 0;
+    z-index: -1;
+    transition: 1s;
+  }
+  
+  .hometext::after {
+    content: "CHORE MANAGER";
+    position: absolute;
+    color: transparent;
+    background-image: repeating-linear-gradient(
+      135deg,
+      transparent 0,
+      transparent 2px,
+      rgb(63, 62, 62) 2px,
+      rgb(63, 62, 62) 4px
+    );
+    -webkit-background-clip: text;
+    top: 0px;
+    left: 0px;
+    transition: 1s;
+  }
+  
+  .hometext:hover:before {
+    top: 10px;
+    left: 10px;
+  }
+  
+  .hometext:hover:after {
+    top: -10px;
+    left: -10px;
+  } 
