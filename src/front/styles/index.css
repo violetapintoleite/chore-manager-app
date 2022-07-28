@@ -72,7 +72,7 @@ span:hover:after {
   .hometext{
     position: absolute;
     left: 50%;
-    top: 60%;
+    top: 50%;
     transform: translate(-50%, -50%);
     display: block;
     color: #6f1097;
@@ -88,8 +88,8 @@ span:hover:after {
       45deg,
       transparent 0,
       transparent 2px,
-      white 2px,
-      white 4px
+      rgb(21, 20, 20) 2px,
+      rgb(10, 9, 9) 4px
     );
     -webkit-background-clip: text;
     top: 0px;
@@ -106,8 +106,8 @@ span:hover:after {
       135deg,
       transparent 0,
       transparent 2px,
-      white 2px,
-      white 4px
+      rgb(188, 188, 188) 2px,
+      rgb(171, 169, 169) 4px
     );
     -webkit-background-clip: text;
     top: 0px;
@@ -116,8 +116,8 @@ span:hover:after {
   }
   
   .hometext:hover:before {
-    top: 10px;
-    left: 10px;
+    top: 5px;
+    left: 5px;
   }
   
   .hometext:hover:after {
@@ -127,15 +127,14 @@ span:hover:after {
 
   .home-btn-learnmore{
     position: absolute;
-    left: 45%;
-    top: 90%;
+    left: 47%;
+    top: 80%;
    
   }
   
 .home-quote{
-  position: absolute;
-  left: 14%;
-  top: 20%;
+  position: center;
+  top: 25%;
 }
  
 
@@ -159,3 +158,7 @@ span:hover:after {
   grid-template-columns: max-content max-content;
 }
  */
+
+ footer{
+  position: bottom;
+ }

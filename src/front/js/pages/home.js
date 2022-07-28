@@ -30,12 +30,13 @@ export const Home = () => {
           Want to split your chores with others? Why not join a team with others
         </h3>
         </div> */}
-		<div className="">
-        <HomePageGraphic></HomePageGraphic>    
+		<div className="container">
+        <HomePageGraphic></HomePageGraphic>
+        </div>
         <button className="btn btn-primary home-btn-learnmore mt-4">
             Learn More
           </button>
-      </div>
+      
     </div>
   );
 };
