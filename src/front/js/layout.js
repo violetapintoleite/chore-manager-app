@@ -9,12 +9,12 @@ import Profile from "./pages/profile";
 import { Single } from "./pages/single";
 import { History } from "./pages/history";
 import { Metrics } from "./pages/metrics";
+import { TeamMetricsPage } from "./pages/teamMetrics";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import VideoSearch from "./component/YTSearch";
-
 
 //create your first component
 const Layout = () => {
@@ -34,6 +34,7 @@ const Layout = () => {
             <Route element={<Profile />} exact path="/profile" />
             <Route element={<History />} path="/history" />
             <Route element={<Metrics />} path="/metrics" />
+            <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />
             <Route element={<h1>Not found!</h1>} />

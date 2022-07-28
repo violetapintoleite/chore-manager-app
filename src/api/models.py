@@ -74,7 +74,7 @@ class UsersInTeam(db.Model):
     __tablename__ = "UsersInTeam"
     id = db.Column(db.Integer, primary_key=True)
     team_name = db.Column(db.String(80), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False, unique=True)
 
     def serialize(usersInTeam):
         return{
@@ -85,6 +85,11 @@ class UsersInTeam(db.Model):
 
     @classmethod
     def get_team_by_user_id(cls, user_id):
-        team = cls.query.filter_by(user_id=user_id).first()
+        team = cls.query.filter_by(user_id=user_id).one_or_none()
         return team
+
+    @classmethod
+    def get_user_ids_by_team(cls, team):
+        users = cls.query.filter_by(team_name=team).all()
+        return users
    

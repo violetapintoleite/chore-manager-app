@@ -26,6 +26,7 @@ export const Navbar = () => {
         </Link>
         <div className="d-flex">
           {store.token ? (
+
             <p class="nav-item dropdown">
               {" "}
               <a

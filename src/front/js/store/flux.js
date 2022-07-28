@@ -6,7 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       token: null,
       isLoggedIn: false,
       message: null,
-      team: null, 
+      team: null,
       demo: [
         {
           title: "FIRST",
@@ -20,6 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         },
       ],
       choreList: [],
+      teamChoreList: [],
 
       testeList: [],
       quote: [],
@@ -63,6 +64,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           return true;
         } catch (error) {
           console.log("there's an error creating the account");
+          alert("email or username already exists");
         }
       },
 
@@ -173,7 +175,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
           const data = await resp.json();
           console.log("here are the user chores", data.chores);
-          console.log("from today", data.dates);
           setStore({ choreList: data.chores });
           return true;
         } catch (error) {
@@ -244,10 +245,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-    
-      // function to add to a team 
+      // function to add to a team
       postTeam: async (name, email) => {
-        
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -259,7 +258,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/team" , 
+            process.env.BACKEND_URL + "/api/team",
             // + `?email=${store.email}`
             opts
           );
@@ -277,14 +276,14 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error adding the person to the team DB");
         }
       },
- //get request to get the saved team from the backend
+      //get request to get the saved team from the backend
       getTeamByUserEmail: async () => {
         const store = getStore();
         const opts = { method: "GET" };
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/team"  + `?email=${store.email}`,
+            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}`,
             opts
           );
 
@@ -296,13 +295,50 @@ const getState = ({ getStore, getActions, setStore }) => {
           const data = await resp.json();
           console.log("here's the user's team", data.team);
 
-          setStore({ team: data.team});
+          setStore({ team: data.team });
+          localStorage.setItem("team", data.team);
           return true;
         } catch (error) {
           console.log("there's an error fetching the team");
         }
       },
+
+      setTeam: () => {
+        const team = localStorage.getItem("team") || null;
+        console.log("this is your team", team);
+
+        setStore({ team });
+      },
       // to get all metrics, filter by user.id and team.id and make the calculation
+      getChoresfromUsersInTeam: async () => {
+        const store = getStore();
+        const opts = { method: "GET" };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL +
+              "/api/choresofteam" +
+              `?team=${store.team}`,
+            opts
+          );
+
+          if (resp.status !== 200) {
+            alert("error before initial 200 request of GET request");
+
+            return false;
+          }
+          const data = await resp.json();
+          console.log(
+            "here is the response from the choresofteam request",
+            data.teamChores
+          );
+          setStore({ teamChoreList: data.teamChores });
+
+          return true;
+        } catch (error) {
+          console.log("there's an error fetching the choresofteam data");
+        }
+      },
       //get a list of users that belong to team and then query the chores that belong to the user.id
 
       deleteAllChores: async () => {
@@ -317,7 +353,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             process.env.BACKEND_URL + "/api/chores" + `?email=${store.email}`,
             opts
           );
-
 
           if (resp.status !== 201) {
             alert("error before initial 201 request");

@@ -137,7 +137,6 @@ def login():
         return jsonify({"access_token": access_token}),201
     else:
         return {"error":"user and password not valid"},400
-    
    
 
 # protected page end point
@@ -157,9 +156,11 @@ def addToTeam():
 
     user = User.get_by_email(email)
     if user:
+        userInTeam = UsersInTeam.get_team_by_user_id(user.id)
+        if userInTeam:
+            return jsonify("email already has a team"), 409
         try:
             addUserToTeam = UsersInTeam(team_name=name, user_id=user.id)
-
         except exc.SQLAlchemyError: 
             return jsonify("error add the team"), 400
         try:
@@ -181,9 +182,27 @@ def getTeamByUserEmail():
 
     if user: 
         usersInTeam = UsersInTeam.get_team_by_user_id(user.id)
-        return jsonify({"team" : usersInTeam.team_name})
+        if usersInTeam:
+            return jsonify({"team" : usersInTeam.team_name})
+
 
     return jsonify({"msg": "no user"}), 404
+
+# get chores from all users in team of logged in user
+@api.route('/choresofteam', methods=['GET'])
+def getChoresfromUsersInTeam():
+    team = request.args.get("team", None)
+    users = UsersInTeam.get_user_ids_by_team(team)
+    serialized_chores = []
+    for user in users:
+        chores = Chore.get_chores_by_user_id(user.id)
+        user_name = User.query.filter_by(id=user.id).one_or_none()
+        for chore in chores:
+            serialized_chore = chore.serialize()
+            serialized_chore["user_name"] = user_name.email
+            serialized_chores.append(serialized_chore)
+        
+    return jsonify({"teamChores" : serialized_chores})
 
 
 if __name__ == "__main__":
