@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/8905ca065c31_.py
-Revision ID: 8905ca065c31
+Revision ID: d9d7540e6848
 Revises: 
-Create Date: 2022-07-26 17:35:50.445886
-========
-Revision ID: 721a35cc2fa4
-Revises: 
-Create Date: 2022-07-26 18:04:26.311639
->>>>>>>> ec4fa0e (added functionality in the routes to check if email already exists for the usersinteam table and to throw a 409 error if so. Team implementation is now complete):migrations/versions/721a35cc2fa4_.py
+Create Date: 2022-07-28 19:22:40.992645
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/8905ca065c31_.py
-revision = '8905ca065c31'
-========
-revision = '721a35cc2fa4'
->>>>>>>> ec4fa0e (added functionality in the routes to check if email already exists for the usersinteam table and to throw a 409 error if so. Team implementation is now complete):migrations/versions/721a35cc2fa4_.py
+revision = 'd9d7540e6848'
 down_revision = None
 branch_labels = None
 depends_on = None
