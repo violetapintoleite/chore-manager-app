@@ -293,10 +293,18 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("here's the user's team", data.team);
 
           setStore({ team: data.team });
+          localStorage.setItem("team", data.team);
           return true;
         } catch (error) {
           console.log("there's an error fetching the team");
         }
+      },
+
+      setTeam: () => {
+        const team = localStorage.getItem("team") || null;
+        console.log("this is your team", team);
+
+        setStore({ team });
       },
       // to get all metrics, filter by user.id and team.id and make the calculation
       getChoresfromUsersInTeam: async () => {
@@ -322,6 +330,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             data.teamChores
           );
           setStore({ teamChoreList: data.teamChores });
+
           return true;
         } catch (error) {
           console.log("there's an error fetching the choresofteam data");

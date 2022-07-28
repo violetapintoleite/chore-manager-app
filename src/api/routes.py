@@ -193,8 +193,11 @@ def getChoresfromUsersInTeam():
     serialized_chores = []
     for user in users:
         chores = Chore.get_chores_by_user_id(user.id)
+        user_name = User.query.filter_by(id=user.id).one_or_none()
         for chore in chores:
-            serialized_chores.append(chore.serialize())
+            serialized_chore = chore.serialize()
+            serialized_chore["user_name"] = user_name.email
+            serialized_chores.append(serialized_chore)
         
     return jsonify({"teamChores" : serialized_chores})
 

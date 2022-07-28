@@ -13,6 +13,8 @@ export const HistoryofChores = () => {
     actions.getChoresByUserEmail(store.email);
   }, [store.email /*store.choreList*/]);
 
+  console.log(store.choreList)
+
   /*return (
     <div className="container">
       {teste >= 1 && <p>im real</p>}

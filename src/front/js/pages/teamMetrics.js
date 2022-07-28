@@ -1,5 +1,4 @@
 import React from "react";
-
 import { TeamMetrics } from "../component/teamMetrics";
 
 export const TeamMetricsPage = () => {
