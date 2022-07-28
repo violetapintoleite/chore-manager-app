@@ -1,6 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import rigoImageUrl from "../../img/rigo-baby.jpg";
+import logo1 from "../../img/logo1.png";
+import logo2 from "../../img/logo2.png";
+import logo3 from "../../img/logo3.png";
 
 export const Navbar = () => {
   const { store, actions, token } = useContext(Context);
@@ -12,56 +16,99 @@ export const Navbar = () => {
   }, [store.token]);
 
   return (
-    <nav className="navbar navbar-light bg-light">
+    <nav className="navbar navbar-scroll navbar-scrolled navbar-light bg-light fixed-top">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1">React Boilerplate</span>
+          {/* <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span> */}
+          {/* <img src={logo1} alt="logo1"/> */}
+          {/* <img src={logo2} alt="logo2"/> */}
+          <img src={logo3} className="navbar-logo" alt="logo3"/>
         </Link>
-        <div className="">
+        <div className="d-flex">
           {store.token ? (
-            <>
-              <Link to="/profile">
-                <button className="btn btn-primary m-2">Profile</button>
-              </Link>
-              <Link to="/history">
-                <button className="btn btn-primary m-2">My Chores</button>
-              </Link>
-              <Link to="/metrics">
-                <button className="btn btn-primary m-2">Metrics</button>
-              </Link>
-              <Link to="/teamMetrics">
-                <button className="btn btn-primary m-2">My Team Metrics</button>
-              </Link>
-            </>
+
+            <p class="nav-item dropdown">
+              {" "}
+              <a
+                class="dropdown-toggle"
+                id="navbarDropdownMenuLink"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </a>
+              <ul
+                class="dropdown-menu"
+                aria-labelledby="navbarDropdownMenuLink"
+              >
+                <li>
+                  {" "}
+                  <Link to="/profile">
+                    <a className="dropdown-item" href="/profile">
+                      Dashboard
+                    </a>{" "}
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link to="/history">
+                    <a class="dropdown-item" href="/history">
+                      My Chores
+                    </a>{" "}
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link to="/metrics">
+                    <a class="dropdown-item" href="#">
+                      My Metrics
+                    </a>
+                  </Link>
+                </li>
+                <li>
+                  {" "}
+                  <Link to="/">
+                    <button
+                      className="btn btn-primary m-2 nav-link"
+                      onClick={() => actions.logout()}
+                    >
+                      Logout
+                    </button>
+                  </Link>
+                </li>
+              </ul>
+            </p>
           ) : (
             <p></p>
           )}
-        </div>
-        <div className="ml-auto">
-          <Link to="/demo">
-            <button className="btn btn-primary">
-              Check the Context in action
-            </button>
-          </Link>
-          <Link to="/signup">
-            <button className="btn btn-primary m-2">Sign Up </button>
-          </Link>
-          <div className="">
-            {!store.token ? (
-              <Link to="/login">
-                <button className="btn btn-primary m-2">Login</button>
-              </Link>
-            ) : (
-              <Link to="/">
-                <button
-                  className="btn btn-primary m-2"
-                  onClick={() => actions.logout()}
-                >
-                  Logout
-                </button>
-              </Link>
-            )}
-          </div>
+          {!store.token ? (
+            <Link to="/login">
+              <button className="btn btn-primary m-2 nav-link">Login </button>
+            </Link>
+          ) : (
+            <p></p>
+          )}
+          {!store.token ? (
+            <Link to="/signup">
+              <button className="btn btn-primary m-2 nav-link">Sign Up</button>
+            </Link>
+          ) : (
+            <p></p>
+          )}
         </div>
       </div>
     </nav>

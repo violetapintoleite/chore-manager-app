@@ -16,13 +16,13 @@ function Profile() {
 
   return (
     <div>
-      <h5>Logged in as {store.email}</h5>
+      <h5>Logged in as {store.username}</h5>
       <AddToTeam></AddToTeam>
       <div className="card">
-        <YTiframe></YTiframe>
-
-        <h1>{store.email}</h1>
-
+      
+      {!store.team ? (<p></p>) : (
+        <h2>Your team is {store.team}</h2>)
+      }
         <VideoSearch></VideoSearch>
       </div>
     </div>
