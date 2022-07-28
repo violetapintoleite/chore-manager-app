@@ -4,8 +4,8 @@
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   background-color: rgb(104, 102, 102);
-  padding: 5vmin;
-  min-block-size: 150vh;
+  padding: 7vmin;
+  min-block-size: 130vh;
   min-inline-size: 100%;
 }
 /* this is the styling for the navbar logo area */
@@ -72,7 +72,7 @@ span:hover:after {
   .hometext{
     position: absolute;
     left: 50%;
-    top: 50%;
+    top: 60%;
     transform: translate(-50%, -50%);
     display: block;
     color: #6f1097;
@@ -127,14 +127,35 @@ span:hover:after {
 
   .home-btn-learnmore{
     position: absolute;
-    width: 10%;
-    bottom: 10px;
-    border: 3px solid #8AC007;
+    left: 45%;
+    top: 90%;
+   
   }
+  
+.home-quote{
+  position: absolute;
+  left: 14%;
+  top: 20%;
+}
+ 
 
-  .home-btn-mission{
-    position: absolute;
-    width: 10%;
-    bottom: 10px;
-    border: 3px solid #8AC007;
-  }
+/* .cp-stamp {
+  font-size: 100px;
+  margin: 0;
+   writing-mode: vertical-lr;
+  text-align: center;
+  line-height: .9;
+}
+
+.cp-stamp {
+   transform: rotate(180deg);
+}
+
+.cp-stamp-div {
+  display: grid;
+  height: 100vh;
+  justify-content: center;
+  align-content: center;
+  grid-template-columns: max-content max-content;
+}
+ */
