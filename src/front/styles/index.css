@@ -74,22 +74,23 @@ span:hover:after {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    font-family: 'Poppins', sans-serif;
     display: block;
-    color: #6f1097;
+    color: #cfcecf;
     font-size: 124px;
     letter-spacing: 8px;
   }
   
   .hometext::before {
-    content: "Chore Manager";
+    content: "CHORE MANAGER";
     position: absolute;
     color: transparent;
     background-image: repeating-linear-gradient(
       45deg,
       transparent 0,
       transparent 2px,
-      rgb(21, 20, 20) 2px,
-      rgb(10, 9, 9) 4px
+      rgb(63, 62, 62) 2px,
+      rgb(63, 62, 62) 4px
     );
     -webkit-background-clip: text;
     top: 0px;
@@ -99,15 +100,15 @@ span:hover:after {
   }
   
   .hometext::after {
-    content: "Chore Manager";
+    content: "CHORE MANAGER";
     position: absolute;
     color: transparent;
     background-image: repeating-linear-gradient(
       135deg,
       transparent 0,
       transparent 2px,
-      rgb(188, 188, 188) 2px,
-      rgb(171, 169, 169) 4px
+      rgb(63, 62, 62) 2px,
+      rgb(63, 62, 62) 4px
     );
     -webkit-background-clip: text;
     top: 0px;
@@ -116,8 +117,8 @@ span:hover:after {
   }
   
   .hometext:hover:before {
-    top: 5px;
-    left: 5px;
+    top: 10px;
+    left: 10px;
   }
   
   .hometext:hover:after {
@@ -161,4 +162,8 @@ span:hover:after {
 
  footer{
   position: bottom;
+ }
+
+ .navbar-logo{
+width: 80px;
  }

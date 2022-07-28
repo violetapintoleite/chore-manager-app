@@ -3,7 +3,7 @@ import React from 'react'
 function HomePageGraphic() {
   return (
     <div>
-        <div className="hometext">Chore Manager</div>
+        <div className="hometext">CHORE MANAGER</div>
     
     </div>
   )

@@ -1,6 +1,10 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import rigoImageUrl from "../../img/rigo-baby.jpg";
+import logo1 from "../../img/logo1.png";
+import logo2 from "../../img/logo2.png";
+import logo3 from "../../img/logo3.png";
 
 export const Navbar = () => {
   const { store, actions, token } = useContext(Context);
@@ -15,7 +19,10 @@ export const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
       <div className="container">
         <Link to="/">
-          <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span>
+          {/* <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span> */}
+          {/* <img src={logo1} alt="logo1"/> */}
+          {/* <img src={logo2} alt="logo2"/> */}
+          <img src={logo3} className="navbar-logo" alt="logo3"/>
         </Link>
         <div className="d-flex">
           {store.token ? (

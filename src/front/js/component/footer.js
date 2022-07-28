@@ -18,7 +18,7 @@ export const Footer = () => (
 	</div>
 	
 	<div>
-	  <a href="" className=" me-4">
+	  <a href="https://www.facebook.com/" className=" me-4">
 		<i className="fab fa-facebook-f"></i>
 	  </a>
 	  <a href="" className=" me-4">
