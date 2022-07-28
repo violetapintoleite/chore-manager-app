@@ -9,10 +9,8 @@ export const Home = () => {
 
   return (
     <div className="text-center mt-5 ">
-      <div className="home-quote">
+      <div className="mt-2">
         <InspoQuote></InspoQuote>
-        
-        
       </div>
       {/* <div className="">
         <h2>
