@@ -3,14 +3,19 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import InspoQuote from "../component/inspoQuote";
 import HomePageGraphic from "../component/homePageGraphic";
+import "../../styles/modules/buttonstyles.css";
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5 ">
+    <div className="home" >
+    <div className="text-center mt-5  ">
       <div className="mt-2">
         <InspoQuote></InspoQuote>
+        {/* <img src={Hpimagelight} className="home-img" alt="home-img-light"/> */}
+        {/* <img src={Hpimagedark} className="home-img bg-image" id="intro" alt="home-img-dark"/> */}
       </div>
       {/* <div className="">
         <h2>
@@ -31,10 +36,10 @@ export const Home = () => {
 		<div className="container">
         <HomePageGraphic></HomePageGraphic>
         </div>
-        <button className="btn btn-primary home-btn-learnmore mt-4">
+        <button className="btn button-test btn-text mt-4">
             Learn More
           </button>
-      
+          </div>
     </div>
   );
 };

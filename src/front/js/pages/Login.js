@@ -28,7 +28,7 @@ return (
       <input type="text" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)}/> 
       <input type="text" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
       <input type="password" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
-      <button onClick={handleClick}> Submit </button>
+      <button className="btn" onClick={handleClick}> Submit </button>
     </div>   
     <h4 className="mt-3"> Don't yet have an account? <a href= "/signup"> Signup through here </a></h4>  
   </div>

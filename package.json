@@ -157,6 +157,9 @@
     "remote-origin-url": "^2.0.0",
 
 
+    "sass": "^1.54.0",
+
+
     "style-loader": "^3.3.1",
 
 

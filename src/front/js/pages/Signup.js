@@ -40,7 +40,7 @@ return (
       <input type="email" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
       <input type="text" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
       <input type="password" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
-      <button onClick={handleClick} disabled={password.length < 8 || username.length < 2}> Submit </button> <br/>
+      <button className="btn" onClick={handleClick} disabled={password.length < 8 || username.length < 2}> Submit </button> <br/>
       <span className="text-danger" >{emailError}</span>
       {username == "" || username.length < 2 ? <p>"username needs to be at least 2 characters"</p> : password == "" || password.length < 8 ? <p className="p-2">Password needs to be at least 8 characters long</p> :  <p></p>}
     </div>   

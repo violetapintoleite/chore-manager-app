@@ -8,4 +8,4 @@ function ChoreManager() {
   )
 }
 
-export default cChoreManager
+export default ChoreManager
