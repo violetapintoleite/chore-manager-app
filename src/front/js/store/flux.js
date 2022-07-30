@@ -269,7 +269,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await resp.json();
-          setStore({ team: data });
+          setStore({ team: data.team });
           console.log("this came from the backend", data);
           return true;
         } catch (error) {

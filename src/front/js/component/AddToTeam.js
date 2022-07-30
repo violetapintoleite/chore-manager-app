@@ -19,7 +19,7 @@ function AddToTeam() {
     if (store.email) {
       actions.getTeamByUserEmail(store.email);
     }
-  }, [store.email]);
+  }, [store.team]);
 
   return (
     <div>
