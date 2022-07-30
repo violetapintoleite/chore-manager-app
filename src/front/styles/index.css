@@ -4,7 +4,6 @@
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
   background-color: rgb(104, 102, 102);
-  padding: 7vmin;
   min-block-size: 130vh;
   min-inline-size: 100%;
 }

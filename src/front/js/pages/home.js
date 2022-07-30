@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import InspoQuote from "../component/inspoQuote";
 import HomePageGraphic from "../component/homePageGraphic";
 import "../../styles/modules/buttonstyles.css";
+import { Navbar } from "../component/navbar";
 
 
 export const Home = () => {
@@ -11,8 +12,10 @@ export const Home = () => {
 
   return (
     <div className="home" >
-    <div className="text-center mt-5  ">
-      <div className="mt-2">
+      <Navbar excludeFromHome={false}/>
+    <div className="text-center">
+      <div className="">
+       
         <InspoQuote></InspoQuote>
         {/* <img src={Hpimagelight} className="home-img" alt="home-img-light"/> */}
         {/* <img src={Hpimagedark} className="home-img bg-image" id="intro" alt="home-img-dark"/> */}
