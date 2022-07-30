@@ -117,7 +117,7 @@ export const Footer = () => (
   <div
 	   className="text-center p-3"
 	   >
-	© 2020 Copyright: 
+	© 2022 Copyright: 
 	<a className="" href="/"
 	   > Chore Manager</a
 	  >
