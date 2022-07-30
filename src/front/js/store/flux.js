@@ -288,7 +288,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 200) {
-            alert("error before initial 200 request of GET request");
 
             return false;
           }
