@@ -1,21 +1,39 @@
-import React, { useContext, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
 import logo3 from "../../img/logo3.png";
 import "../../styles/modules/buttonstyles.css";
+import "../../styles/modules/navbarstyling.css";
 
 
-export const Navbar = () => {
+export const Navbar = ({excludeFromHome=true}) => {
   const { store, actions, token } = useContext(Context);
+  const location = useLocation();
+
+  if (excludeFromHome && location.pathname === "/" ){
+    return null 
+   };
+
+  const [scrolled, setScrolled] = useState();
+  const initScrollBehaviour = () => {
+    let y = window.scrollY;
+    setScrolled(y);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => initScrollBehaviour());
+  }, []);
+
 
   useEffect(() => {
     if (store?.token && token != "") {
       actions.checkIfAuthorized();
     }
   }, [store.token]);
+  
 
   return (
-    <nav className="navbar navbar-scroll fixed-top ">
+    <nav className={"navbar " + (scrolled > 90 ? "navbar-scrolled fixed-top" : "navbar-scroll")}>
       <div className="container-md">
         
         <Link to="/">

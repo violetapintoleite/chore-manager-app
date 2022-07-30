@@ -47,15 +47,13 @@ export const Footer = () => (
 		
 		<div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
 		
-		  <h6 className="text-uppercase fw-bold">Company name</h6>
+		  <h6 className="text-uppercase fw-bold">Chore Manager</h6>
 		  <hr
 			  className="mb-4 mt-0 d-inline-block mx-auto"
 			 
 			  />
 		  <p className="footer-text">
-			Here you can use rows and columns to organize your footer
-			content. Lorem ipsum dolor sit amet, consectetur adipisicing
-			elit.
+			We help you to get your chores done and track how long, either by yourself or as a team.
 		  </p>
 		</div>
 		
@@ -88,16 +86,16 @@ export const Footer = () => (
 			  
 			  />
 		  <p>
-			<a href="#!" className="">Your Account</a>
+			<a href="#!" className="">Dashboard</a>
 		  </p>
 		  <p>
 			<a href="#!" className="">Become an Affiliate</a>
 		  </p>
 		  <p>
-			<a href="#!" className="">Shipping Rates</a>
+			<a href="#!" className="">Invite someone else</a>
 		  </p>
 		  <p>
-			<a href="#!" className="">Help</a>
+			<a href="mailto:help@choremanager.com" className="">Help</a>
 		  </p>
 		</div>
 		
@@ -119,7 +117,7 @@ export const Footer = () => (
   <div
 	   className="text-center p-3"
 	   >
-	© 2020 Copyright: 
+	© 2022 Copyright: 
 	<a className="" href="/"
 	   > Chore Manager</a
 	  >
