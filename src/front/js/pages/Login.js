@@ -25,12 +25,13 @@ return (
     <div className="text-center mt-5">
       <h1 className="mb-3">Login</h1>
     <div>
-      <input type="text" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)}/> 
-      <input type="text" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
-      <input type="password" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
-      <button className="btn" onClick={handleClick}> Submit </button>
+      <input type="text" className="m-1" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)}/> 
+      <input type="text" className="m-1" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
+      <input type="password" className="m-1" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
+      <button className="btn m-1" onClick={handleClick}> Submit </button>
     </div>   
     <h4 className="mt-3"> Don't yet have an account? <a href= "/signup"> Signup through here </a></h4>  
+    <h4 className="mt-3"> Forgot your password? <a href= "/reset"> Reset it here </a></h4>
   </div>
 )
 };
