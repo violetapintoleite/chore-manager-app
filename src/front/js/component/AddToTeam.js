@@ -29,9 +29,9 @@ useEffect(() => {
       <div className="container mb-2">
       <h2>Select a team</h2>
         <form>
-          <div class="input-group">
+          <div className="input-group">
           <select
-            class="form-select"
+            className="form-select"
             id="inputGroupSelect04"
             aria-label="Example select with button addon"
             value={teamName}
@@ -43,7 +43,7 @@ useEffect(() => {
             <option value="The Simpsons">The Simpsons</option>
             <option value="The Incredibles">The Incredibles</option>
           </select>
-          <button class="btn btn-outline-secondary" type="button" onClick={handleSubmit}>
+          <button className="btn " type="button" onClick={handleSubmit}>
             Confirm
           </button>          
           </div>

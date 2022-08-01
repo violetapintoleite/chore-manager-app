@@ -13,9 +13,11 @@ const VideoSearch = () => {
     console.log(term, searchTerm);
     YTSearch({ key: API_KEY, term: term }, (videos) => {
       const firstVideoResult = videos[0].id.videoId;
+      const allVideos = videos;
 
-      setVideoID(firstVideoResult);
-      console.log(firstVideoResult, "returning obj of the first result");
+      setVideoID(allVideos);
+      // console.log(firstVideoResult, "returning obj of the first result");
+      console.log(videos);
     });
   };
 
@@ -26,7 +28,8 @@ const VideoSearch = () => {
 
   return (
     <div className="container"> 
-      <div class="input-group mb-3">
+    <div className="card">
+      <div className="input-group mb-3">
       <p>Need help with how to do a chore? Search for tutorial below ...or want to listen to a song, search for that instead!</p>
         <form className="d-flex container">
           
@@ -41,7 +44,7 @@ const VideoSearch = () => {
           ></input>
           <p>&nbsp;</p>
           <button
-            class="btn btn-outline-secondary"
+            className="btn"
             onSubmit={handleSubmit}
             onClick={handleSubmit}
             type="button"
@@ -53,10 +56,12 @@ const VideoSearch = () => {
       </div>
       {console.log(videoID)}
       { !videoCode || videoCode== "" ? "" : 
-      <div class="ratio ratio-16x9">
+      <div className="ratio ratio-16x9">
         <iframe src={videoCode} allow="autoplay;" value="player"></iframe>
       </div>
 }
+    </div>
+    <p>{videoID}</p>
     </div>
   );
 };

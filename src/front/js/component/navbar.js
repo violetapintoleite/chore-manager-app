@@ -45,24 +45,24 @@ export const Navbar = ({excludeFromHome=true}) => {
         <div className="d-flex">
           {store.token ? (
 
-            <p class="nav-item dropdown">
+            <p className="nav-item dropdown">
               {" "}
               <a
-                class="dropdown"
+                className="dropdown"
                 id="navbarDropdownMenuLink"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <button class="navbar-toggler btn-color" type="button" data-mdb-toggle="collapse"
+                <button className="navbar-toggler btn-color" type="button" data-mdb-toggle="collapse"
         data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
         aria-label="Toggle navigation">
-        <i class="fas fa-bars"></i>
+        <i className="fas fa-bars"></i>
       </button>
               </a>
 
               <ul
-                class="dropdown-menu"
+                className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
@@ -76,7 +76,7 @@ export const Navbar = ({excludeFromHome=true}) => {
                 <li>
                   {" "}
                   <Link to="/history">
-                    <a class="dropdown-item" href="/history">
+                    <a className="dropdown-item" href="/history">
                       My Chores
                     </a>{" "}
                   </Link>
@@ -84,7 +84,7 @@ export const Navbar = ({excludeFromHome=true}) => {
                 <li>
                   {" "}
                   <Link to="/metrics">
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                       My Metrics
                     </a>
                   </Link>
