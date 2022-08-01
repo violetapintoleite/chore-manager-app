@@ -22,27 +22,33 @@ if(token && token != "" && token != undefined ) navigate('/profile');
 };
 
 //email verification
-const [emailError, setEmailError] = useState('')
+const [emailError, setEmailError] = useState('Must be a valid email')
   const validateEmail = (e) => {
     var email = e.target.value
   
     if (validator.isEmail(email)) {
       setEmailError('')
     } else {
-      setEmailError('Enter valid Email!')
+      setEmailError('Must be a valid email')
     }
   };
 
 return (
     <div className="text-center mt-5">
       <h1 className="mb-3">Sign Up</h1>
+      <div className= "container">
+      <h3>Sign up requirements</h3>
+      <ul>
+        <span className="" >{emailError}</span><br/>
+        <span> {username == "" || username.length < 2? <span>Username must be at least 2 characters long</span> : <span></span>} </span> <br/>
+        <span> {password == "" || password.length < 8 ? <span className="p-2">Password needs to be at least 8 characters long</span> :  <span></span>} </span>
+      </ul>
+      </div>
     <div>
-      <input type="email" className="m-1" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
-      <input type="text" className="m-1" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
-      <input type="password" className="m-1" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
-      <button className="btn m-1" onClick={handleClick} disabled={password.length < 8 || username.length < 2}> Submit </button> <br/>
-      <span className="text-danger" >{emailError}</span>
-      {username == "" || username.length < 2 ? <p>"username needs to be at least 2 characters"</p> : password == "" || password.length < 8 ? <p className="p-2">Password needs to be at least 8 characters long</p> :  <p></p>}
+      <input type="email" className="m-1 pb-1" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
+      <input type="text" className="m-1 pb-1" placeholder="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
+      <input type="password" className="m-1 pb-1" placeholder="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>
+      <button className="btn m-1 " onClick={handleClick} disabled={password.length < 8 || username.length < 2}> Submit </button> <br/>
     </div>   
     <h4 className="mt-3"> Already have an account? <a href= "/login"> Login through here </a></h4>     
   </div>

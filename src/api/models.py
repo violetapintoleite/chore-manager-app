@@ -70,6 +70,7 @@ class Team(db.Model):
    
 
    # set up a relational table 
+   
 class UsersInTeam(db.Model):
     __tablename__ = "UsersInTeam"
     id = db.Column(db.Integer, primary_key=True)

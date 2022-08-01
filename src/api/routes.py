@@ -225,6 +225,19 @@ def getChoresfromUsersInTeam():
         
     return jsonify({"teamChores" : serialized_chores})
 
+    # get end point to compare if email exists in DB 
+@api.route('/reset', methods=['GET'])
+def checkEmailExists(): 
+    email = request.args.get("email", None)
+    user = User.get_by_email(email)
+
+    if user: 
+        emailExists = EmailExists.get_email_by_user_id(user.id)
+        
+
+    return jsonify({"msg": "no user"}), 404
+
+
 
 if __name__ == "__main__":
     app.run()
