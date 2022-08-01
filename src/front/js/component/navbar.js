@@ -93,7 +93,7 @@ export const Navbar = ({excludeFromHome=true}) => {
                   {" "}
                   <Link to="/">
                     <button
-                      className="btn m-2 nav-link"
+                      className="btn m-2"
                       onClick={() => actions.logout()}
                     >
                       Logout
@@ -107,14 +107,14 @@ export const Navbar = ({excludeFromHome=true}) => {
           )}
           {!store.token ? (
             <Link to="/login">
-              <button className="btn m-2 nav-link">Login </button>
+              <button className="btn m-2 ">Login </button>
             </Link>
           ) : (
             <p></p>
           )}
           {!store.token ? (
             <Link to="/signup">
-              <button className="btn m-2 nav-link">Sign Up</button>
+              <button className="btn m-2 ">Sign Up</button>
             </Link>
           ) : (
             <p></p>
