@@ -37,7 +37,7 @@ useEffect(() => {
             value={teamName}
             onChange={(e) => setTeamName(e.target.value)}
           >
-            <option selected>Choose your team...</option>
+            <option defaultValue="">Choose your team...</option>
             <option value="The Flinstones">The Flinstones</option>
             <option value="The Addams">The Addams</option>
             <option value="The Simpsons">The Simpsons</option>

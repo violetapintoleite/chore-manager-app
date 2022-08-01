@@ -19,10 +19,10 @@ function Profile() {
       <h5>Logged in as {store.username}</h5>
       <AddToTeam></AddToTeam>
       <div className="card">
-      
+{/*       
       {!store.team ? (<p></p>) : (
-        <h2>Your team is {store.team}</h2>)
-      }
+        <p>Your team is {store.team}</p>)
+      } */}
         <VideoSearch></VideoSearch>
       </div>
     </div>

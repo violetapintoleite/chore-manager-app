@@ -10,16 +10,17 @@ const VideoSearch = () => {
   let videoCode = embedURL.concat(videoID);
 
   const searchYouTube = (term) => {
-    console.log(term, searchTerm);
+    console.log(term, searchTerm, "here's the search term");
     YTSearch({ key: API_KEY, term: term }, (videos) => {
       const firstVideoResult = videos[0].id.videoId;
       const allVideos = videos;
 
-      setVideoID(allVideos);
+      setVideoID(firstVideoResult);
       // console.log(firstVideoResult, "returning obj of the first result");
-      console.log(videos);
+      // console.log(allVideos);
     });
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,13 +32,11 @@ const VideoSearch = () => {
     <div className="card">
       <div className="input-group mb-3">
       <p>Need help with how to do a chore? Search for tutorial below ...or want to listen to a song, search for that instead!</p>
-        <form className="d-flex container">
-          
+        <form className="d-flex container" onSubmit={handleSubmit}>
           <input
             type="text"
             className="form-control"
             placeholder="Search in Youtube"
-            aria-label="Recipient's username"
             aria-describedby="button-addon2"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
@@ -45,7 +44,6 @@ const VideoSearch = () => {
           <p>&nbsp;</p>
           <button
             className="btn"
-            onSubmit={handleSubmit}
             onClick={handleSubmit}
             type="button"
             id="button-addon2"
@@ -61,7 +59,7 @@ const VideoSearch = () => {
       </div>
 }
     </div>
-    <p>{videoID}</p>
+    <p className="mb-4"></p>
     </div>
   );
 };
