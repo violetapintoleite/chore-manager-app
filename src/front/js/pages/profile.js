@@ -16,12 +16,11 @@ function Profile() {
 
   return (
     <div>
-      <h5 className="text-center">
+      <h5 className="text-center m-5">
         Welcome back <strong>{store.email}</strong>!
       </h5>
-      
+
       <div className="card">
-        
         <VideoSearch></VideoSearch>
       </div>
     </div>
