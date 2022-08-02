@@ -188,6 +188,27 @@ def getTeamByUserEmail():
 
     return jsonify({"msg": "no user"}), 404
 
+# delete user from team
+@api.route('/team', methods=['DELETE'])
+def deleteUserFromTeam():
+    email = request.args.get("email", None)
+    user = User.get_by_email(email.replace("%40", "@"))
+    if user:
+        try:
+            userToDeleteFromTeam = UsersInTeam.query.filter_by(user_id=user.id).first()
+        except exc.SQLAlchemyError: 
+            return jsonify("error finding the user to delete"), 404
+
+        if userToDeleteFromTeam:
+            db.session.delete(userToDeleteFromTeam)
+            db.session.commit()
+            return jsonify({"msg": "success deleting the user from the team"}), 201
+
+        
+        return jsonify("There is no user to delete"), 404
+
+    return jsonify({"msg": "error deleting the user from the team"}), 401
+
 # get chores from all users in team of logged in user
 @api.route('/choresofteam', methods=['GET'])
 def getChoresfromUsersInTeam():

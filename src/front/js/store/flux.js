@@ -269,7 +269,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             return false;
           }
           const data = await resp.json();
-          setStore({ team: data });
+          setStore({ team: data.team });
           console.log("this came from the backend", data);
           return true;
         } catch (error) {
@@ -338,6 +338,34 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error fetching the choresofteam data");
         }
       },
+
+      //delete a user from a team
+      deleteUserFromTeam: async () => {
+        const store = getStore();
+        const opts = {
+          method: "DELETE",
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/team" + `?email=${store.email}`,
+            opts
+          );
+
+          if (resp.status !== 201) {
+            alert("error before initial 201 request");
+
+            return false;
+          }
+          const data = await resp.json();
+          console.log("this came from the backend", data);
+          setStore({ team: null });
+          return true;
+        } catch (error) {
+          console.log("there's an error deleting the user from the team");
+        }
+      },
+
       //get a list of users that belong to team and then query the chores that belong to the user.id
 
       deleteAllChores: async () => {
