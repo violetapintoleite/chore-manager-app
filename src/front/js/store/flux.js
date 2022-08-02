@@ -169,8 +169,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 200) {
-            alert("error before initial 200 request of GET request");
-
             return false;
           }
           const data = await resp.json();
@@ -288,7 +286,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 200) {
-
             return false;
           }
           const data = await resp.json();
@@ -332,7 +329,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             data.teamChores
           );
           setStore({ teamChoreList: data.teamChores });
-
           return true;
         } catch (error) {
           console.log("there's an error fetching the choresofteam data");

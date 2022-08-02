@@ -72,27 +72,27 @@ export const Navbar = ({ excludeFromHome = true }) => {
               >
                 <li>
                   {" "}
-                  
-                    <a className="dropdown-item" href="/profile">
-                      Dashboard
-                    </a>{" "}
-                  
+                  <a className="dropdown-item" href="/profile">
+                    Dashboard
+                  </a>{" "}
                 </li>
                 <li>
                   {" "}
-                  
-                    <a className="dropdown-item" href="/history">
-                      My Chores
-                    </a>{" "}
-                 
+                  <a className="dropdown-item" href="/history">
+                    My Chores
+                  </a>{" "}
                 </li>
                 <li>
                   {" "}
-                 
-                    <a className="dropdown-item" href="/metrics">
-                      My Metrics
-                    </a>
-              
+                  <a className="dropdown-item" href="/metrics">
+                    My Metrics
+                  </a>
+                </li>
+                <li>
+                  {" "}
+                  <a className="dropdown-item" href="/teamMetrics">
+                    My Team Metrics
+                  </a>
                 </li>
                 <li>
                   {" "}

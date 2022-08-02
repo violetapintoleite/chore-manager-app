@@ -4,7 +4,7 @@ import { Bar } from "react-chartjs-2";
 
 export const TeamMetrics = () => {
   const { store, actions } = useContext(Context);
-
+  
   useEffect(() => {
     actions.getChoresfromUsersInTeam(store.team);
   }, [store.team]);
@@ -196,8 +196,8 @@ export const TeamMetrics = () => {
 
   return (
     <>
-      <div class="row">
-        <div class="col-sm-6">
+      <div className="row">
+        <div className="col-sm-6">
           <div
             className="card"
             style={{
@@ -218,7 +218,7 @@ export const TeamMetrics = () => {
           </div>
         </div>
         <br></br>
-        <div class="col-sm-6">
+        <div className="col-sm-6">
           <div
             className="card"
             style={{
