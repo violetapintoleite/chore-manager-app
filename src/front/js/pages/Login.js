@@ -52,10 +52,10 @@ function Login() {
             Submit{" "}
           </button>
         </div>
-        <h4 className="mt-3">
+        <p className="mt-3 text-center">
           {" "}
           Don't yet have an account? <a href="/signup"> Signup through here </a>
-        </h4>{" "}
+        </p>{" "}
       </div>
     </div>
   );

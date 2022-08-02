@@ -6,7 +6,9 @@ export const TeamMetrics = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getChoresfromUsersInTeam(store.team);
+    if (store.team) {
+      actions.getChoresfromUsersInTeam(store.team);
+    }
   }, [store.team]);
 
   // functions to format duration value

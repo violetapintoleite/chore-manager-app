@@ -78,10 +78,10 @@ function Signup() {
             <p></p>
           )}
         </div>
-        <h4 className="mt-3">
+        <p className="mt-3 text-center">
           {" "}
           Already have an account? <a href="/login"> Login through here </a>
-        </h4>
+        </p>
       </div>
     </div>
   );

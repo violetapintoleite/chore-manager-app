@@ -6,12 +6,18 @@ import AddToTeam from "../component/AddToTeam";
 
 export const TeamMetricsPage = () => {
   const { store, actions } = useContext(Context);
+
+  useEffect(() => {
+    if (store.email) {
+      actions.getTeamByUserEmail(store.email);
+    }
+  }, [store.email]);
   return (
     <div className="text-center">
-      <h1 className="display-4">These are your team metrics</h1>
+      <h1>These are your team metrics</h1>
       {!store.team ? (
         <div>
-          <p className="lead">
+          <p>
             If you haven't signed up for a team yet, choose one from the
             dropdown below and have clarity on all the team chore stats!
           </p>
@@ -21,7 +27,7 @@ export const TeamMetricsPage = () => {
         </div>
       ) : (
         <div>
-          <p className="lead">
+          <p>
             Your team is <strong>{store.team}</strong>. Check out your stats
             below on the charts!
           </p>

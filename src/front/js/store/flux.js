@@ -80,6 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.removeItem("token");
         console.log("log out triggered");
         setStore({ token: null, team: null });
+        localStorage.removeItem("team");
       },
 
       // creating the login functionality - needs to verify if user exists in DB and generate access token
