@@ -117,6 +117,7 @@ export const MetricsData = () => {
                 },
               ],
             }}
+            
           />
         </div>
         <div
@@ -155,6 +156,7 @@ export const MetricsData = () => {
                 },
               ],
             }}
+            
           />
         </div>
       </div>

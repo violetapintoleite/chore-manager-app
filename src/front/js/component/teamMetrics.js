@@ -216,6 +216,24 @@ export const TeamMetrics = () => {
               labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
               datasets: users_datasets_total_times,
             }}
+            options={{
+              scales: {
+                y: {
+                  title: {
+                    display: true,
+                    text: "Number of times doing the chore",
+                    font: { size: 16 },
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: "Type of chore",
+                    font: { size: 16 },
+                  },
+                },
+              },
+            }}
           />
         </div>
         <div
@@ -235,6 +253,24 @@ export const TeamMetrics = () => {
             data={{
               labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
               datasets: users_datasets_duration,
+            }}
+            options={{
+              scales: {
+                y: {
+                  title: {
+                    display: true,
+                    text: "Time spent doing the chore (min)",
+                    font: { size: 16 },
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: "Type of chore",
+                    font: { size: 16 },
+                  },
+                },
+              },
             }}
           />
         </div>
