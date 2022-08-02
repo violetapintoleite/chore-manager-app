@@ -4,7 +4,7 @@ import { Bar } from "react-chartjs-2";
 
 export const TeamMetrics = () => {
   const { store, actions } = useContext(Context);
-  
+
   useEffect(() => {
     actions.getChoresfromUsersInTeam(store.team);
   }, [store.team]);
@@ -196,49 +196,45 @@ export const TeamMetrics = () => {
 
   return (
     <>
-      <div className="row">
-        <div className="col-sm-6">
-          <div
-            className="card"
-            style={{
-              width: "50%",
-              height: "100%",
-            }}
-          >
-            <div className="card-header">
-              Total chores you and your team did : {total_amount_of_chores}
-            </div>
-            <Bar
-              datasetIdKey="id"
-              data={{
-                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                datasets: users_datasets_total_times,
-              }}
-            />
+      <div class="d-flex justify-content-center">
+        {" "}
+        <div
+          className="card m-5"
+          style={{
+            width: "50%",
+            height: "100%",
+          }}
+        >
+          <div className="card-header">
+            Total chores you and your team did : {total_amount_of_chores}
           </div>
+          <Bar
+            datasetIdKey="id"
+            data={{
+              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+              datasets: users_datasets_total_times,
+            }}
+          />
         </div>
-        <br></br>
-        <div className="col-sm-6">
-          <div
-            className="card"
-            style={{
-              width: "50%",
-              height: "100%",
-            }}
-          >
-            <div className="card-header">
-              Total time you and your team spent on all chores:{" "}
-              {total_time.slice(0, -3)}H
-            </div>
-
-            <Bar
-              datasetIdKey="id"
-              data={{
-                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                datasets: users_datasets_duration,
-              }}
-            />
+        <div
+          className="card m-5"
+          style={{
+            width: "50%",
+            height: "100%",
+          }}
+        >
+          <div className="card-header">
+            Total time you and your team spent on all chores:{" "}
+            {total_time.slice(0, -3)}H
           </div>
+
+          <Bar
+            datasetIdKey="id"
+            data={{
+              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+              datasets: users_datasets_duration,
+            }}
+          />
         </div>
       </div>
     </>

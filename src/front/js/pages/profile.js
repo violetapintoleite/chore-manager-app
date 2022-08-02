@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import YTiframe from "../component/YTiframe";
-import AddToTeam from "../component/AddToTeam";
+
 import VideoSearch from "../component/YTSearch";
 
 function Profile() {
@@ -16,10 +16,12 @@ function Profile() {
 
   return (
     <div>
-      <h5>Logged in as {store.username}</h5>
-      <AddToTeam></AddToTeam>
+      <h5 className="text-center">
+        Welcome back <strong>{store.email}</strong>!
+      </h5>
+      
       <div className="card">
-        {!store.team ? <p></p> : <h2>Your team is {store.team}</h2>}
+        
         <VideoSearch></VideoSearch>
       </div>
     </div>

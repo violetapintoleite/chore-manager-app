@@ -52,11 +52,9 @@ function AddToTeam() {
           </form>
         </div>
       ) : (
-        <p>
-          <button onClick={() => actions.deleteUserFromTeam()}>
-            Remove myself from the team
-          </button>
-        </p>
+        <div>
+          
+        </div>
       )}
     </div>
   );
