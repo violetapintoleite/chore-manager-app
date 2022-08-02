@@ -10,14 +10,17 @@ const VideoSearch = () => {
   let videoCode = embedURL.concat(videoID);
 
   const searchYouTube = (term) => {
-    console.log(term, searchTerm);
+    console.log(term, searchTerm, "here's the search term");
     YTSearch({ key: API_KEY, term: term }, (videos) => {
       const firstVideoResult = videos[0].id.videoId;
+      const allVideos = videos;
 
       setVideoID(firstVideoResult);
-      console.log(firstVideoResult, "returning obj of the first result");
+      // console.log(firstVideoResult, "returning obj of the first result");
+      // console.log(allVideos);
     });
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,23 +29,21 @@ const VideoSearch = () => {
 
   return (
     <div className="container"> 
-      <div class="input-group mb-3">
+    <div className="card">
+      <div className="input-group mb-3">
       <p>Need help with how to do a chore? Search for tutorial below ...or want to listen to a song, search for that instead!</p>
-        <form className="d-flex container">
-          
+        <form className="d-flex container" onSubmit={handleSubmit}>
           <input
             type="text"
             className="form-control"
             placeholder="Search in Youtube"
-            aria-label="Recipient's username"
             aria-describedby="button-addon2"
             value={searchTerm}
             onChange={(event) => setSearchTerm(event.target.value)}
           ></input>
           <p>&nbsp;</p>
           <button
-            class="btn btn-outline-secondary"
-            onSubmit={handleSubmit}
+            className="btn"
             onClick={handleSubmit}
             type="button"
             id="button-addon2"
@@ -53,10 +54,12 @@ const VideoSearch = () => {
       </div>
       {console.log(videoID)}
       { !videoCode || videoCode== "" ? "" : 
-      <div class="ratio ratio-16x9">
+      <div className="ratio ratio-16x9">
         <iframe src={videoCode} allow="autoplay;" value="player"></iframe>
       </div>
 }
+    </div>
+    <p className="mb-4"></p>
     </div>
   );
 };
