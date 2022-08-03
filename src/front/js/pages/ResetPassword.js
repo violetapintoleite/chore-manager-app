@@ -1,8 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useNavigate } from 'react-router-dom';
-import validator from 'validator';
 
 function ResetPassword() {
 
@@ -19,20 +18,42 @@ const handleClick = () => {
 };
 
 //PW verification
-const [password, setPassword] = useState('')
+const [password, setPassword] = useState('');
+const [cPassword, setCPassword] = useState('');
+const [showErrorMessage, setShowErrorMessage] = useState(false);
+const [isCPasswordDirty, setisCPasswordDirty] = useState(false);
 
+const handleCPassword = (e) => {
+  setCPassword(e.target.value);
+  setisCPasswordDirty(true);
+}
+
+useEffect(() => {
+  if (isCPasswordDirty) {
+      if (password === cPassword) {
+          setShowErrorMessage(false);
+          
+      } else {
+          setShowErrorMessage(true)
+        
+      }
+  }
+}, [cPassword]);
 
   return (
     <div>
         <div className='container text-center align-items-center'>
-        <h1 className="mb-3">Reset Password</h1>
-        <p>Enter your new password below:</p>
+        <h1 className="mb-1">Reset password</h1>
+       {password.length >= 8 ? "" : <span>Enter your new password below:</span>}
+       <br/>
+        <span> {password.length < 8 ? <span className="p-2">Password needs to be at least 8 characters long</span> : <span></span>} </span>
         <form className="">
-        <input type="password" style={{width: "240px"}} className="m-1 mb-2" placeholder="New Password" value={password} onChange={(event) => setEmail(event.target.value)} /> 
+        <input type="password" style={{width: "240px"}} className="m-1 mb-2" placeholder="New Password" value={password} onChange={(event) => setPassword(event.target.value)} /> 
         <br/>
-        <input type="password" style={{width: "240px"}} className="m-1" placeholder="Confirm your new password" value={password} onChange={(event) => setEmail(event.target.value)} /> 
+        <input type="password" style={{width: "240px"}} className="m-1" placeholder="Confirm your new password" value={cPassword} onChange={handleCPassword}  /> 
         <br/>
-        <button className="btn m-1" onClick={handleClick}> Submit </button> 
+        {showErrorMessage && isCPasswordDirty ? <div> Passwords don't match </div> : ''}
+        <button className="btn m-1" disabled={password !== cPassword} onClick={handleClick}> Submit </button> 
         </form>
         </div>
     

@@ -29,13 +29,9 @@ return (
       <input type="text" className="m-1 pb-1" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)}/> 
       <input type="text" className="m-1 pb-1" placeholder="username" value={username} onChange={(event) => setUsername(event.target.value)}/>
       <input type="password" className="m-1 pb-1" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
-    </div>
-    <div className="align-items-center">
       <button className="btn m-1" onClick={handleClick}> Submit </button>
-      <Link to="/forgot-password">
-      <button className="btn m-1" > Forgot Password? </button>
-      </Link>
-    </div>   
+    </div>
+      <h5 className="mt-3">Forgot Password? <a href= "/forgot-password"> Click here to reset </a></h5> 
     <h4 className="mt-3"> Don't yet have an account? <a href= "/signup"> Signup through here </a></h4>
     {/* conditional rendering if there's a failed login attempt? */}
    

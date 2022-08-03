@@ -46,11 +46,8 @@ return (
       </div>
     <div>
       <input type="email" className="m-1 pb-1" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
-      <br/>     
       <input type="text" className="m-1 pb-1" placeholder="username" value={username} onChange={(event) => setUsername(event.target.value)}/>
-      <br/>
       <input type="password" className="m-1 pb-1" placeholder="password" value={password} onChange={(event) => setPassword(event.target.value)}/>
-      <br/>
       <button className="btn m-1 " onClick={handleClick} disabled={password.length < 8 || username.length < 2}> Submit </button> <br/>
     </div>   
     <h4 className="mt-3"> Already have an account? <a href= "/login"> Login through here </a></h4>     

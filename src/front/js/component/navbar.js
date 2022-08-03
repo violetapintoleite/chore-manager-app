@@ -93,7 +93,7 @@ export const Navbar = ({excludeFromHome=true}) => {
                   {" "}
                   <Link to="/">
                     <button
-                      className="btn m-2 nav-link"
+                      className="btn m-2"
                       onClick={() => actions.logout()}
                     >
                       Logout
