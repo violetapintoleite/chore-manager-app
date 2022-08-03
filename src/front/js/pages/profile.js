@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-import YTiframe from "../component/YTiframe";
 import AddToTeam from "../component/AddToTeam";
 import VideoSearch from "../component/YTSearch";
 
@@ -15,7 +14,7 @@ function Profile() {
   if (!token || token == "" || token == undefined) navigate("/login");
 
   return (
-    <div>
+    <div className="container">
       <h5>Logged in as {store.username}</h5>
       <AddToTeam></AddToTeam>
       <div className="card">

@@ -4,7 +4,7 @@ import "../../styles/home.css";
 import { useNavigate } from 'react-router-dom';
 import validator from 'validator';
 
-function PasswordReset() {
+function ForgotPassword() {
 
     const { store, actions } = useContext(Context);
     const token = localStorage.getItem("token");
@@ -15,8 +15,7 @@ function PasswordReset() {
 if(token && token != "" && token != undefined ) navigate('/profile');
 
 const handleClick = () => {
-    // the action here should check if there's an email in the DB - will be added to FLUX
-    // return an error email not found?
+  actions.resetPasswordRequest(email);
 };
 
 //email verification
@@ -34,9 +33,9 @@ const [emailError, setEmailError] = useState('')
   return (
     <div>
         <div className='container text-center align-items-center'>
-        <h1 className="mb-3">Password Reset</h1>
+        <h1 className="mb-3">Forgot Password</h1>
         <p>Enter your password to get a password recovery email</p>
-        <input type="email" className="m-1" placeholder="email" value = {email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
+        <input type="email" className="m-1" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
         <button className="btn m-1" onClick={handleClick}> Submit </button> 
         <br/>
         <span className="text-danger" >{emailError}</span> 
@@ -48,4 +47,4 @@ const [emailError, setEmailError] = useState('')
   )
 }
 
-export default PasswordReset;
+export default ForgotPassword;

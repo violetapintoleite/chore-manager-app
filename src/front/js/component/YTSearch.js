@@ -41,7 +41,7 @@ const VideoSearch = () => {
           ></input>
           <p>&nbsp;</p>
           <button
-            class="btn btn-outline-secondary"
+            class="btn"
             onSubmit={handleSubmit}
             onClick={handleSubmit}
             type="button"

@@ -10,7 +10,8 @@ import { Single } from "./pages/single";
 import { History } from "./pages/history";
 import { Metrics } from "./pages/metrics";
 import { TeamMetricsPage } from "./pages/teamMetrics";
-import  PasswordReset from "./pages/PasswordReset.js";
+import  ForgotPassword from "./pages/ForgotPassword.js";
+import ResetPassword from "./pages/ResetPassword.js";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -38,7 +39,8 @@ const Layout = () => {
             <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />
-            <Route element={<PasswordReset />} path="/reset" />
+            <Route element={<ForgotPassword />} path="/forgot-password" />
+            <Route element={<ResetPassword />} path="/reset-password" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

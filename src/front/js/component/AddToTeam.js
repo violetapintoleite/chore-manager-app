@@ -29,7 +29,7 @@ function AddToTeam() {
           <form>
             <div class="input-group">
               <select
-                class="form-select"
+                class="form-select m-1"
                 id="inputGroupSelect04"
                 aria-label="Example select with button addon"
                 value={teamName}
@@ -42,7 +42,7 @@ function AddToTeam() {
                 <option value="The Incredibles">The Incredibles</option>
               </select>
               <button
-                class="btn btn-outline-secondary"
+                class="btn m-1"
                 type="button"
                 onClick={handleSubmit}
               >
@@ -53,7 +53,7 @@ function AddToTeam() {
         </div>
       ) : (
         <p>
-          <button onClick={() => actions.deleteUserFromTeam()}>
+          <button className="btn" onClick={() => actions.deleteUserFromTeam()}>
             Remove myself from the team
           </button>
         </p>

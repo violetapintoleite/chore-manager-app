@@ -394,6 +394,30 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+
+      // reset PW post request
+      resetPasswordRequest: async (email) => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+          }),
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/reset" + `?email=${email}`,
+
+            opts
+          );
+
+          return true;
+        } catch (error) {
+          console.log("error reseting the password");
+        }
+      },
+
     },
   };
 };

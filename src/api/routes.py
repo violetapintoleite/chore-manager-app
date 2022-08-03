@@ -10,8 +10,38 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 from sqlalchemy import or_, exc
 from datetime import date, datetime
+# from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from flask_mail import Mail, Message
+from dotenv import load_dotenv
 
 api = Blueprint('api', __name__)
+app = Flask(__name__)
+load_dotenv()
+
+#  configuration of mail
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
+app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_MAX_EMAILS'] = 5
+
+
+mail = Mail(app)
+mail.init_app(app)
+
+# message object mapped to a particular URL ‘/’
+@api.route("/forgot-password",  methods=["POST"])
+def index():
+   msg = Message(
+                'Hello',
+                sender ='c.martinroffey@gmail.com',
+                recipients = ['miyasir353@galotv.com']
+               )
+   msg.body = 'Hello Flask message sent from Flask-Mail'
+   mail.send(msg)
+   return jsonify({'Sent'}) 
 
 # sign up end point (DONE)
 @api.route("/signup", methods=["POST"])
@@ -225,19 +255,31 @@ def getChoresfromUsersInTeam():
         
     return jsonify({"teamChores" : serialized_chores})
 
-    # get end point to compare if email exists in DB 
-@api.route('/reset', methods=['GET'])
-def checkEmailExists(): 
-    email = request.args.get("email", None)
-    user = User.get_by_email(email)
+#route to ensure that only user with a valid key can access page to reset password
+@api.route("/reset-password", methods=["GET"])
+@jwt_required()
+def confirmIdentity():
+   # Access the identity of the current user with get_jwt_identity
+    current_user = get_jwt_identity()
+    return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
 
-    if user: 
-        emailExists = EmailExists.get_email_by_user_id(user.id)
+
+    # get end point to compare if email exists in DB 
+# @api.route('/reset', methods=['GET', 'POST'])
+# def reset_request(): 
+#     email = request.args.get("email", None)
+#     user = User.get_by_email(email)
+
+#     current_user = get_jwt_identity()
+#     if current_user 
+#     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
+
+#     if user: 
+#        try
         
 
-    return jsonify({"msg": "no user"}), 404
-
+#     return jsonify({"msg": "no user"}), 404
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
