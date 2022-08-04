@@ -156,43 +156,38 @@ export const TeamMetrics = () => {
     };
   }
 
+  const colors = [
+    "rgb(60, 179, 113, 0.2)",
+    "rgb(238, 130, 238, 0.2)",
+    "rgb(255, 165, 0, 0.2)",
+    "rgb(106, 90, 205, 0.2)",
+    "rgb(255, 165, 0, 0.2)",
+    "rgb(106, 90, 205, 0.2)",
+    "rgb(250, 250, 0, 0.2)",
+    "rgb(0, 255, 255, 0.2)",
+    "rgb(60, 60, 113, 0.2)",
+    "rgb(238, 113, 113, 0.2)",
+    "rgb(106, 60, 60, 0.2)",
+    "rgb(106, 90, 205, 0.2)",
+  ];
+
   for (let i = 0; i < users.length; i++) {
     const user_chore_data = getUserChoreData(
       store.teamChoreList.filter((chore) => chore.user_id === users[i])
     );
+
     users_datasets_total_times.push({
       label: user_chore_data.user_name,
       data: user_chore_data.total_amount_of_chores,
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-      ],
-      borderWidth: 1,
+      backgroundColor: [colors[i]],
+     
     });
     users_datasets_duration.push({
       label: user_chore_data.user_name,
+
       data: user_chore_data.total_time_spent,
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-      ],
-      borderWidth: 1,
+      backgroundColor: [colors[i]],
+      
     });
   }
 

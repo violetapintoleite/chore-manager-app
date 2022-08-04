@@ -26,7 +26,6 @@ function Signup() {
   const [emailError, setEmailError] = useState("");
   const validateEmail = (e) => {
     var email = e.target.value;
-
     if (validator.isEmail(email)) {
       setEmailError("");
     } else {
@@ -38,72 +37,59 @@ function Signup() {
     <div className="home position-relative">
       <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Sign Up</h1>
-        <form>
-          <div className="mb-3">
-            <label htmlFor="" className="">
-              Email address
-            </label>
-            <input
-              className=""
-              type="email"
-              placeholder="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              onInput={(e) => validateEmail(e)}
-            />
-            <span className="text-danger">{emailError}</span>
-          </div>
-          <div className="mb-3">
-            <label className="">Username</label>
-            <input
-              className=""
-              placeholder="username"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="exampleInputPassword1" className="">
-              Password
-            </label>
-            <input
-              type="password"
-              className=""
-              placeholder="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-            />
-          </div>
-          <div>
-            {username == "" || username.length < 2 ? (
-              <span className="text-danger">
-                Username needs to be at least 2 characters long.
-              </span>
-            ) : password == "" || password.length < 8 ? (
-              <span className="text-danger">
-                Password needs to be at least 8 characters long
-              </span>
-            ) : (
-              <p></p>
-            )}
-          </div>
-
+        <div>
+          <label class="form-label">Email address</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="email"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <label className="form-label">Username</label>
+          <input
+            type="text"
+            className="form-control"
+            placeholder="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
+          <label className="form-label">Password</label>
+          <input
+            type="password"
+            className="form-control"
+            placeholder="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </div>
+        <div>
           <button
-            className="btn "
+            className="btn"
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
-            Submit
-          </button>
-        </form>
-
-        <p className="mt-3 text-center">
+            {" "}
+            Submit{" "}
+          </button>{" "}
+          <br />
+          <span className="text-danger">{emailError}</span>
+          {username == "" || username.length < 2 ? (
+            <p>"username needs to be at least 2 characters"</p>
+          ) : password == "" || password.length < 8 ? (
+            <p className="p-2">
+              Password needs to be at least 8 characters long
+            </p>
+          ) : (
+            <p></p>
+          )}
+        </div>
+        <h4 className="mt-3">
           {" "}
           Already have an account? <a href="/login"> Login through here </a>
-        </p>
+        </h4>
       </div>
     </div>
   );
 }
-
 export default Signup;

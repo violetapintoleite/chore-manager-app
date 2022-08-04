@@ -20,22 +20,28 @@ function Login() {
   return (
     <div className="home position-relative">
       <div className="position-absolute top-50 start-50 translate-middle">
-        <h1 className="mb-3 text-center">Login</h1>
+        <h1 className="mb-3 text-center">Welcome back!</h1>
         <div>
+          <label class="form-label">Email address</label>
           <input
             type="text"
+            className="form-control"
             placeholder="email"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
           />
+          <label className="form-label">Username</label>
           <input
             type="text"
+            className="form-control"
             placeholder="username"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
+          <label className="form-label">Password</label>
           <input
             type="password"
+            className="form-control"
             placeholder="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
