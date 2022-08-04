@@ -13,10 +13,6 @@ function ResetPassword() {
     //redirects to profile page if there's a token
 // if(token && token != "" && token != undefined ) navigate('/profile');
 
-const handleClick = () => {
-  // actions.resetPasswordRequest(email);
-};
-
 //PW verification
 const [password, setPassword] = useState('');
 const [cPassword, setCPassword] = useState('');
@@ -39,6 +35,13 @@ useEffect(() => {
       }
   }
 }, [cPassword, password]);
+
+// need to use Router hook to get the params from the routes and then extract the token
+
+// onclick handler to submit info to backend
+const handleClick = () => {
+  actions.resetPasswordEmailRequest(password, token);
+};
 
   return (
     <div>

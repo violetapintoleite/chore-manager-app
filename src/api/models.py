@@ -1,5 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
-# from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from werkzeug.security import check_password_hash, generate_password_hash
 
 db = SQLAlchemy()
 
@@ -25,22 +25,26 @@ class User(db.Model):
         return User.query.filter_by(email=email).filter_by(password=password).first()
 
     @classmethod
+    def get_token(self, expires_sec=300):
+        # serial=Serializer(app.config[os.environ.get('FLASK_APP_KEY', 'sample key')], expires_in=expires_sec)
+        # return serial.generate_password_hash({'user_id':user.id})
+        return generate_password_hash({'user_id':user.id})
+
+    @staticmethod
+    def verify_reset_token(token):
+        # serial=Serializer(app.config[os.environ.get('FLASK_APP_KEY', 'sample key')])
+        # try:
+        #     user_id = serial.loads(token)['user_id']
+        # except:
+        #     return None
+        return User.query.get(user_id)
+
+
+    @classmethod
     def get_by_email(cls, email):
         user = cls.query.filter_by(email=email).one_or_none()
         return user
 
-    # def get_reset_token(self, expires_sec=1800):
-    #     s = Serializer(app.config['SECRET_KEY'],expires_sec=1800)
-    #     return s.dumps({'user_id': self.id}.decode('utf-8'))
-    
-    # @staticmethod
-    # def verify_reset_token(token):
-    #     s = Serializer(['SECRET_KEY'])
-    #     try:
-    #         user_id = s.loads(token)[user_id]
-    #     except:
-    #         return None
-    #     return User.query.get(user_id)
 
 class Chore(db.Model):
     __tablename__ = "Chore"

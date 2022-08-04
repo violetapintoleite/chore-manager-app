@@ -395,8 +395,8 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
-      // reset PW post request
-      resetPasswordRequest: async (email) => {
+      // reset PW email post request
+      resetPasswordEmailRequest: async (email) => {
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -407,14 +407,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 
         try {
           const resp = await fetch(
-            process.env.BACKEND_URL + "/api/reset" + `?email=${email}`,
+            process.env.BACKEND_URL + "/api/forgot-password" + `?email=${email}`,
 
             opts
           );
 
           return true;
         } catch (error) {
-          console.log("error reseting the password");
+          console.log("error requesting the email");
+        }
+      },
+
+      // change PW PUT request
+      //question - do I need to add the token as a prop?
+      resetPasswordEmailRequest: async (password, token) => {
+        const opts = {
+          method: "PUT",
+          headers: { "Content-Type": "application/json", 
+          Authorization: "Bearer " + token},
+          body: JSON.stringify({
+            password: password
+          }),
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/reset-password" + `?token=${token}`,
+
+            opts
+          );
+
+          return true;
+        } catch (error) {
+          console.log("error resetting the password");
         }
       },
 

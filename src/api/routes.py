@@ -8,40 +8,30 @@ from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import JWTManager
 from sqlalchemy import or_, exc
 from datetime import date, datetime
-# from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from flask_mail import Mail, Message
 from dotenv import load_dotenv
 
 api = Blueprint('api', __name__)
-app = Flask(__name__)
+
 load_dotenv()
 
+# jwt = JWTManager(app)
+
 #  configuration of mail
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
-app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_MAX_EMAILS'] = 5
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
+# app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+# app.config['MAIL_MAX_EMAILS'] = 5
 
 
-mail = Mail(app)
-mail.init_app(app)
-
-# message object mapped to a particular URL ‘/’
-@api.route("/forgot-password",  methods=["POST"])
-def index():
-   msg = Message(
-                'Hello',
-                sender ='c.martinroffey@gmail.com',
-                recipients = ['miyasir353@galotv.com']
-               )
-   msg.body = 'Hello Flask message sent from Flask-Mail'
-   mail.send(msg)
-   return jsonify({'Sent'}) 
+# mail = Mail(app)
+# mail.init_app(app)
 
 # sign up end point (DONE)
 @api.route("/signup", methods=["POST"])
@@ -172,11 +162,10 @@ def login():
 # protected page end point
 @api.route("/profile", methods=["GET"])
 @jwt_required()
-def get_hello():
+def protected():
    # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
-
 
 # post team endpoint 
 @api.route('/team', methods=['POST'])
@@ -256,32 +245,58 @@ def getChoresfromUsersInTeam():
         
     return jsonify({"teamChores" : serialized_chores})
 
+
+#### -- need to modify  this to the BACKEND URL os.environ['GMAIL_USERNAME']
+# send email function
+def send_mail(user):
+    token=user.get_token()
+    msg = Message(
+                'Password Reset Request',
+                sender ='c.martinroffey@gmail.com',
+                recipients = [user.email]
+               )
+    msg.body = f''' To reset your password please click the link below
+
+
+{url_for('reset-password', token=token, _external=True)}
+
+If you didn't request a password reset request, please ignore this message.
+    '''
+    mail.send(msg)
+    return jsonify({'Sent'})
+
 #########
  # get end point to compare if email exists in DB 
-@api.route('/forgot-password', methods=['GET', 'POST'])
+@api.route('/forgot-password', methods=['POST'])
 def reset_request(): 
 
-    current_user = get_jwt_identity()
-    if current_user:
-        return redirect(url_for('/', message="reset_request endpoint"))
-    # return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
-
-    # if user: 
-    #    try
-
-    # return jsonify({"msg": "no user"}), 404
-
-
-
+    user=User.get_by_email(email)
+    if user:
+        send_mail(user)
+        return jsonify(message="reset email sent"),201
+    else:
+        return({"error":"email does not exist"},400)
+    
 
 #route to ensure that only user with a valid key can access page to reset password
-@api.route("/reset-password", methods=["POST"])
+@api.route("/reset-password/<token>", methods=["GET", 'POST'])
 @jwt_required()
-def confirmIdentity():
-   # Access the identity of the current user with get_jwt_identity
-    current_user = get_jwt_identity()
-    return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
+def confirmIdentity(token):
+    password = request_body['password']
+    hash_password = generate_password_hash(password)
 
+
+    user=User.verify_reset_token(token)
+    if user is None:
+        return jsonify(message="access denied"),401
+
+    if user and check_password_hash(user.password, password):
+        access_token = create_access_token(identity=email)
+        user.password=hash_password
+        db.session.commit()
+        return jsonify({"access_token": access_token}, "password reset"),201
+    else:
+        return {"error":"could not reset password"},400
 
    
 if __name__ == "__main__":
