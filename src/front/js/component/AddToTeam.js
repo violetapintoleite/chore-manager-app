@@ -27,22 +27,22 @@ function AddToTeam() {
         <div className="container mb-2">
           <h2>Select a team</h2>
           <form>
-            <div class="input-group">
+            <div className="input-group">
               <select
-                class="form-select m-1"
+                className="form-select m-1"
                 id="inputGroupSelect04"
                 aria-label="Example select with button addon"
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
               >
                 <option selected>Choose your team...</option>
-                <option value="The Flinstones">The Flinstones</option>
-                <option value="The Addams">The Addams</option>
-                <option value="The Simpsons">The Simpsons</option>
-                <option value="The Incredibles">The Incredibles</option>
+                <option defaultValue="The Flinstones">The Flinstones</option>
+                <option defaultValue="The Addams">The Addams</option>
+                <option defaultValue="The Simpsons">The Simpsons</option>
+                <option defaultValue="The Incredibles">The Incredibles</option>
               </select>
               <button
-                class="btn m-1"
+                className="btn m-1"
                 type="button"
                 onClick={handleSubmit}
               >

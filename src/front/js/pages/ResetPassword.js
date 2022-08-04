@@ -11,7 +11,7 @@ function ResetPassword() {
     const navigate = useNavigate();
 
     //redirects to profile page if there's a token
-if(token && token != "" && token != undefined ) navigate('/profile');
+// if(token && token != "" && token != undefined ) navigate('/profile');
 
 const handleClick = () => {
   // actions.resetPasswordRequest(email);

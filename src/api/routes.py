@@ -242,6 +242,7 @@ def deleteUserFromTeam():
 # get chores from all users in team of logged in user
 @api.route('/choresofteam', methods=['GET'])
 def getChoresfromUsersInTeam():
+
     team = request.args.get("team", None)
     users = UsersInTeam.get_user_ids_by_team(team)
     serialized_chores = []
@@ -255,8 +256,26 @@ def getChoresfromUsersInTeam():
         
     return jsonify({"teamChores" : serialized_chores})
 
+#########
+ # get end point to compare if email exists in DB 
+@api.route('/forgot-password', methods=['GET', 'POST'])
+def reset_request(): 
+
+    current_user = get_jwt_identity()
+    if current_user:
+        return redirect(url_for('/', message="reset_request endpoint"))
+    # return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
+
+    # if user: 
+    #    try
+
+    # return jsonify({"msg": "no user"}), 404
+
+
+
+
 #route to ensure that only user with a valid key can access page to reset password
-@api.route("/reset-password", methods=["GET"])
+@api.route("/reset-password", methods=["POST"])
 @jwt_required()
 def confirmIdentity():
    # Access the identity of the current user with get_jwt_identity
@@ -264,22 +283,6 @@ def confirmIdentity():
     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
 
 
-    # get end point to compare if email exists in DB 
-# @api.route('/reset', methods=['GET', 'POST'])
-# def reset_request(): 
-#     email = request.args.get("email", None)
-#     user = User.get_by_email(email)
-
-#     current_user = get_jwt_identity()
-#     if current_user 
-#     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
-
-#     if user: 
-#        try
-        
-
-#     return jsonify({"msg": "no user"}), 404
-
-
+   
 if __name__ == "__main__":
     app.run(debug=True)
