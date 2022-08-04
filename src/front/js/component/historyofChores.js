@@ -13,7 +13,7 @@ export const HistoryofChores = () => {
     actions.getChoresByUserEmail(store.email);
   }, [store.email /*store.choreList*/]);
 
-  console.log(store.choreList)
+  console.log(store.choreList);
 
   /*return (
     <div className="container">
@@ -63,7 +63,7 @@ export const HistoryofChores = () => {
                 </>
               );
             })
-        : "Add a chore"}
+        : ""}
     </>
   );
 };

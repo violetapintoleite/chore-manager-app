@@ -17,11 +17,12 @@ function Profile() {
   return (
     <div>
       <h5 className="text-center m-5">
-        Welcome back <strong>{store.email}</strong>!
+        Hello <strong>{store.email}</strong>!
       </h5>
-
-      <div className="card">
-        <VideoSearch></VideoSearch>
+      <div className="w-50" style={{ margin: "0 auto" }}>
+        <div className="card">
+          <VideoSearch></VideoSearch>
+        </div>
       </div>
     </div>
   );
