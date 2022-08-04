@@ -38,46 +38,70 @@ function Signup() {
     <div className="home position-relative">
       <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Sign Up</h1>
-        <div>
-          <input
-            type="email"
-            placeholder="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            onInput={(e) => validateEmail(e)}
-          />
-          <input
-            type="text"
-            placeholder="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+        <form>
+          <div className="mb-3">
+            <label for="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              type="email"
+              placeholder="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              onInput={(e) => validateEmail(e)}
+            />
+            <span className="text-danger">{emailError}</span>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Username</label>
+            <input
+              className="form-control"
+              type="text"
+              placeholder="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label for="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              type="password"
+              className="form-control"
+              id="exampleInputPassword1"
+              placeholder="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
+          <div>
+            {username == "" || username.length < 2 ? (
+              <span className="text-danger">
+                Username needs to be at least 2 characters long.
+              </span>
+            ) : password == "" || password.length < 8 ? (
+              <span className="text-danger">
+                Password needs to be at least 8 characters long
+              </span>
+            ) : (
+              <p></p>
+            )}
+          </div>
+
           <button
-            className="btn"
+            type="submit"
+            className="btn btn-primary"
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
-            {" "}
-            Submit{" "}
-          </button>{" "}
-          <br />
-          <span className="text-danger">{emailError}</span>
-          {username == "" || username.length < 2 ? (
-            <p>"username needs to be at least 2 characters"</p>
-          ) : password == "" || password.length < 8 ? (
-            <p className="p-2">
-              Password needs to be at least 8 characters long
-            </p>
-          ) : (
-            <p></p>
-          )}
-        </div>
+            Submit
+          </button>
+        </form>
+
         <p className="mt-3 text-center">
           {" "}
           Already have an account? <a href="/login"> Login through here </a>

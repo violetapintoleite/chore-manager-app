@@ -23,35 +23,58 @@ function Login() {
   return (
     <div className="home position-relative">
       <div className="position-absolute top-50 start-50 translate-middle">
-        <h1 className="mb-3 text-center">Login</h1>
-        <div>
-          <input
-            type="text"
-            placeholder="email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="username"
-            value={username}
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+        <h1 className="text-center">Welcome back!</h1>
+        <form>
+          <div className="mb-3">
+            <label for="exampleInputEmail1" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="email"
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+            />
+            <div id="emailHelp" className="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div className="mb-3">
+            <label className="form-label">Username</label>
+            <input
+              type="text"
+              className="form-control"
+              placeholder="username"
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
+            />
+          </div>
+          <div className="mb-3">
+            <label for="exampleInputPassword1" className="form-label">
+              Password
+            </label>
+            <input
+              className="form-control"
+              id="exampleInputPassword1"
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(event) => setPassword(event.target.value)}
+            />
+          </div>
           <button
-            className="btn"
+            type="submit"
+            className="btn btn-primary"
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
-            {" "}
-            Submit{" "}
+            Submit
           </button>
-        </div>
+        </form>
+        <div></div>
         <p className="mt-3 text-center">
           {" "}
           Don't yet have an account? <a href="/signup"> Signup through here </a>
