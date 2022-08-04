@@ -1,5 +1,8 @@
 
-
+.font-for-quote {
+  font-weight: 900;
+  font-size: 60px;
+}
 
 .quote {
   height: 100%;

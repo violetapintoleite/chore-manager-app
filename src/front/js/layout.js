@@ -33,7 +33,6 @@ const Layout = () => {
             <Route element={<Login />} exact path="/login" />
             <Route element={<Profile />} exact path="/profile" />
             <Route element={<History />} path="/history" />
-
             <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />

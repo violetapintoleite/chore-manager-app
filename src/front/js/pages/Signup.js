@@ -40,13 +40,11 @@ function Signup() {
         <h1 className="mb-3 text-center">Sign Up</h1>
         <form>
           <div className="mb-3">
-            <label for="exampleInputEmail1" className="form-label">
+            <label htmlFor="" className="">
               Email address
             </label>
             <input
-              className="form-control"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
+              className=""
               type="email"
               placeholder="email"
               value={email}
@@ -56,23 +54,21 @@ function Signup() {
             <span className="text-danger">{emailError}</span>
           </div>
           <div className="mb-3">
-            <label className="form-label">Username</label>
+            <label className="">Username</label>
             <input
-              className="form-control"
-              type="text"
+              className=""
               placeholder="username"
               value={username}
               onChange={(event) => setUsername(event.target.value)}
             />
           </div>
           <div className="mb-3">
-            <label for="exampleInputPassword1" className="form-label">
+            <label htmlFor="exampleInputPassword1" className="">
               Password
             </label>
             <input
               type="password"
-              className="form-control"
-              id="exampleInputPassword1"
+              className=""
               placeholder="password"
               value={password}
               onChange={(event) => setPassword(event.target.value)}
@@ -93,8 +89,7 @@ function Signup() {
           </div>
 
           <button
-            type="submit"
-            className="btn btn-primary"
+            className="btn "
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
