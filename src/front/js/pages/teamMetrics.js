@@ -14,13 +14,16 @@ export const TeamMetricsPage = () => {
   }, [store.email]);
   return (
     <div className="text-center">
-      <h1>These are your team metrics</h1>
+      <h1>Team Metrics</h1>
       {!store.team ? (
         <div>
-          <p>
-            If you haven't signed up for a team yet, choose one from the
-            dropdown below and have clarity on all the team chore stats!
-          </p>
+          <div className="d-flex justify-content-center">
+            <div class="alert alert-primary" role="alert">
+              Choose a team from the dropdown below and have clarity on all the
+              team members stats!
+            </div>
+          </div>
+          <p></p>
           <div className="w-25" style={{ margin: "0 auto" }}>
             <AddToTeam></AddToTeam>
           </div>
@@ -28,8 +31,7 @@ export const TeamMetricsPage = () => {
       ) : (
         <div>
           <p>
-            Your team is <strong>{store.team}</strong>. Check out your stats
-            below on the charts!
+            Your team is <strong>{store.team}</strong>.
           </p>
           <button
             className="btn btn-primary btn-lg"

@@ -103,7 +103,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 201) {
-            alert("there's an error before the 201");
+            alert("Username or password incorrect.");
             return false;
           }
           const data = await resp.json();

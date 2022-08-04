@@ -198,17 +198,17 @@ export const TeamMetrics = () => {
 
   return (
     <>
-      <div class="d-flex justify-content-center">
+      <div class="row justify-content-md-center">
         {" "}
         <div
-          className="card m-5"
+          className="col-md-auto card m-5"
           style={{
             width: "50%",
             height: "100%",
           }}
         >
           <div className="card-header">
-            Total chores you and your team did : {total_amount_of_chores}
+            Total of chores : <strong>{total_amount_of_chores}</strong>
           </div>
           <Bar
             datasetIdKey="id"
@@ -237,15 +237,15 @@ export const TeamMetrics = () => {
           />
         </div>
         <div
-          className="card m-5"
+          className="col-md-auto card m-5"
           style={{
             width: "50%",
             height: "100%",
           }}
         >
           <div className="card-header">
-            Total time you and your team spent on all chores:{" "}
-            {total_time.slice(0, -3)}H
+            Total time spent on all chores:
+            <strong> {total_time.slice(0, -3)}H</strong>
           </div>
 
           <Bar

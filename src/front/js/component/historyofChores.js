@@ -39,7 +39,7 @@ export const HistoryofChores = () => {
             .map((listEntry, i) => {
               return (
                 <>
-                  <div class="list-group">
+                  <div class="list-group" style={{ margin: "5px" }}>
                     <a
                       href="#"
                       class="list-group-item list-group-item-action"

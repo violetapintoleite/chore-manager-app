@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
 import InspoQuote from "../component/inspoQuote";
 import "../../styles/modules/buttonstyles.css";
 import { Navbar } from "../component/navbar";

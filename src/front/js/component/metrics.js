@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { PolarArea } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
 
 export const MetricsData = () => {
@@ -81,18 +83,12 @@ export const MetricsData = () => {
 
   return (
     <>
-      <div class="d-flex justify-content-center">
-        <div
-          className="card m-5"
-          style={{
-            width: "50%",
-            height: "50%",
-          }}
-        >
+      <div class="row justify-content-md-center">
+        <div className="col-md-auto card m-5">
           <div className="card-header">
-            Total chores you did : {total_amount_of_chores}
+            Total of chores : <strong>{total_amount_of_chores}</strong>
           </div>
-          <PolarArea
+          <Doughnut
             datasetIdKey="id"
             data={{
               labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
@@ -117,21 +113,15 @@ export const MetricsData = () => {
                 },
               ],
             }}
-            
           />
         </div>
-        <div
-          className="card m-5"
-          style={{
-            width: "50%",
-            height: "50%",
-          }}
-        >
+        <div className="col-md-auto card m-5">
           <div className="card-header">
-            Total time spent on all chores: {total_time.slice(0, -3)}H
+            Total time spent on chores:{" "}
+            <strong>{total_time.slice(0, -3)}H</strong>
           </div>
 
-          <PolarArea
+          <Pie
             datasetIdKey="id"
             data={{
               labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
@@ -156,7 +146,6 @@ export const MetricsData = () => {
                 },
               ],
             }}
-            
           />
         </div>
       </div>
