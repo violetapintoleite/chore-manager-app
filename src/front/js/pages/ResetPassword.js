@@ -38,14 +38,14 @@ useEffect(() => {
         
       }
   }
-}, [cPassword]);
+}, [cPassword, password]);
 
   return (
     <div>
         <div className='container text-center align-items-center'>
         <h1 className="mb-1">Reset password</h1>
-       {password.length >= 8 ? "" : <span>Enter your new password below:</span>}
-       <br/>
+        <br/>
+       <p>Enter your new password below:</p>
         <span> {password.length < 8 ? <span className="p-2">Password needs to be at least 8 characters long</span> : <span></span>} </span>
         <form className="">
         <input type="password" style={{width: "240px"}} className="m-1 mb-2" placeholder="New Password" value={password} onChange={(event) => setPassword(event.target.value)} /> 
