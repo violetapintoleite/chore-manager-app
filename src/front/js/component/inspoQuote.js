@@ -30,9 +30,9 @@ getQuote();
 }, []);
 
   return (
-    <div className="container align-items-center pt-2">  
-        <h5 className="quote">{quote.text}</h5>
-        <h5 className="quote">{quote.author}</h5>
+    <div className="quote text-center">  
+        <h5 className="quote font-for-quote ">{quote.text}</h5>
+        <h5 className=" ">{quote.author}</h5>
     </div>
   )
 }

@@ -10,6 +10,7 @@ import { Single } from "./pages/single";
 import { History } from "./pages/history";
 import { Metrics } from "./pages/metrics";
 import { TeamMetricsPage } from "./pages/teamMetrics";
+import Play from "./pages/playaround";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -37,6 +38,7 @@ const Layout = () => {
             <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />
+            <Route element={<Play />} path="/play" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

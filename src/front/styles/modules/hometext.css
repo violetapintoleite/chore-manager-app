@@ -1,5 +1,34 @@
+
+/* homepage quote styling */
+.font-for-quote {
+  font-weight: 900;
+  font-size: 60px;
+}
+.quote-container {
+  height: 75%;
+} 
+
+ .quote {
+  height: 100%;
+}
+
+ .quote-and-button {
+  height: 75%;
+
+}
+
+.cta-text{
+  font-weight: 900;
+  font-size: 80px;
+}
+
+hr{
+  border: 3px solid rgb(0, 0, 0);
+}
+
+
 /* styling for a large graphic on the homepage with multi-layer text animation */
-.hometext-container{
+/* .hometext-container{
     position: relative;
     height: 70vh;
 }
@@ -60,22 +89,10 @@
   .hometext:hover:after {
     top: -10px;
     left: -10px;
-  } 
+  }  */
 
  
-/* dark image */
-  /* body{
-    background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    height: 100vh;
-  } */
-/* light image */
- .home{
-    background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    height: 110vh;
-  }
- 
-
-  @media (max-width: 450px) {
+  /* @media (max-width: 450px) {
     #intro {
       height: 950px !important;
     }
@@ -102,7 +119,7 @@
     .display-1 {
       font-size: 10rem;
     }
-  }
+  } */
 
   /* .button-test:hover{
     letter-spacing: 3px;

@@ -1,0 +1,20 @@
+/* dark image */
+  /* body{
+    background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    height: 100vh;
+  } */
+/* light image */
+.home{
+    background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
+    height: 100vh;
+  }
+ 
+
+.first-section{
+  background: rgb(249, 193, 205) 
+}
+
+.third-section{
+  background: rgb(193, 222, 249)
+}
+
