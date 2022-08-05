@@ -84,9 +84,9 @@ export const MetricsData = () => {
   return (
     <>
       <div class="row justify-content-md-center">
-        <div className="col-md-auto card m-5">
+        <div className="col-md-auto card m-5 p-3">
           <div className="card-header">
-            Total of chores : <strong>{total_amount_of_chores}</strong>
+            You did <strong>{total_amount_of_chores}</strong> chores in total.
           </div>
           <Doughnut
             datasetIdKey="id"
@@ -115,7 +115,7 @@ export const MetricsData = () => {
             }}
           />
         </div>
-        <div className="col-md-auto card m-5">
+        <div className="col-md-auto card m-5 p-3">
           <div className="card-header">
             Total time spent on chores:{" "}
             <strong>{total_time.slice(0, -3)}H</strong>

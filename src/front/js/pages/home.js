@@ -4,6 +4,7 @@ import InspoQuote from "../component/inspoQuote";
 import "../../styles/modules/buttonstyles.css";
 import { Navbar } from "../component/navbar";
 import "../../styles/modules/hometext.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -34,9 +35,6 @@ export const Home = () => {
           </h3>
           </div> */}
         </div>
-        <button className="btn button-test btn-text mt-4 position-absolute bottom-0 start-50 translate-middle-x">
-          Learn More
-        </button>
       </div>
     </div>
   );

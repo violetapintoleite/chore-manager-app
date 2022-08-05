@@ -16,13 +16,13 @@ export const History = () => {
       <br></br>
       <div className="row justify-content-md-center">
         <div className="col-md-auto">
+          <VideoSearch></VideoSearch>
+        </div>
+        <div className="col-md-auto">
           <AddChoreForm />
           <br></br>
           <HistoryofChores />
           <br></br>
-        </div>
-        <div className="col-md-auto">
-          <VideoSearch></VideoSearch>
         </div>
       </div>
     </>

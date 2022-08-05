@@ -21,8 +21,8 @@ function Profile() {
   return (
     <div className="text-center">
       <h5 className="m-5 slide-in-fwd-center">
-      <i className="fas fa-hand-sparkles"></i>Hello <strong>{store.email}</strong>!
-        <i className="fas fa-hand-sparkles"></i>
+        <i className="fas fa-hand-sparkles"></i>Hello{" "}
+        <strong>{store.email}</strong>!<i className="fas fa-hand-sparkles"></i>
       </h5>
       {!store.choreList || store.choreList.length === 0 ? (
         <div className="d-flex justify-content-center">
@@ -32,6 +32,17 @@ function Profile() {
         </div>
       ) : (
         <>
+          <div className="d-flex justify-content-center">
+            <div class="alert alert-primary" role="alert">
+              Hover over each chore chart area to see specific data for each
+              chore type.
+            </div>
+          </div>
+          <div className="d-flex justify-content-center">
+            <div class="alert alert-primary" role="alert">
+              Click on the chore type labels to choose which ones to show.
+            </div>
+          </div>
           <MetricsData />
         </>
       )}
