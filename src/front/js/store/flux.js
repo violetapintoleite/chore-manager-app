@@ -80,6 +80,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.removeItem("token");
         console.log("log out triggered");
         setStore({ token: null, team: null });
+        localStorage.removeItem("team");
       },
 
       // creating the login functionality - needs to verify if user exists in DB and generate access token
@@ -102,7 +103,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 201) {
-            alert("there's an error before the 201");
+            alert("Username or password incorrect.");
             return false;
           }
           const data = await resp.json();
@@ -169,8 +170,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 200) {
-            alert("error before initial 200 request of GET request");
-
             return false;
           }
           const data = await resp.json();
@@ -288,7 +287,6 @@ const getState = ({ getStore, getActions, setStore }) => {
           );
 
           if (resp.status !== 200) {
-
             return false;
           }
           const data = await resp.json();
@@ -332,7 +330,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             data.teamChores
           );
           setStore({ teamChoreList: data.teamChores });
-
           return true;
         } catch (error) {
           console.log("there's an error fetching the choresofteam data");

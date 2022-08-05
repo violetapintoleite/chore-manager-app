@@ -213,11 +213,17 @@ def deleteUserFromTeam():
 @api.route('/choresofteam', methods=['GET'])
 def getChoresfromUsersInTeam():
     team = request.args.get("team", None)
-    users = UsersInTeam.get_user_ids_by_team(team)
+    users = UsersInTeam.get_user_ids_by_team(team.replace("%20", " "))
+    if not users:
+        return jsonify({"msg": "there are no users for the team"}), 404
     serialized_chores = []
+
     for user in users:
-        chores = Chore.get_chores_by_user_id(user.id)
-        user_name = User.query.filter_by(id=user.id).one_or_none()
+        chores = Chore.get_chores_by_user_id(user.user_id)
+        if not chores:
+            return jsonify({"msg": "there were no chores found for this user", "user": user.serialize()}), 404
+        user_name = User.query.filter_by(id=user.user_id).one_or_none()
+
         for chore in chores:
             serialized_chore = chore.serialize()
             serialized_chore["user_name"] = user_name.email

@@ -1,111 +1,128 @@
-/* styling for a large graphic on the homepage with multi-layer text animation */
-.hometext-container{
-    position: relative;
-    height: 70vh;
+
+.font-for-quote {
+  font-weight: 900;
+  font-size: 60px;
 }
 
-.hometext{
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    
-    transform: translate(-50%, -50%);
-    font-family: 'Poppins', sans-serif;
-    display: block;
-    color: #cfcecf;
-    font-size: 124px;
-    letter-spacing: 8px;
-  }
-  
-  .hometext::before {
-    content: "CHORE MANAGER";
-    position: absolute;
-    color: transparent;
-    background-image: repeating-linear-gradient(
-      45deg,
-      transparent 0,
-      transparent 2px,
-      rgb(63, 62, 62) 2px,
-      rgb(63, 62, 62) 4px
-    );
-    -webkit-background-clip: text;
-    top: 0px;
-    left: 0;
-    z-index: -1;
-    transition: 1s;
-  }
-  
-  .hometext::after {
-    content: "CHORE MANAGER";
-    position: absolute;
-    color: transparent;
-    background-image: repeating-linear-gradient(
-      135deg,
-      transparent 0,
-      transparent 2px,
-      rgb(63, 62, 62) 2px,
-      rgb(63, 62, 62) 4px
-    );
-    -webkit-background-clip: text;
-    top: 0px;
-    left: 0px;
-    transition: 1s;
-  }
-  
-  .hometext:hover:before {
-    top: 10px;
-    left: 10px;
-  }
-  
-  .hometext:hover:after {
-    top: -10px;
-    left: -10px;
-  } 
+.quote {
+  height: 100%;
+}
 
- 
+.quote-container {
+  height: 75%;
+}
+
+.quote-and-button {
+  height: 75%;
+}
+
+/* styling for a large graphic on the homepage with multi-layer text animation */
+
+.hometext-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.hometext {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+  font-family: "Poppins", sans-serif;
+  display: block;
+  color: #cfcecf;
+  font-size: 124px;
+  letter-spacing: 8px;
+}
+
+.hometext::before {
+  content: "CHORE MANAGER";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent 0,
+    transparent 2px,
+    rgb(63, 62, 62) 2px,
+    rgb(63, 62, 62) 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0;
+  z-index: -1;
+  transition: 1s;
+}
+
+.hometext::after {
+  content: "CHORE MANAGER";
+  position: absolute;
+  color: transparent;
+  background-image: repeating-linear-gradient(
+    135deg,
+    transparent 0,
+    transparent 2px,
+    rgb(63, 62, 62) 2px,
+    rgb(63, 62, 62) 4px
+  );
+  -webkit-background-clip: text;
+  top: 0px;
+  left: 0px;
+  transition: 1s;
+}
+
+.hometext:hover:before {
+  top: 10px;
+  left: 10px;
+}
+
+.hometext:hover:after {
+  top: -10px;
+  left: -10px;
+}
+
 /* dark image */
-  /* body{
+/* body{
     background-image: url("https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
     height: 100vh;
   } */
 /* light image */
- .home{
-    background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    height: 110vh;
-  }
- 
+.home {
+  background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
+  height: 110vh;
+}
 
-  @media (max-width: 450px) {
-    #intro {
-      height: 950px !important;
-    }
+@media (max-width: 450px) {
+  #intro {
+    height: 950px !important;
   }
-  
-  @media (min-width: 550px) and (max-width: 750px) {
-    #intro {
-      height: 1100px !important;
-    }
+}
+
+@media (min-width: 550px) and (max-width: 750px) {
+  #intro {
+    height: 1100px !important;
   }
-  
-  @media (min-width: 800px) and (max-width: 990px) {
-    #intro {
-      height: 600px !important;
-    }
+}
+
+@media (min-width: 800px) and (max-width: 990px) {
+  #intro {
+    height: 600px !important;
   }
-  
+}
+
+.display-1 {
+  font-weight: 500 !important;
+  letter-spacing: 40px;
+}
+
+@media (min-width: 1600px) {
   .display-1 {
-    font-weight: 500 !important;
-    letter-spacing: 40px;
+    font-size: 10rem;
   }
-  
-  @media (min-width: 1600px) {
-    .display-1 {
-      font-size: 10rem;
-    }
-  }
+}
 
-  /* .button-test:hover{
+/* .button-test:hover{
     letter-spacing: 3px;
     
   } */
-  

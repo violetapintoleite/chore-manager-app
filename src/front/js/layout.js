@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/profile";
 import { Single } from "./pages/single";
 import { History } from "./pages/history";
-import { Metrics } from "./pages/metrics";
+
 import { TeamMetricsPage } from "./pages/teamMetrics";
 import injectContext from "./store/appContext";
 
@@ -33,7 +33,6 @@ const Layout = () => {
             <Route element={<Login />} exact path="/login" />
             <Route element={<Profile />} exact path="/profile" />
             <Route element={<History />} path="/history" />
-            <Route element={<Metrics />} path="/metrics" />
             <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />

@@ -1,6 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { PolarArea } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
+import { Doughnut } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
 
 export const MetricsData = () => {
@@ -81,86 +83,70 @@ export const MetricsData = () => {
 
   return (
     <>
-      <div class="row">
-        <div class="col-sm-6">
-          <div
-            className="card"
-            style={{
-              width: "50%",
-              height: "100%",
-            }}
-          >
-            <div className="card-header">
-              Total chores you did : {total_amount_of_chores}
-            </div>
-            <PolarArea
-              datasetIdKey="id"
-              data={{
-                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                datasets: [
-                  {
-                    id: 1,
-                    label: "Amount of times you did each chore",
-                    data: [dishes, laundry, cleaning, shopping],
-                    backgroundColor: [
-                      "rgba(255, 99, 132, 0.2)",
-                      "rgba(54, 162, 235, 0.2)",
-                      "rgba(255, 206, 86, 0.2)",
-                      "rgba(75, 192, 192, 0.2)",
-                    ],
-                    borderColor: [
-                      "rgba(255, 99, 132, 1)",
-                      "rgba(54, 162, 235, 1)",
-                      "rgba(255, 206, 86, 1)",
-                      "rgba(75, 192, 192, 1)",
-                    ],
-                    borderWidth: 1,
-                  },
-                ],
-              }}
-            />
+      <div class="row justify-content-md-center">
+        <div className="col-md-auto card m-5 p-3">
+          <div className="card-header">
+            You did <strong>{total_amount_of_chores}</strong> chores in total.
           </div>
+          <Doughnut
+            datasetIdKey="id"
+            data={{
+              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+              datasets: [
+                {
+                  id: 1,
+                  label: "Amount of times you did each chore",
+                  data: [dishes, laundry, cleaning, shopping],
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(54, 162, 235, 0.2)",
+                    "rgba(255, 206, 86, 0.2)",
+                    "rgba(75, 192, 192, 0.2)",
+                  ],
+                  borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            }}
+          />
         </div>
-        <br></br>
-        <div class="col-sm-6">
-          <div
-            className="card"
-            style={{
-              width: "50%",
-              height: "100%",
-            }}
-          >
-            <div className="card-header">
-              Total time spent on all chores: {total_time.slice(0, -3)}H
-            </div>
-
-            <PolarArea
-              datasetIdKey="id"
-              data={{
-                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                datasets: [
-                  {
-                    id: 1,
-                    label: "Amount of times you did each chore",
-                    data: [dishes_min, laundry_min, cleaning_min, shopping_min],
-                    backgroundColor: [
-                      "rgba(255, 99, 132, 0.2)",
-                      "rgba(54, 162, 235, 0.2)",
-                      "rgba(255, 206, 86, 0.2)",
-                      "rgba(75, 192, 192, 0.2)",
-                    ],
-                    borderColor: [
-                      "rgba(255, 99, 132, 1)",
-                      "rgba(54, 162, 235, 1)",
-                      "rgba(255, 206, 86, 1)",
-                      "rgba(75, 192, 192, 1)",
-                    ],
-                    borderWidth: 1,
-                  },
-                ],
-              }}
-            />
+        <div className="col-md-auto card m-5 p-3">
+          <div className="card-header">
+            Total time spent on chores:{" "}
+            <strong>{total_time.slice(0, -3)}H</strong>
           </div>
+
+          <Pie
+            datasetIdKey="id"
+            data={{
+              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+              datasets: [
+                {
+                  id: 1,
+                  label: "Amount of times you did each chore",
+                  data: [dishes_min, laundry_min, cleaning_min, shopping_min],
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 0.2)",
+                    "rgba(54, 162, 235, 0.2)",
+                    "rgba(255, 206, 86, 0.2)",
+                    "rgba(75, 192, 192, 0.2)",
+                  ],
+                  borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            }}
+          />
         </div>
       </div>
     </>
