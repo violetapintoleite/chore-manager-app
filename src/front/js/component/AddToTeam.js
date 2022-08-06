@@ -34,7 +34,7 @@ function AddToTeam() {
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
               >
-                <option selected>Choose your team...</option>
+                <option selected>Choose a team</option>
                 <option value="The Flinstones">The Flinstones</option>
                 <option value="The Addams">The Addams</option>
                 <option value="The Simpsons">The Simpsons</option>
@@ -45,7 +45,7 @@ function AddToTeam() {
                 type="button"
                 onClick={handleSubmit}
               >
-                Confirm
+                Join
               </button>
             </div>
           </form>
