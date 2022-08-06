@@ -17,15 +17,15 @@ export const Home = () => {
 
   return (
     <>
-      <div className="home">
+      <div className="">
         <Navbar excludeFromHome={false} />
       </div>
+      
+      {/* quote api */}
       <div>
         <div className="quote-container">
-          <div className="position-absolute top-50 start-50 translate-middle">
+          <div className="">
             <InspoQuote></InspoQuote>
-            {/* <img src={Hpimagelight} className="home-img" alt="home-img-light"/> */}
-            {/* <img src={Hpimagedark} className="home-img bg-image" id="intro" alt="home-img-dark"/> */}
             <br />
             <Link to="/signup">
               <button className="btn button-test btn-text position-relative bottom-0 start-50 translate-middle-x">
@@ -35,8 +35,8 @@ export const Home = () => {
             </Link>
           </div>
         </div>
-
-        <div className="text-center animated-div">
+{/* animated text */}
+<div className="text-center animated-div">
           <div className="pb-3 bg-white">
             <div className="animation-div d-flex justify-content-center">
               <div className="perspective-text mb-5">
@@ -63,20 +63,17 @@ export const Home = () => {
               </div>
             </div>
           </div>
-          {/* <div className="bg-light p-3">
-              <br />
-              <h2 className="cta-text bg-light mb-5 ">GET YOUR CHORES DONE</h2>
-            </div> */}
+      {/* end of animation */}
           <div className="">
             <div className="d-flex m-2">
-              <div className="card radius-3px col-5">
+              <div className="card radius-3px col-5 ">
                 <img
                   src={laptopimg}
                   className="home-img"
                   alt="home-img-light"
                 />
               </div>
-              <div className="container d-flex text-section first-section align-middle">
+              <div className="container d-flex text-section first-section align-middle pb-4">
                 <div className="container first-section  col-3 pt-4 ">
                   <h4 className="homepage-numbers text-white">1</h4>
                 </div>

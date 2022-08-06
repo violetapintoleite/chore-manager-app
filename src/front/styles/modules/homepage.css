@@ -7,9 +7,13 @@
 
 /* home background image */
 /* .home{
-    background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    height: 100vh;
+    /* background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
+    height: 100%;
   } */
+
+.home{
+    height: 60vh;
+  }
  
 .text-section{
   border-style: solid;
@@ -31,4 +35,10 @@
 
 .fourth-section{
 background: rgb(154, 121, 251)
+}
+
+.home-img{
+  width: 100%; /* or any custom size */
+  height: 100%; 
+  object-fit: contain;
 }
