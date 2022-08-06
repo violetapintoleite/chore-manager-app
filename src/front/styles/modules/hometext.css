@@ -1,9 +1,12 @@
 
+
 /* homepage quote styling */
+
 .font-for-quote {
   font-weight: 900;
   font-size: 60px;
 }
+
 .quote-container {
   height: 75%;
 } 
@@ -96,21 +99,30 @@ hr{
     #intro {
       height: 950px !important;
     }
+
   }
-  
-  @media (min-width: 550px) and (max-width: 750px) {
-    #intro {
-      height: 1100px !important;
-    }
+}
+
+@media (min-width: 550px) and (max-width: 750px) {
+  #intro {
+    height: 1100px !important;
   }
-  
-  @media (min-width: 800px) and (max-width: 990px) {
-    #intro {
-      height: 600px !important;
-    }
+}
+
+@media (min-width: 800px) and (max-width: 990px) {
+  #intro {
+    height: 600px !important;
   }
-  
+}
+
+.display-1 {
+  font-weight: 500 !important;
+  letter-spacing: 40px;
+}
+
+@media (min-width: 1600px) {
   .display-1 {
+
     font-weight: 500 !important;
     letter-spacing: 40px;
   }
@@ -121,8 +133,8 @@ hr{
     }
   } */
 
-  /* .button-test:hover{
+
+/* .button-test:hover{
     letter-spacing: 3px;
     
   } */
-  

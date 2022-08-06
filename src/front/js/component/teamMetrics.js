@@ -6,7 +6,9 @@ export const TeamMetrics = () => {
   const { store, actions } = useContext(Context);
 
   useEffect(() => {
-    actions.getChoresfromUsersInTeam(store.team);
+    if (store.team) {
+      actions.getChoresfromUsersInTeam(store.team);
+    }
   }, [store.team]);
 
   // functions to format duration value
@@ -154,91 +156,118 @@ export const TeamMetrics = () => {
     };
   }
 
+  const colors = [
+    "rgb(60, 179, 113, 0.2)",
+    "rgb(238, 130, 238, 0.2)",
+    "rgb(255, 165, 0, 0.2)",
+    "rgb(106, 90, 205, 0.2)",
+    "rgb(255, 165, 0, 0.2)",
+    "rgb(106, 90, 205, 0.2)",
+    "rgb(250, 250, 0, 0.2)",
+    "rgb(0, 255, 255, 0.2)",
+    "rgb(60, 60, 113, 0.2)",
+    "rgb(238, 113, 113, 0.2)",
+    "rgb(106, 60, 60, 0.2)",
+    "rgb(106, 90, 205, 0.2)",
+  ];
+
   for (let i = 0; i < users.length; i++) {
     const user_chore_data = getUserChoreData(
       store.teamChoreList.filter((chore) => chore.user_id === users[i])
     );
+
     users_datasets_total_times.push({
       label: user_chore_data.user_name,
       data: user_chore_data.total_amount_of_chores,
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-      ],
-      borderWidth: 1,
+      backgroundColor: [colors[i]],
+     
     });
     users_datasets_duration.push({
       label: user_chore_data.user_name,
+
       data: user_chore_data.total_time_spent,
-      backgroundColor: [
-        "rgba(255, 99, 132, 0.2)",
-        "rgba(54, 162, 235, 0.2)",
-        "rgba(255, 206, 86, 0.2)",
-        "rgba(75, 192, 192, 0.2)",
-      ],
-      borderColor: [
-        "rgba(255, 99, 132, 1)",
-        "rgba(54, 162, 235, 1)",
-        "rgba(255, 206, 86, 1)",
-        "rgba(75, 192, 192, 1)",
-      ],
-      borderWidth: 1,
+      backgroundColor: [colors[i]],
+      
     });
   }
 
   return (
     <>
-      <div class="row">
-        <div class="col-sm-6">
-          <div
-            className="card"
-            style={{
-              width: "50%",
-              height: "100%",
-            }}
-          >
-            <div className="card-header">
-              Total chores you and your team did : {total_amount_of_chores}
-            </div>
-            <Bar
-              datasetIdKey="id"
-              data={{
-                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                datasets: users_datasets_total_times,
-              }}
-            />
+      <div class="row justify-content-md-center">
+        {" "}
+        <div
+          className="col-md-auto card m-5"
+          style={{
+            width: "50%",
+            height: "100%",
+          }}
+        >
+          <div className="card-header">
+            Total of chores : <strong>{total_amount_of_chores}</strong>
           </div>
+          <Bar
+            datasetIdKey="id"
+            data={{
+              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+              datasets: users_datasets_total_times,
+            }}
+            options={{
+              scales: {
+                y: {
+                  title: {
+                    display: true,
+                    text: "Number of times doing the chore",
+                    font: { size: 16 },
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: "Type of chore",
+                    font: { size: 16 },
+                  },
+                },
+              },
+            }}
+          />
         </div>
-        <br></br>
-        <div class="col-sm-6">
-          <div
-            className="card"
-            style={{
-              width: "50%",
-              height: "100%",
-            }}
-          >
-            <div className="card-header">
-              Total time you and your team spent on all chores:{" "}
-              {total_time.slice(0, -3)}H
-            </div>
-
-            <Bar
-              datasetIdKey="id"
-              data={{
-                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                datasets: users_datasets_duration,
-              }}
-            />
+        <div
+          className="col-md-auto card m-5"
+          style={{
+            width: "50%",
+            height: "100%",
+          }}
+        >
+          <div className="card-header">
+            Total time spent on all chores:
+            <strong> {total_time.slice(0, -3)}H</strong>
           </div>
+
+          <Bar
+            datasetIdKey="id"
+            data={{
+              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+              datasets: users_datasets_duration,
+            }}
+            options={{
+              scales: {
+                y: {
+                  title: {
+                    display: true,
+                    text: "Time spent doing the chore (min)",
+                    font: { size: 16 },
+                  },
+                },
+                x: {
+                  title: {
+                    display: true,
+                    text: "Type of chore",
+                    font: { size: 16 },
+                  },
+                },
+              },
+            }}
+          />
         </div>
       </div>
     </>

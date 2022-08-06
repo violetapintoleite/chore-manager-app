@@ -31,13 +31,12 @@ class User(db.Model):
 class Chore(db.Model):
     __tablename__ = "Chore"
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('User.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('User.id'), nullable=False)
     name = db.Column(db.String(120), unique=False, nullable=False)
     duration = db.Column(db.Time, unique=False, nullable=False)
     date = db.Column(db.Date, unique=False, nullable=True)
 
     def serialize(chore):
-
         return {
             "id": chore.id,
             "user_id": chore.user_id,

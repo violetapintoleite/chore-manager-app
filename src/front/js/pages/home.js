@@ -11,6 +11,7 @@ import laptopimglight from "../../../front/img/laptopimglight.jpg";
 import "../../styles/modules/buttonstyles.css";
 import { Navbar } from "../component/navbar";
 
+
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
@@ -168,5 +169,6 @@ export const Home = () => {
         </div>
       </div>
     </>
+
   );
 };

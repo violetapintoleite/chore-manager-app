@@ -31,7 +31,6 @@ const VideoSearch = () => {
     <div className="container"> 
     <div className="card">
       <div className="input-group mb-3">
-      <p>Need help with how to do a chore? Search for tutorial below ...or want to listen to a song, search for that instead!</p>
         <form className="d-flex container" onSubmit={handleSubmit}>
           <input
             type="text"

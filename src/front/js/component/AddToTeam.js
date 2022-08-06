@@ -25,7 +25,6 @@ function AddToTeam() {
     <div>
       {!store.team || store.team == "" ? (
         <div className="container mb-2">
-          <h2>Select a team</h2>
           <form>
             <div class="input-group">
               <select
@@ -52,11 +51,7 @@ function AddToTeam() {
           </form>
         </div>
       ) : (
-        <p>
-          <button onClick={() => actions.deleteUserFromTeam()}>
-            Remove myself from the team
-          </button>
-        </p>
+        <div></div>
       )}
     </div>
   );
