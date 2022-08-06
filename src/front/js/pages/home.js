@@ -75,8 +75,8 @@ export const Home = () => {
                   alt="home-img-light"
                 />
               </div>
-              <div className="container d-flex text-section first-section radius-3px align-middle">
-                <div className="container first-section col-3 pt-4 ">
+              <div className="container d-flex text-section first-section align-middle">
+                <div className="container first-section  col-3 pt-4 ">
                   <h4 className="homepage-numbers text-white">1</h4>
                 </div>
                 <div className="container first-section col-4 pt-4">
@@ -153,10 +153,8 @@ export const Home = () => {
                   Team Metrics overview to add yourself to a team and see the
                   team's results.
                 </p>
-
               </div>
               </div>
-              
               <div className="card radius-3px col-5">
                 <img
                   src={laptopimglight}
@@ -166,6 +164,7 @@ export const Home = () => {
               </div>
             </div>
           </div>
+          <hr />
         </div>
       </div>
     </>
