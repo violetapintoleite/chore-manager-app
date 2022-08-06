@@ -66,7 +66,7 @@ export const Home = () => {
               <br />
               <h2 className="cta-text bg-light mb-5 ">GET YOUR CHORES DONE</h2>
             </div> */}
-          <div className=" first-section">
+          <div className="">
             <div className="d-flex m-2">
               <div className="card radius-3px col-5">
                 <img
