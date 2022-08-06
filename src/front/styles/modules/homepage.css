@@ -4,17 +4,31 @@
     height: 100vh;
   } */
 /* light image */
-.home{
+
+/* home background image */
+/* .home{
     background-image: url("https://images.pexels.com/photos/1843717/pexels-photo-1843717.jpeg?auto=compress&cs=tinysrgb&w=1600");
     height: 100vh;
-  }
+  } */
  
+.text-section{
+  border-style: solid;
+  border-color: rgb(255, 255, 255);
+  border-width: 50px;
+}
 
 .first-section{
-  background: rgb(249, 193, 205) 
+  background: #f07e6e;
+}
+
+.second-section{
+  background: #84cdfa;
 }
 
 .third-section{
-  background: rgb(193, 222, 249)
+  background:#5ad1cd;
 }
 
+.fourth-section{
+background: rgb(154, 121, 251)
+}
