@@ -32,9 +32,11 @@ function InspoQuote() {
   }, []);
 
   return (
-    <div className="quote text-center">
-      <h5 className="font-for-quote">"{quote.text}"</h5>
-      <h5>{quote.author}</h5>
+
+    <div className="quote text-center">  
+        <h5 className="quote font-for-quote ">{quote.text}</h5>
+        <h5 className=" ">{quote.author}</h5>
+
     </div>
   );
 }
