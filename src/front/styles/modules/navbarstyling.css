@@ -2,8 +2,8 @@
 
  @media (max-width: 991px) {
     .navbar-scroll {
-      background-color: #fff;
-      background: #f07e6e;
+      background-color: rgba(255, 255, 255, 0);
+      background: #ffffff00;
     }
        
     .navbar-scroll .navbar-brand,

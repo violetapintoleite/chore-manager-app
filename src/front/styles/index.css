@@ -7,6 +7,16 @@ body {
   min-block-size: 130vh;
   min-inline-size: 100%;
 }
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.loginandsignuppageheight{
+  height: 50vh;
+}
+
 /* this is the styling for the navbar logo area */
 /* #logo{
   color:transparent;

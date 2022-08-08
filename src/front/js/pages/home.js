@@ -11,7 +11,6 @@ import laptopimglight from "../../../front/img/laptopimglight.jpg";
 import "../../styles/modules/buttonstyles.css";
 import { Navbar } from "../component/navbar";
 
-
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
@@ -20,28 +19,24 @@ export const Home = () => {
       <div className="">
         <Navbar excludeFromHome={false} />
       </div>
-      
+
       {/* quote api */}
-      <div>
+      <div className="">
+        <div className="container-fluid">
+      
+        </div>
         <div className="quote-container">
-          <div className="">
+          <div className=" ">
             <InspoQuote></InspoQuote>
-            <br />
-            <Link to="/signup">
-              <button className="btn button-test btn-text position-relative bottom-0 start-50 translate-middle-x">
-                {" "}
-                Sign Up Now!
-              </button>
-            </Link>
           </div>
         </div>
-{/* animated text */}
-<div className="text-center animated-div">
+           {/* animated text */}
+           <div className="text-center animated-div container-fluid">
           <div className="pb-3 bg-white">
-            <div className="animation-div d-flex justify-content-center">
+            <div className="animation-div container-fluid d-flex">
               <div className="perspective-text mb-5">
-                <div className="perspective-line">
-                  <p className="banner-text-test"></p>
+                <div className="perspective-line ">
+                  <p className="banner-text-test "></p>
                   <p className="banner-text-test">Get</p>
                 </div>
                 <div className="perspective-line">
@@ -63,7 +58,9 @@ export const Home = () => {
               </div>
             </div>
           </div>
-      {/* end of animation */}
+          </div>
+          {/* end of animation */}
+      {/*cards section */}
           <div className="">
             <div className="d-flex m-2">
               <div className="card radius-3px col-5 ">
@@ -142,16 +139,16 @@ export const Home = () => {
             <div className="d-flex m-2 pt-4 ">
               <div className="text-section fourth-section d-flex">
                 <div className="container fourth-section col-3 pt-4">
-                <h4 className="homepage-numbers text-white">4</h4>
-              </div>
-              <div className="container text-white col-4 pt-4">
-                <h3 className="pt-2">Add yourself to a team</h3>
-                <p className="pb-4">
-                  See how you compare to other people on your team. Go to the
-                  Team Metrics overview to add yourself to a team and see the
-                  team's results.
-                </p>
-              </div>
+                  <h4 className="homepage-numbers text-white">4</h4>
+                </div>
+                <div className="container text-white col-4 pt-4">
+                  <h3 className="pt-2">Add yourself to a team</h3>
+                  <p className="pb-4">
+                    See how you compare to other people on your team. Go to the
+                    Team Metrics overview to add yourself to a team and see the
+                    team's results.
+                  </p>
+                </div>
               </div>
               <div className="card radius-3px col-5">
                 <img
@@ -162,10 +159,9 @@ export const Home = () => {
               </div>
             </div>
           </div>
+         
           <hr />
         </div>
-      </div>
     </>
-
   );
 };

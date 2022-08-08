@@ -34,7 +34,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
     <nav
       className={
         "navbar " +
-        (scrolled > 90 ? "navbar-scrolled fixed-top" : "navbar-scroll")
+        (scrolled > 90 ? "navbar-scrolled fixed-top " : "navbar-scroll")
       }
     >
       <div className="container-md">

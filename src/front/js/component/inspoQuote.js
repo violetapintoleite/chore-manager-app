@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/modules/hometext.css";
 
 function InspoQuote() {
@@ -32,11 +33,18 @@ function InspoQuote() {
   }, []);
 
   return (
-<div className="container">
-    <div className="quote text-center">  
-        <h5 className="quote font-for-quote ">{quote.text}</h5>
+<div className="container-fluid banner-area pt-5">
+    <div className=" container quote text-center text-white  align-middle">  
+        <h5 className="quote font-for-quote text-white ">{quote.text}</h5>
         <h5 className=" ">{quote.author}</h5>
     </div>
+    <br />
+            <Link to="/signup">
+              <button className=" inspo-button btn position-relative bottom-0 start-50 translate-middle-x">
+                {" "}
+                Sign Up Now!
+              </button>
+            </Link>
     </div>
   );
 }

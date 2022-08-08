@@ -12,7 +12,13 @@
 } */
 .animated-div{
     margin-top: 60px; 
-    max-width: ;
+    width: 120%;
+    position: relative;
+    left: -20%;
+    /* overflow-x: hidden; */
+    /* overflow-y: hidden; */
+    height: 350px;
+    top: 20px;
 }
 
   .perspective-text {
@@ -22,7 +28,7 @@
     font-weight: 900;
     letter-spacing: -2px;
     text-transform: uppercase;
-    width: 2000px;
+    width: 120%;
   }
   
   .perspective-line {
@@ -48,11 +54,17 @@
   
   .perspective-text:hover .banner-text-test {
     transform: translate(0, -50px);
+    
   }
   
   .perspective-line:nth-child(1) {
     left: 29px;
   }
+
+  .perspective-line:hover:nth-child(1) {
+    left: 29px;
+  }
+  
   
   .perspective-line:nth-child(2) {
     left: 58px;
@@ -71,6 +83,7 @@
   
   .perspective-line:nth-child(5) {
     left: 145px;
-    background: rgb(154, 121, 251)
+    background: rgba(153, 121, 251, 0);
+    width: 100%;
   }
-  
+
