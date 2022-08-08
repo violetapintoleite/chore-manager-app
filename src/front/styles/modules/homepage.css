@@ -24,7 +24,7 @@
 }
 
 .fourth-section{
-background: rgb(154, 121, 251)
+background: #9a79fb;
 }
 
 .home-img{
@@ -32,3 +32,24 @@ background: rgb(154, 121, 251)
   height: 100%; 
   object-fit: contain;
 }
+
+.team-image{
+  height: 180px;
+  width: 170px;
+}
+
+.team-container:nth-child(1){
+background-color: #f07d6e62;
+}
+
+.team-container:nth-child(2){
+  background-color: #84cdfa62;
+  }
+
+  .team-container:nth-child(3){
+    background-color: #5ad1cd62;
+    }
+
+    .team-container:nth-child(4){
+      background-color: #9a79fb62;
+      }
