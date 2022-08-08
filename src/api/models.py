@@ -1,5 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 db = SQLAlchemy()
 
@@ -26,18 +27,20 @@ class User(db.Model):
 
     @classmethod
     def get_token(self, expires_sec=300):
-        # serial=Serializer(app.config[os.environ.get('FLASK_APP_KEY', 'sample key')], expires_in=expires_sec)
+        create_access_token(identity=user.email, expires_delta=expires_sec)
         # return serial.generate_password_hash({'user_id':user.id})
-        return generate_password_hash({'user_id':user.id})
+        # return generate_password_hash({'user_id':user.id})
+        return
 
-    @staticmethod
-    def verify_reset_token(token):
-        # serial=Serializer(app.config[os.environ.get('FLASK_APP_KEY', 'sample key')])
-        # try:
-        #     user_id = serial.loads(token)['user_id']
-        # except:
-        #     return None
-        return User.query.get(user_id)
+    # @staticmethod
+    # def verify_reset_token(token):
+    #     current_user=get
+    #     # serial=Serializer(app.config[os.environ.get('FLASK_APP_KEY', 'sample key')])
+    #     # try:
+    #     #     user_id = serial.loads(token)['user_id']
+    #     # except:
+    #     #     return None
+    #     return User.query.get(user_id)
 
 
     @classmethod

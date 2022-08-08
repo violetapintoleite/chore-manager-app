@@ -258,7 +258,7 @@ def send_mail(user):
     msg.body = f''' To reset your password please click the link below
 
 
-{url_for('reset-password', token=token, _external=True)}
+{url_for('reset-password-request', token=token, _external=True)}
 
 If you didn't request a password reset request, please ignore this message.
     '''
@@ -279,25 +279,38 @@ def reset_request():
     
 
 #route to ensure that only user with a valid key can access page to reset password
-@api.route("/reset-password/<token>", methods=["GET", 'POST'])
-@jwt_required()
+@api.route("/reset-password-request/<token>", methods=["GET", 'POST'])
 def confirmIdentity(token):
+    
+    user=User.get_token(token)
+    if user is None:
+        return jsonify(message="access denied"),401
+    else:
+        url_for('reset-password')
+
+   
+
+@api.route("/reset-password", methods=['POST'])
+@jwt_required()
+def changePassword(token):
+
     password = request_body['password']
     hash_password = generate_password_hash(password)
+    email = get_jwt_identity()
 
-
-    user=User.verify_reset_token(token)
+   
+    
+    user = User.get_by_email(email)
     if user is None:
         return jsonify(message="access denied"),401
 
-    if user and check_password_hash(user.password, password):
-        access_token = create_access_token(identity=email)
+    else:
         user.password=hash_password
         db.session.commit()
-        return jsonify({"access_token": access_token}, "password reset"),201
-    else:
-        return {"error":"could not reset password"},400
-
+        # access_token = create_access_token(identity=email)
+        # user.password=hash_password
+    return jsonify({"access_token": access_token}, "password reset"),201
+    
    
 if __name__ == "__main__":
     app.run(debug=True)
