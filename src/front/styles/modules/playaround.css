@@ -1,7 +1,7 @@
 /* animation */
 
 
-/* .annimation-div {
+.play-annimation-div {
     align-items: center;
   justify-content: center;
   background: #f1f1f1;
@@ -9,34 +9,34 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 250px;
-} */
+}
 
 
-  .play-perspective-text {
+  .perspective-text {
     color: #f07d6e;
     font-family: Arial;
-    font-size: 25px;
-    font-weight: 900;
+    font-size: 30px;
+    font-weight: 700;
     letter-spacing: 0px;
     text-transform: uppercase;
     width: 100%;
   }
   
   .play-perspective-line {
-    height: 28px;
+    height: 30px;
     overflow: hidden;
     position: relative;
   }
   
   .perspective-text{
     margin: 0;
-    height: 28px;
-    line-height: 25px;
+    height: 30px;
+    line-height: 30px;
     transition: all 0.5s ease-in-out;
   }
   
   .play-perspective-line:nth-child(odd) {
-    transform: skew(0deg, -5deg) scaleY(0.667);
+    transform: skew(40deg, -5deg) scaleY(0.667);
    
   }
   
@@ -47,7 +47,7 @@
   }
   
   .play-perspective-text:hover .perspective-text {
-    transform: translate(0, -25px);
+    transform: translate(0, -30px);
     color: #84cdfa;
     text-decoration: dotted;
     

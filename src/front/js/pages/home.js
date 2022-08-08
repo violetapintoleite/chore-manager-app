@@ -30,36 +30,7 @@ export const Home = () => {
             <InspoQuote></InspoQuote>
           </div>
         </div>
-           {/* animated text */}
-           <div className="text-center animated-div container-fluid">
-          <div className="pb-3 bg-white">
-            <div className="animation-div container-fluid d-flex">
-              <div className="perspective-text mb-5">
-                <div className="perspective-line ">
-                  <p className="banner-text-test "></p>
-                  <p className="banner-text-test">Get</p>
-                </div>
-                <div className="perspective-line">
-                  <p className="banner-text-test">Get</p>
-                  <p className="banner-text-test">Your</p>
-                </div>
-                <div className="perspective-line">
-                  <p className="banner-text-test">Your</p>
-                  <p className="banner-text-test">Chores</p>
-                </div>
-                <div className="perspective-line">
-                  <p className="banner-text-test">Chores</p>
-                  <p className="banner-text-test">Done</p>
-                </div>
-                <div className="perspective-line">
-                  <p className="banner-text-test">Done</p>
-                  <p className="banner-text-test"></p>
-                </div>
-              </div>
-            </div>
-          </div>
-          </div>
-          {/* end of animation */}
+          
       {/*cards section */}
           <div className="">
             <div className="d-flex m-2">

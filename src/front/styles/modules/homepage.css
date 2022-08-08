@@ -5,14 +5,6 @@
   } */
 /* light image */
 
-/* home background image */
-.banner-area{
-    background-image: url("https://images.pexels.com/photos/1629236/pexels-photo-1629236.jpeg?auto=compress&cs=tinysrgb&w=1600");
-    height: 80vh;
-  }
-
-
-
 .text-section{
   border-style: solid;
   border-color: rgb(255, 255, 255);
