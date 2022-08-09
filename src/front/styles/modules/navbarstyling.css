@@ -2,8 +2,8 @@
 
  @media (max-width: 991px) {
     .navbar-scroll {
-      background-color: rgba(255, 255, 255, 0);
-      background: #ffffff00;
+      background-color: rgba(255, 255, 255);
+      background: #ffffff;
     }
        
     .navbar-scroll .navbar-brand,
@@ -30,7 +30,7 @@
   
   .navbar-scrolled {
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
-    transition: 1s;
+    transition: 0.5s;
     background-color: #fff;
   }
   

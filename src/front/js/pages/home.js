@@ -21,16 +21,50 @@ export const Home = () => {
       <div className="">
         <Navbar excludeFromHome={false} />
       </div>
-
       {/* quote api */}
-      <div className="">
-        {/* <Play></Play>
-        <br/> */}
-        <div className="container-fluid quote-container">
+      <div className="overflow">
+       {/* animated text */}
+       <div className="text-center animated-div container-fluid">
+          <div className="pb-3 bg-white">
+            <div className="animation-div container-fluid d-flex">
+              <div className="perspective-text mb-5">
+                <div className="perspective-line ">
+                  <p className=" banner-text-test perspective-text "></p>
+                  <p className=" banner-text-test perspective-text">Get</p>
+                </div>
+                <div className="perspective-line">
+                  <p className=" banner-text-test perspective-text">Get</p>
+                  <p className=" banner-text-test perspective-text">Your</p>
+                </div>
+                <div className="perspective-line">
+                  <p className="banner-text-test perspective-text">Your</p>
+                  <p className="banner-text-test perspective-text">Chores</p>
+                </div>
+                <div className="perspective-line">
+                  <p className=" banner-text-test perspective-text">Chores</p>
+                  <p className="banner-text-test perspective-text">Done</p>
+                </div>
+                <div className="perspective-line">
+                  <p className="banner-text-test perspective-text">Done</p>
+                  <p className="banner-text-test perspective-text"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+          {/* end of animation */}
+          <div className="container arrows-container">
+          <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+          </div>
+          </div>
+        {/* <div className="container-fluid quote-container">
           <div className=" ">
             <InspoQuote></InspoQuote>
           </div>
-        </div>
+        </div> */}
         {/*cards section */}
         <div className="">
           <div className="d-flex m-2 homepage-card-container ">

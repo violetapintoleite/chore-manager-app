@@ -28,7 +28,7 @@ function Login() {
             className="form-control"
             placeholder="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value) } 
           />
           <label className="form-label">Username</label>
           <input

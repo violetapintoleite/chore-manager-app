@@ -44,7 +44,7 @@ function Signup() {
             className="form-control"
             placeholder="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value)} onInput={validateEmail}
           />
           <label className="form-label">Username</label>
           <input
