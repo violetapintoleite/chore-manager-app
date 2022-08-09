@@ -1,5 +1,5 @@
 /*styling the dashboard background and cards*/
-h4 {
+.metrics-title {
   color: rgba(90, 209, 205, 1);
   letter-spacing: 3px;
 }

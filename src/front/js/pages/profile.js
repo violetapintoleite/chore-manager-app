@@ -42,7 +42,7 @@ function Profile() {
 
       <div className="card m-5">
         <div className="single-metrics">
-          <h4 className="text-center m-5">YOUR SINGLE METRICS</h4>
+          <h4 className="metrics-title text-center m-5">YOUR SINGLE METRICS</h4>
           {!store.choreList || store.choreList.length === 0 ? (
             <div className="text-center">
               <Link to="/history">
@@ -55,7 +55,7 @@ function Profile() {
           <MetricsData />
         </div>
         <div className="team-metrics">
-          <h4 className="text-center m-5">YOUR TEAM METRICS</h4>
+          <h4 className="metrics-title text-center m-5">YOUR TEAM METRICS</h4>
           {!store.team ? (
             <div className="d-flex justify-content-center">
               <AddToTeam></AddToTeam>
