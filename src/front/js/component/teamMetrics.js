@@ -191,82 +191,84 @@ export const TeamMetrics = () => {
 
   return (
     <div className="container">
-      <div class="row">
-        <div className="col-4">
-          <div class="card m-2">
-            <div className="card-header totals">
-              You did a total of <strong>{total_amount_of_chores}</strong>{" "}
-              chores, during a total of{" "}
-              <strong>{total_time.slice(0, -3)}H</strong>.
-            </div>
-            <div class="card-body">
-              <div className="row">
-                <div className="col-6">
-                  {" "}
-                  <div class="dishes">
-                    Dishes <span className="numbers">{dishes}</span>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div class="laundry">
-                    Laundry <span className="numbers">{laundry}</span>
-                  </div>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-6">
-                  <div class="cleaning">
-                    Cleaning <span className="numbers">{cleaning}</span>
-                  </div>
-                </div>
-                <div className="col-6">
-                  <div class="shopping">
-                    Shopping <span className="numbers">{shopping}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-8">
-          <div className="row">
-            <div className="col-6">
-              <div
-                className="card m-5"
-                style={{
-                  width: "50%",
-                  height: "100%",
-                }}
-              >
-                <Bar
-                  datasetIdKey="id"
-                  data={{
-                    labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-                    datasets: users_datasets_total_times,
-                  }}
-                />
-              </div>
-            </div>
-            <div className="col-6"></div>
+      <div className="row m-2">
+        <div class="card m-2">
+          <div className="card-body">
+            You and your team did a total of{" "}
+            <strong>{total_amount_of_chores}</strong> chores, which took a total
+            of <strong>{total_time.slice(0, -3)}H</strong>.
           </div>
         </div>
       </div>
-      <div class="row justify-content-md-center">
-        {" "}
-        <div
-          className="col-md-auto card m-5"
-          style={{
-            width: "50%",
-            height: "100%",
-          }}
-        >
-          <Bar
-            datasetIdKey="id"
-            data={{
-              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-              datasets: users_datasets_duration,
-            }}
-          />
+      <div className="row m-2">
+        <div class="card m-2">
+          <div class="card-body">
+            <div className="row">
+              <div className="col-3">
+                {" "}
+                <div class="dishes">
+                  Dishes <span className="numbers">{dishes}</span>
+                </div>
+              </div>
+              <div className="col-3">
+                <div class="laundry">
+                  Laundry <span className="numbers">{laundry}</span>
+                </div>
+              </div>
+              <div className="col-3">
+                <div class="cleaning">
+                  Cleaning <span className="numbers">{cleaning}</span>
+                </div>
+              </div>
+              <div className="col-3">
+                <div class="shopping">
+                  Shopping <span className="numbers">{shopping}</span>
+                </div>
+              </div>{" "}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div className="col-6">
+          <div className="card mb-5">
+            <Bar
+              datasetIdKey="id"
+              data={{
+                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+                datasets: users_datasets_total_times,
+              }}
+              options={{
+                plugins: {
+                  title: {
+                      display: true,
+                      text: 'NUMBER OF TIMES A CHORE WAS DONE'
+                  }
+              },
+              }}
+            />
+          </div>
+        </div>
+        <div className="col-6">
+          <div className="card mb-5">
+            <Bar
+              datasetIdKey="id"
+              data={{
+                labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+                datasets: users_datasets_duration,
+              }}
+              options={{
+                plugins: {
+                  title: {
+                      display: true,
+                      text: 'MIN SPENT BY TYPE OF CHORE'
+                  }
+              },
+               
+              }}
+            />
+          </div>
         </div>
       </div>
     </div>
