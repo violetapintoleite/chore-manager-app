@@ -3,7 +3,7 @@ import "../../styles/modules/playaround.css";
 
 function Play() {
   return (
-    <div className="container all-animations d-flex">
+    <div className="container text-center all-animations d-flex">
        {/* animated text */}
        <div className="text-center play-animated-div-one container-fluid">
           <div className="pb-3 bg-white">
