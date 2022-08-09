@@ -1,7 +1,11 @@
 import React, { Component } from "react";
+import Play from "../pages/playaround";
 
 export const Footer = () => (
+  <>
+  
   <div className="container my-5">
+  
     <footer className="text-center text-lg-start ">
       <section className="">
         <div className="container text-center text-md-start mt-5">
@@ -92,6 +96,8 @@ export const Footer = () => (
           Chore Manager
         </a>
       </div>
+     
     </footer>
   </div>
+  </>
 );

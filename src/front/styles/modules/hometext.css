@@ -2,11 +2,12 @@
 
 .font-for-quote {
   font-weight: 900;
-  font-size: 40px;
+  font-size: 50px;
 }
 
 .quote-container {
-  height: 35vh;
+  height: 50vh;
+  
 } 
 
  /* .quote {

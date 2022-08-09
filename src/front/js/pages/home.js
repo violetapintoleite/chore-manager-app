@@ -24,20 +24,17 @@ export const Home = () => {
 
       {/* quote api */}
       <div className="">
-        <div className="container-fluid">
-      
-        </div>
-        <div className="quote-container">
+        {/* <Play></Play>
+        <br/> */}
+        <div className="container-fluid quote-container">
           <div className=" ">
             <InspoQuote></InspoQuote>
           </div>
         </div>
-          <Play></Play>
-          <hr/>
       {/*cards section */}
           <div className="">
             <div className="d-flex m-2 ">
-              <div className="card bg-white radius-3px col-5 ">
+              <div className="card bg-white shadow-none radius-3px col-5 ">
                 <img
                   src={laptopimg}
                   className="home-img home-img-appear"
@@ -81,7 +78,7 @@ export const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="card radius-3px col-5">
+              <div className="card radius-3px shadow-none col-5">
                 <img
                   src={laptopimglight}
                   className="home-img home-img-appear  "
@@ -92,7 +89,7 @@ export const Home = () => {
           </div>
           <hr />
           <div className="d-flex m-2">
-            <div className="card radius-3px col-5">
+            <div className="card radius-3px shadow-none col-5">
               <img src={laptopimg} className="home-img home-img-appear" alt="home-img-light" />
             </div>
             <div className="container third-section text-section d-flex pt-4">
@@ -124,7 +121,7 @@ export const Home = () => {
                   </p>
                 </div>
               </div>
-              <div className="card radius-3px col-5">
+              <div className="card radius-3px shadow-none col-5">
                 <img
                   src={laptopimglight}
                   className="home-img home-img-appear"
@@ -134,11 +131,12 @@ export const Home = () => {
             </div>
           </div>
           <hr />
-         
+          <br/>
+          <Play></Play>
       
           <HomepageTeamSection></HomepageTeamSection>
           <hr />
-          <Play></Play>
+       
           
         </div>
     </>

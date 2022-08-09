@@ -31,6 +31,7 @@ background: #9a79fb;
   width: 100%; /* or any custom size */
   height: 100%; 
   object-fit: fill;
+  
 }
 
 
@@ -43,7 +44,7 @@ background: #9a79fb;
 } */
 
 .home-img-appear{
-  clip-path: circle(50%);
+  clip-path: circle(25%);
   transition: clip-path 1s;
 }
 .home-img-appear:hover{
