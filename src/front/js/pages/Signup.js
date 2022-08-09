@@ -64,8 +64,10 @@ function Signup() {
           />
         </div>
         <div>
+          <br/>
+        <div className="text-center">
           <button
-            className="btn"
+            className="btn m-2"
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
@@ -83,6 +85,7 @@ function Signup() {
           ) : (
             <p></p>
           )}
+        </div>
         </div>
         <h4 className="mt-3">
           {" "}

@@ -48,6 +48,8 @@ function Login() {
           />
         </div>
         <div>
+          <br/>
+          <div className="text-center">
           <button
             className="btn"
             onClick={handleClick}
@@ -56,6 +58,7 @@ function Login() {
             {" "}
             Submit{" "}
           </button>
+          </div>
         </div>
         <p className="mt-3 text-center">
           {" "}
