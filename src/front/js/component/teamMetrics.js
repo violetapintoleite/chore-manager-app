@@ -191,48 +191,83 @@ export const TeamMetrics = () => {
 
   return (
     <div className="container">
-      <div className="row m-2">
-        <div class="card m-2">
-          <div className="card-body">
-            You and your team did a total of{" "}
-            <strong>{total_amount_of_chores}</strong> chores, which took a total
-            of <strong>{total_time.slice(0, -3)}H</strong>.
+      <div className="row justify-content-center">
+        <div className="col-6">
+          <div class="card m-2">
+            <div className="card-body">
+              You and your team did a total of{" "}
+              <strong>{total_amount_of_chores}</strong> chores, which took a
+              total of <strong>{total_time.slice(0, -3)}H</strong>.
+            </div>
           </div>
         </div>
       </div>
-      <div className="row m-2">
-        <div class="card m-2">
-          <div class="card-body">
-            <div className="row">
-              <div className="col-3">
-                {" "}
-                <div class="dishes">
-                  Dishes <span className="numbers">{dishes}</span>
+      <div className="row justify-content-center">
+        <div className="col-6">
+          <div class="card m-2">
+            <div class="card-body">
+              <div className="row text-center">
+                <div className="col-3">
+                  {" "}
+                  <div class="dishes">
+                    Dishes <span className="numbers">{dishes}</span>
+                  </div>
                 </div>
+                <div className="col-3">
+                  <div class="laundry">
+                    Laundry <span className="numbers">{laundry}</span>
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div class="cleaning">
+                    Cleaning <span className="numbers">{cleaning}</span>
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div class="shopping">
+                    Shopping <span className="numbers">{shopping}</span>
+                  </div>
+                </div>{" "}
               </div>
-              <div className="col-3">
-                <div class="laundry">
-                  Laundry <span className="numbers">{laundry}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row justify-content-center">
+        <div className="col-6">
+          <div class="card m-2">
+            <div class="card-body">
+              <div className="row text-center">
+                <div className="col-3">
+                  {" "}
+                  <div class="dishes">
+                    <span className="numbers">{dishes_min}</span>min
+                  </div>
                 </div>
+                <div className="col-3">
+                  <div class="laundry">
+                    <span className="numbers">{laundry_min}</span>min
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div class="cleaning">
+                    <span className="numbers">{cleaning_min}</span>min
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div class="shopping">
+                    <span className="numbers">{shopping_min}</span>min
+                  </div>
+                </div>{" "}
               </div>
-              <div className="col-3">
-                <div class="cleaning">
-                  Cleaning <span className="numbers">{cleaning}</span>
-                </div>
-              </div>
-              <div className="col-3">
-                <div class="shopping">
-                  Shopping <span className="numbers">{shopping}</span>
-                </div>
-              </div>{" "}
             </div>
           </div>
         </div>
       </div>
 
-      <div class="row">
+      <div class="row justify-content-center">
         <div className="col-6">
-          <div className="card mb-5">
+          <div className="card mb-5 p-3">
             <Bar
               datasetIdKey="id"
               data={{
@@ -242,16 +277,16 @@ export const TeamMetrics = () => {
               options={{
                 plugins: {
                   title: {
-                      display: true,
-                      text: 'NUMBER OF TIMES A CHORE WAS DONE'
-                  }
-              },
+                    display: true,
+                    text: "NUMBER OF TIMES A CHORE WAS DONE",
+                  },
+                },
               }}
             />
           </div>
         </div>
         <div className="col-6">
-          <div className="card mb-5">
+          <div className="card mb-5 p-3">
             <Bar
               datasetIdKey="id"
               data={{
@@ -261,11 +296,10 @@ export const TeamMetrics = () => {
               options={{
                 plugins: {
                   title: {
-                      display: true,
-                      text: 'MIN SPENT BY TYPE OF CHORE'
-                  }
-              },
-               
+                    display: true,
+                    text: "MIN SPENT BY TYPE OF CHORE",
+                  },
+                },
               }}
             />
           </div>

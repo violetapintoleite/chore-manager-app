@@ -1,7 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { PolarArea } from "react-chartjs-2";
-import { Pie } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
 import "../../styles/modules/metricsdata.css";
@@ -85,7 +83,7 @@ export const MetricsData = () => {
   return (
     <div className="container">
       <div class="row">
-        <div class="col-sm-6 mt-5">
+        <div class="col-sm-6">
           <div className="row m-2">
             <div class="card m-2">
               <div className="card-body">
@@ -98,7 +96,7 @@ export const MetricsData = () => {
           <div className="row m-2">
             <div class="card m-2">
               <div class="card-body">
-                <div className="row">
+                <div className="row text-center">
                   <div className="col-3">
                     {" "}
                     <div class="dishes">
@@ -123,10 +121,39 @@ export const MetricsData = () => {
                 </div>
               </div>
             </div>
+          </div>{" "}
+          <div className="row m-2">
+            <div class="card m-2">
+              <div class="card-body">
+                <div className="row text-center">
+                  <div className="col-3">
+                    {" "}
+                    <div class="dishes">
+                      <span className="numbers">{dishes_min}</span>min
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="laundry">
+                      <span className="numbers">{laundry_min}</span>min
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="cleaning">
+                      <span className="numbers">{cleaning_min}</span>min
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="shopping">
+                      <span className="numbers">{shopping_min}</span>min
+                    </div>
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="col-6">
+        <div className="col-6 mt-4">
           <div class="row">
             <div className="col card m-2 p-3">
               <Doughnut
@@ -154,10 +181,18 @@ export const MetricsData = () => {
                     },
                   ],
                 }}
+                options={{
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: "NUMBER OF TIMES YOU DID THE CHORE",
+                    },
+                  },
+                }}
               />
             </div>
             <div className="col card m-2 p-3">
-              <Pie
+              <Doughnut
                 datasetIdKey="id"
                 data={{
                   labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
@@ -186,6 +221,14 @@ export const MetricsData = () => {
                       borderWidth: 1,
                     },
                   ],
+                }}
+                options={{
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: "MIN SPENT DOING EACH CHORE TYPE",
+                    },
+                  },
                 }}
               />
             </div>
