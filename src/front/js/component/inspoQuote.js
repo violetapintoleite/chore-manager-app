@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import "../../styles/modules/hometext.css";
-import Play from "../pages/playaround";
 
 function InspoQuote() {
   const [quote, setQuote] = useState("");
@@ -46,7 +45,6 @@ function InspoQuote() {
                 Sign Up Now!
               </button>
             </Link>
-        <Play></Play>
     </div>
   );
 }

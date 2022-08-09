@@ -31,6 +31,24 @@ background: #9a79fb;
   width: 100%; /* or any custom size */
   height: 100%; 
   object-fit: contain;
+  
+}
+
+
+/* appear onload*/
+/* .home-img-appear { animation: 1s polygon reverse; }
+
+@keyframes polygon {
+  0% { clip-path: polygon(0 0, 50% 0, 100% 0, 100% 50%, 100% 100%, 50% 100%, 0 100%, 0 50%); }
+  100% { clip-path:  polygon(50% 50%, 50% 25%, 50% 50%, 75% 50%, 50% 50%, 50% 75%, 50% 50%, 25% 50%); }
+} */
+
+.home-img-appear{
+  clip-path: circle(35%);
+  transition: clip-path 1s;
+}
+.home-img-appear:hover{
+  clip-path: circle(85%);
 }
 
 .team-image{
@@ -38,18 +56,19 @@ background: #9a79fb;
   width: 170px;
 }
 
-.team-container:nth-child(1){
-background-color: #f07d6e62;
+.team-container:nth-child(2){
+background-color: #f07d6e;
 }
 
-.team-container:nth-child(2){
-  background-color: #84cdfa62;
+.team-container:nth-child(3){
+  background-color: #84cdfa;
   }
 
-  .team-container:nth-child(3){
-    background-color: #5ad1cd62;
+  .team-container:nth-child(4){
+    background-color: #5ad1cd;
     }
 
-    .team-container:nth-child(4){
-      background-color: #9a79fb62;
+    .team-container:nth-child(5){
+      background-color: #9a79fb;
+      
       }

@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
-import logo3 from "../../img/logo3.png";
 import "../../styles/modules/buttonstyles.css";
 import "../../styles/modules/navbarstyling.css";
 import "../../styles/modules/iconstyle.css";

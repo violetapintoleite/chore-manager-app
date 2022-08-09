@@ -5,30 +5,34 @@ import incredibles from "../../img/incredibles.jpeg";
 import simpsons from "../../img/simpsons.jpeg";
 
 
+
 function HomepageTeamSection() {
   return (
-    <div className='container text-center pb-2 pt-2'>
+    <>
+    <div className='container text-center text-white pb-4 pt-4'>
+    <h3 className='text-dark pb-2'>Four Teams To Choose From</h3>
         <div className='row'>
-        <div className='col-3 team-container p-3 '>
-            <h4>The Flintstones</h4>
-            <img className="img-thumbnail rounded team-image rounded-circle" src={flintstones}></img>
+            <div className='col-2'></div>
+        <div className='col-2 m-1 team-container rounded p-3 '>
+            <h5>The Flintstones</h5>
+            <img className="img-thumbnail team-image rounded-circle" src={flintstones}></img>
         </div>
-        <div className='col-3 team-container p-3'>
-            <h4>The Addams</h4>
-            <img className="img-thumbnail rounded team-image  rounded-circle" src={addams}></img>
+        <div className='col-2 m-1 team-container rounded p-3'>
+            <h5>The Addams</h5>
+            <img className="img-thumbnail  team-image  rounded-circle" src={addams}></img>
         </div>
-        <div className='col-3 team-container p-3'>
-            <h4>The Incredibles</h4>
-            <img className="img-thumbnail team-image  rounded-circle" src={incredibles}></img>
+        <div className='col-2 m-1 team-container rounded p-3'>
+            <h5>The Incredibles</h5>
+            <img className="img-thumbnail team-image  rounded-circle " src={incredibles}></img>
         </div>
-        <div className='col-3 team-container p-3'>
-            <h4>The Simpsons</h4>
+        <div className='col-2 m-1 team-container rounded p-3 '>
+            <h5>The Simpsons</h5>
             <img className="img-thumbnail team-image  rounded-circle" src={simpsons}></img>
         </div>
-        
-    
+        <div className='col-2'></div>
     </div>
     </div>
+    </>
   )
 }
 

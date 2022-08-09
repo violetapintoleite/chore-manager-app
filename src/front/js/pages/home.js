@@ -5,6 +5,7 @@ import "../../styles/home.css";
 import "../../styles/modules/hometext.css";
 import "../../styles/modules/homepage.css";
 import "../../styles/modules/slideanimationtext.css";
+import Play from "../pages/playaround.js";
 import InspoQuote from "../component/inspoQuote";
 import laptopimg from "../../../front/img/laptopimg.jpg";
 import laptopimglight from "../../../front/img/laptopimglight.jpg";
@@ -31,14 +32,15 @@ export const Home = () => {
             <InspoQuote></InspoQuote>
           </div>
         </div>
-          
+          <Play></Play>
+          <hr/>
       {/*cards section */}
           <div className="">
-            <div className="d-flex m-2">
-              <div className="card radius-3px col-5 ">
+            <div className="d-flex m-2 ">
+              <div className="card bg-white radius-3px col-5 ">
                 <img
                   src={laptopimg}
-                  className="home-img"
+                  className="home-img home-img-appear"
                   alt="home-img-light"
                 />
               </div>
@@ -82,7 +84,7 @@ export const Home = () => {
               <div className="card radius-3px col-5">
                 <img
                   src={laptopimglight}
-                  className="home-img"
+                  className="home-img home-img-appear  "
                   alt="home-img-light"
                 />
               </div>
@@ -91,7 +93,7 @@ export const Home = () => {
           <hr />
           <div className="d-flex m-2">
             <div className="card radius-3px col-5">
-              <img src={laptopimg} className="home-img" alt="home-img-light" />
+              <img src={laptopimg} className="home-img home-img-appear" alt="home-img-light" />
             </div>
             <div className="container third-section text-section d-flex pt-4">
               <div className="container third-section col-3 ">
@@ -125,15 +127,19 @@ export const Home = () => {
               <div className="card radius-3px col-5">
                 <img
                   src={laptopimglight}
-                  className="home-img"
+                  className="home-img home-img-appear"
                   alt="home-img-light"
                 />
               </div>
             </div>
           </div>
-         
           <hr />
+         
+      
           <HomepageTeamSection></HomepageTeamSection>
+          <hr />
+          <Play></Play>
+          
         </div>
     </>
   );

@@ -8,10 +8,10 @@ body {
   min-inline-size: 100%;
 }
 
-html, body {
+/* html, body {
   max-width: 100%;
   overflow-x: hidden;
-}
+} */
 
 .loginandsignuppageheight{
   height: 50vh;

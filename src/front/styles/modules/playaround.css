@@ -1,7 +1,11 @@
 /* animation */
+@import"hometext.css"; /* Using a string */
 
-
-.play-mannimation-div {
+/* .all-animations{
+position: sticky;
+  z-index: -1;
+} */
+.play-annimation-div-one {
     align-items: center;
   justify-content: center;
   background: #f1f1f1;
@@ -12,7 +16,7 @@
 }
 
 
-  .perspective-text {
+  .perspective-text-one {
     color: #f07d6e;
     font-family: Arial;
     font-size: 30px;
@@ -22,63 +26,314 @@
     width: 100%;
   }
   
-  .play-perspective-line {
+  .play-perspective-line-one {
     height: 30px;
     overflow: hidden;
     position: relative;
   }
   
-  .perspective-text{
+  .perspective-text-one{
     margin: 0;
     height: 30px;
     line-height: 30px;
     transition: all 0.5s ease-in-out;
   }
   
-  .play-perspective-line:nth-child(odd) {
+  .play-perspective-line-one:nth-child(odd) {
     transform: skew(40deg, -5deg) scaleY(0.667);
    
   }
   
   
-  .play-perspective-line:nth-child(even) {
+  .play-perspective-line-one:nth-child(even) {
     transform: skew(0deg, -5deg) scaleY(1.337);
     
   }
   
-  .play-perspective-text:hover .perspective-text {
+  .all-animations:hover .perspective-text-one {
     transform: translate(0, -30px);
     color: #84cdfa;
     text-decoration: dotted;
     
   }
   
-  .play-perspective-line:nth-child(1) {
+  .play-perspective-line-one:nth-child(1) {
     left: 29px;
   }
 
-  .play-perspective-line:hover:nth-child(1) {
+  .all-animations:hover:nth-child(1) {
     left: 29px;
   }
   
   
-  .play-perspective-line:nth-child(2) {
+  .play-perspective-line-one:nth-child(2) {
     left: 58px;
     background: #f07d6e00;
   }
   
-  .play-perspective-line:nth-child(3) {
+  .play-perspective-line-one:nth-child(3) {
     left: 87px;
     background: #84cdfa00;
   }
   
-  .play-perspective-line:nth-child(4) {
+  .play-perspective-line-one:nth-child(4) {
     left: 116px;
     background: #5ad1cd00;
   }
   
-  .play-perspective-line:nth-child(5) {
+  .play-perspective-line-one:nth-child(5) {
     left: 145px;
     
   }
 
+
+  /* section number two */
+
+  .play-mannimation-div-one {
+    align-items: center;
+  justify-content: center;
+  background: #f1f1f1;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 250px;
+}
+
+
+  .perspective-text-two {
+    color: #84cdfa;
+    font-family: Arial;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    width: 100%;
+  }
+  
+  .play-perspective-line-two {
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .perspective-text-two{
+    margin: 0;
+    height: 30px;
+    line-height: 30px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .play-perspective-line-two:nth-child(odd) {
+    transform: skew(40deg, -5deg) scaleY(0.667);
+   
+  }
+  
+  
+  .play-perspective-line-two:nth-child(even) {
+    transform: skew(0deg, -5deg) scaleY(1.337);
+    
+  }
+  
+  .all-animations:hover .perspective-text-two {
+    transform: translate(0, -30px);
+    color: #5ad1cd;
+    text-decoration: dotted;
+    
+  }
+  
+  .play-perspective-line-two:nth-child(1) {
+    left: 29px;
+  }
+
+  .all-animations:hover:nth-child(1) {
+    left: 29px;
+  }
+  
+  
+  .play-perspective-line-two:nth-child(2) {
+    left: 58px;
+    background: #f07d6e00;
+  }
+  
+  .play-perspective-line-two:nth-child(3) {
+    left: 87px;
+    background: #84cdfa00;
+  }
+  
+  .play-perspective-line-two:nth-child(4) {
+    left: 116px;
+    background: #5ad1cd00;
+  }
+  
+  .play-perspective-line-two:nth-child(5) {
+    left: 145px;
+    
+  }
+
+/* animation */
+
+
+.play-annimation-div-one {
+  align-items: center;
+justify-content: center;
+background: #f1f1f1;
+overflow: hidden;
+margin-left: auto;
+margin-right: auto;
+margin-top: 250px;
+}
+
+
+.perspective-text-three {
+  color: #5ad1cd;
+  font-family: Arial;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.play-perspective-line-three {
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.perspective-text-three{
+  margin: 0;
+  height: 30px;
+  line-height: 30px;
+  transition: all 0.5s ease-in-out;
+}
+
+.play-perspective-line-three:nth-child(odd) {
+  transform: skew(40deg, -5deg) scaleY(0.667);
+ 
+}
+
+
+.play-perspective-line-three:nth-child(even) {
+  transform: skew(0deg, -5deg) scaleY(1.337);
+  
+}
+
+.all-animations:hover .perspective-text-three {
+  transform: translate(0, -30px);
+  color: rgba(153, 121, 251);
+  text-decoration: dotted;
+  
+}
+
+.play-perspective-line-three:nth-child(1) {
+  left: 29px;
+}
+
+.all-animations:hover:nth-child(1) {
+  left: 29px;
+}
+
+
+.play-perspective-line-three:nth-child(2) {
+  left: 58px;
+  background: #f07d6e00;
+}
+
+.play-perspective-line-three:nth-child(3) {
+  left: 87px;
+  background: #84cdfa00;
+}
+
+.play-perspective-line-three:nth-child(4) {
+  left: 116px;
+  background: #5ad1cd00;
+}
+
+.play-perspective-line-three:nth-child(5) {
+  left: 145px;
+  
+}
+
+/* animation */
+
+
+.play-annimation-div-four {
+  align-items: center;
+justify-content: center;
+background: #f1f1f1;
+overflow: hidden;
+margin-left: auto;
+margin-right: auto;
+margin-top: 250px;
+}
+
+
+.perspective-text-four {
+  color: rgba(153, 121, 251);
+  font-family: Arial;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  width: 100%;
+}
+
+.play-perspective-line-four {
+  height: 30px;
+  overflow: hidden;
+  position: relative;
+}
+
+.perspective-text-four{
+  margin: 0;
+  height: 30px;
+  line-height: 30px;
+  transition: all 0.5s ease-in-out;
+}
+
+.play-perspective-line-four:nth-child(odd) {
+  transform: skew(40deg, -5deg) scaleY(0.667);
+ 
+}
+
+
+.play-perspective-line-four:nth-child(even) {
+  transform: skew(0deg, -5deg) scaleY(1.337);
+  
+}
+
+.all-animations:hover .perspective-text-four {
+  transform: translate(0, -30px);
+  color: #f07d6e;
+  text-decoration: dotted;
+  
+}
+
+.play-perspective-line-four:nth-child(1) {
+  left: 29px;
+}
+
+.all-animations:hover:nth-child(1) {
+  left: 29px;
+}
+
+
+.play-perspective-line-four:nth-child(2) {
+  left: 58px;
+  background: #f07d6e00;
+}
+
+.play-perspective-line-four:nth-child(3) {
+  left: 87px;
+  background: #84cdfa00;
+}
+
+.play-perspective-line-four:nth-child(4) {
+  left: 116px;
+  background: #5ad1cd00;
+}
+
+.play-perspective-line-four:nth-child(5) {
+  left: 145px;
+  
+}
