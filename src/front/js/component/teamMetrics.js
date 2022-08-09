@@ -192,7 +192,7 @@ export const TeamMetrics = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-6">
+        <div className="col-sm-6">
           <div class="card m-2">
             <div className="card-body">
               You and your team did a total of{" "}
@@ -203,7 +203,7 @@ export const TeamMetrics = () => {
         </div>
       </div>
       <div className="row justify-content-center">
-        <div className="col-6">
+        <div className="col-sm-6">
           <div class="card m-2">
             <div class="card-body">
               <div className="row text-center">
@@ -234,7 +234,7 @@ export const TeamMetrics = () => {
         </div>
       </div>
       <div className="row justify-content-center">
-        <div className="col-6">
+        <div className="col-sm-6">
           <div class="card m-2">
             <div class="card-body">
               <div className="row text-center">
@@ -266,7 +266,7 @@ export const TeamMetrics = () => {
       </div>
 
       <div class="row justify-content-center">
-        <div className="col-6">
+        <div className="col-sm-6">
           <div className="card mb-5 p-3">
             <Bar
               datasetIdKey="id"

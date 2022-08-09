@@ -83,7 +83,7 @@ export const MetricsData = () => {
   return (
     <div className="container">
       <div class="row">
-        <div class="col-sm-6">
+        <div class="col-6">
           <div className="row m-2">
             <div class="card m-2">
               <div className="card-body">
