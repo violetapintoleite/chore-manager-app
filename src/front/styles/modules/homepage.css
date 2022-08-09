@@ -8,7 +8,6 @@
 .text-section{
   border-style: solid;
   border-color: rgb(255, 255, 255);
-  border-width: 50px;
 }
 
 .first-section{
@@ -44,10 +43,10 @@ background: #9a79fb;
 } */
 
 .home-img-appear{
-  clip-path: circle(25%);
+  clip-path: circle(30%);
   transition: clip-path 1s;
 }
-.home-img-appear:hover{
+.homepage-card-container:hover .home-img-appear{
   clip-path: circle(85%);
 }
 

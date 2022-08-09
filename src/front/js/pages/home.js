@@ -33,7 +33,7 @@ export const Home = () => {
         </div>
       {/*cards section */}
           <div className="">
-            <div className="d-flex m-2 ">
+            <div className="d-flex m-2 homepage-card-container ">
               <div className="card bg-white shadow-none radius-3px col-5 ">
                 <img
                   src={laptopimg}
@@ -64,7 +64,7 @@ export const Home = () => {
           </div>
           <hr />
           <div className=" p-3">
-            <div className="d-flex m-2 pt-4 ">
+            <div className="d-flex m-2 pt-4 homepage-card-container ">
               <div className="text-section second-section d-flex">
                 <div className="container second-section col-3 pt-4">
                   <h4 className="homepage-numbers text-white">2</h4>
@@ -88,7 +88,7 @@ export const Home = () => {
             </div>
           </div>
           <hr />
-          <div className="d-flex m-2">
+          <div className="d-flex homepage-card-container m-2">
             <div className="card radius-3px shadow-none col-5">
               <img src={laptopimg} className="home-img home-img-appear" alt="home-img-light" />
             </div>
@@ -107,7 +107,7 @@ export const Home = () => {
           </div>
           <hr />
           <div className=" p-3">
-            <div className="d-flex m-2 pt-4 ">
+            <div className="d-flex homepage-card-container m-2 pt-4 ">
               <div className="text-section fourth-section d-flex">
                 <div className="container fourth-section col-3 pt-4">
                   <h4 className="homepage-numbers text-white">4</h4>
