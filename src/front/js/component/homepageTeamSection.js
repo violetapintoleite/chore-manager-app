@@ -10,7 +10,7 @@ function HomepageTeamSection() {
   return (
     <>
     <div className='container text-center text-white pb-4 pt-4'>
-    <h3 className='text-dark pb-2'>Four Teams To Choose From</h3>
+    <h3 className='text-dark pb-2 home-page-card-titles'>Four Teams To Choose From</h3>
         <div className='row'>
             <div className='col-2'></div>
         <div className='col-2 m-1 team-container rounded p-3 '>
