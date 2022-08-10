@@ -11,27 +11,14 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 from flask_jwt_extended import JWTManager
 from sqlalchemy import or_, exc
 from datetime import date, datetime
-from flask_mail import Mail, Message
+from flask_mail import Message
 from dotenv import load_dotenv
+# from api.mail import mail
 
 api = Blueprint('api', __name__)
 
 load_dotenv()
 
-# jwt = JWTManager(app)
-
-#  configuration of mail
-# app.config['MAIL_SERVER']='smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
-# app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# app.config['MAIL_MAX_EMAILS'] = 5
-
-
-# mail = Mail(app)
-# mail.init_app(app)
 
 # sign up end point (DONE)
 @api.route("/signup", methods=["POST"])
@@ -78,7 +65,6 @@ def getChoresByUserEmail():
 
     return jsonify({"msg": "no user"}), 404
 
-  
 # post chore endpoint 
 @api.route('/chore', methods=['POST'])
 def postChore():
@@ -142,7 +128,6 @@ def deleteAllChores():
      
     return jsonify({"msg": "there is no user"}), 401
 
-
 # login end point
 @api.route("/login", methods=["POST"])
 def login():
@@ -158,7 +143,6 @@ def login():
     else:
         return {"error":"user and password not valid"},400
    
-
 # protected page end point
 @api.route("/profile", methods=["GET"])
 @jwt_required()
@@ -245,44 +229,48 @@ def getChoresfromUsersInTeam():
         
     return jsonify({"teamChores" : serialized_chores})
 
-
 #### -- need to modify  this to the BACKEND URL os.environ['GMAIL_USERNAME']
 # send email function
 def send_mail(user):
-    token=user.get_token()
-    msg = Message(
-                'Password Reset Request',
-                sender ='c.martinroffey@gmail.com',
-                recipients = [user.email]
-               )
-    msg.body = f''' To reset your password please click the link below
+    # token=user.get_token()
+#     msg = Message(
+#                 'Password Reset Request',
+#                 sender=os.environ['GMAIL_USERNAME'],
+#                 recipients=[user.email]
+#                )
+#     msg.body = f''' To reset your password please click the link below
+
+# {url_for('reset-password-request', token=token, _external=True)}
 
 
-{url_for('reset-password-request', token=token, _external=True)}
-
-If you didn't request a password reset request, please ignore this message.
-    '''
-    mail.send(msg)
+# If you didn't request a password reset request, please ignore this message.
+#     '''
+#     mail.send(msg)
+#     print(token)
     return jsonify({'Sent'})
 
-#########
- # get end point to compare if email exists in DB 
+
+######### # 
+ # get end point to compare if email exists in DB
+ # notes - endpoint is working and passing the email to the payload when not calling the send_mail function 
 @api.route('/forgot-password', methods=['POST'])
 def reset_request(): 
+    request_body = request.get_json(force=True)
+    email = request_body['email']
 
-    user=User.get_by_email(email)
+    user = User.get_by_email(email)
     if user:
-        send_mail(user)
+        # send_mail(user)
         return jsonify(message="reset email sent"),201
     else:
-        return({"error":"email does not exist"},400)
+        return jsonify({"error":"email does not exist"},400)
     
 
 #route to ensure that only user with a valid key can access page to reset password
-@api.route("/reset-password-request/<token>", methods=["GET", 'POST'])
+@api.route("/reset-password-request/<token>", methods=['GET'])
 def confirmIdentity(token):
     
-    user=User.get_token(token)
+    user = User.get_token(token)
     if user is None:
         return jsonify(message="access denied"),401
     else:
@@ -293,13 +281,11 @@ def confirmIdentity(token):
 @api.route("/reset-password", methods=['POST'])
 @jwt_required()
 def changePassword(token):
-
+    request_body = request.get_json(force=True)
     password = request_body['password']
     hash_password = generate_password_hash(password)
     email = get_jwt_identity()
 
-   
-    
     user = User.get_by_email(email)
     if user is None:
         return jsonify(message="access denied"),401
@@ -307,8 +293,8 @@ def changePassword(token):
     else:
         user.password=hash_password
         db.session.commit()
-        # access_token = create_access_token(identity=email)
-        # user.password=hash_password
+
+        access_token = create_access_token(identity=email)
     return jsonify({"access_token": access_token}, "password reset"),201
     
    

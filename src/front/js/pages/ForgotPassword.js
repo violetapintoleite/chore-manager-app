@@ -15,7 +15,7 @@ function ForgotPassword() {
 // if(token && token != "" && token != undefined ) navigate('/profile');
 
 const handleClick = () => {
-  actions.resetPasswordRequest(email);
+  actions.forgotPasswordRequest(email);
 };
 
 //email verification
