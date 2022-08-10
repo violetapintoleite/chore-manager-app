@@ -34,8 +34,8 @@ function Signup() {
   };
 
   return (
-    <div className="home position-relative">
-      <div className="position-absolute top-50 start-50 translate-middle">
+    <div className="loginandsignuppageheight position-relative">
+    <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Sign Up</h1>
         <div>
           <label class="form-label">Email address</label>
@@ -44,7 +44,7 @@ function Signup() {
             className="form-control"
             placeholder="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value)} onInput={validateEmail}
           />
           <label className="form-label">Username</label>
           <input
@@ -64,8 +64,10 @@ function Signup() {
           />
         </div>
         <div>
+          <br/>
+        <div className="text-center">
           <button
-            className="btn"
+            className="btn m-2"
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
@@ -83,6 +85,7 @@ function Signup() {
           ) : (
             <p></p>
           )}
+        </div>
         </div>
         <h4 className="mt-3">
           {" "}

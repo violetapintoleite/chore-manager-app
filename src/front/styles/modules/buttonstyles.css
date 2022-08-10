@@ -20,7 +20,21 @@
     outline: none;
 }
 
-.btn:hover {
+.inspo-button:hover {
+    color: #000000;
+    background-color: #fff;
+}
+
+.inspo-button{
+    transition: all .5s ease;
+    color: rgb(250, 250, 250);
+    border: 2px solid rgb(250, 250, 250);
+    line-height: 1;
+    background-color : transparent;
+    outline: none;
+}
+
+.btn-white-styling:hover {
     color: #f07e6e;
     background-color: #fff;
 }

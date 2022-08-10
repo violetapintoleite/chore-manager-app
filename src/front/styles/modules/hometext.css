@@ -1,29 +1,36 @@
-
-
 /* homepage quote styling */
 
 .font-for-quote {
   font-weight: 900;
-  font-size: 60px;
+  font-size: 50px;
 }
 
 .quote-container {
-  height: 75%;
+  height: 55vh;
+  
 } 
 
- .quote {
-  height: 100%;
+.home-page-text {
+  font-size: 20px;
 }
 
- .quote-and-button {
+.home-page-card-titles{
+font-size: 40px;
+}
+ /* .quote {
+  height: 100%;
+} */
+
+ /* .quote-and-button {
   height: 75%;
 
-}
+} */
 
-.cta-text{
+/* .cta-text{
   font-weight: 900;
   font-size: 80px;
-}
+} */
+
 
 hr{
   border: 3px solid rgb(255, 255, 255);

@@ -2,9 +2,11 @@
 
  @media (max-width: 991px) {
     .navbar-scroll {
-      background-color: #fff;
-      background: #f07e6e;
+      background-color: rgba(255, 255, 255);
+      background: #ffffff;
     }
+
+   
        
     .navbar-scroll .navbar-brand,
     .navbar-scroll .nav-link,
@@ -15,7 +17,7 @@
   
   .navbar-brand {
     font-size: 1.7rem;
-    font-weight: 500;
+    font-weight: 450;
   }
   .navbar-scroll .navbar-brand,
   .navbar-scroll .nav-link,
@@ -30,8 +32,8 @@
   
   .navbar-scrolled {
     box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
-    transition: 1s;
-    background-color: #fff;
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0);
   }
   
   .navbar-scrolled .navbar-brand,
@@ -39,3 +41,4 @@
   .navbar-scrolled .fa-bars {
     color: #4f4f4f;
   }
+

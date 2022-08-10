@@ -18,8 +18,8 @@ function Login() {
   };
 
   return (
-    <div className="home position-relative">
-      <div className="position-absolute top-50 start-50 translate-middle">
+    <div className="loginandsignuppageheight position-relative">
+    <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Welcome back!</h1>
         <div>
           <label class="form-label">Email address</label>
@@ -28,7 +28,7 @@ function Login() {
             className="form-control"
             placeholder="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value) } 
           />
           <label className="form-label">Username</label>
           <input
@@ -48,6 +48,8 @@ function Login() {
           />
         </div>
         <div>
+          <br/>
+          <div className="text-center">
           <button
             className="btn"
             onClick={handleClick}
@@ -56,6 +58,7 @@ function Login() {
             {" "}
             Submit{" "}
           </button>
+          </div>
         </div>
         <p className="mt-3 text-center">
           {" "}
