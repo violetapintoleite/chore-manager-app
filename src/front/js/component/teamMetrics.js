@@ -203,7 +203,7 @@ export const TeamMetrics = () => {
           }}
         >
           <div className="card-header">
-            Total of chores : <strong>{total_amount_of_chores}</strong>
+            Total # of chores : <strong>{total_amount_of_chores}</strong>
           </div>
           <Bar
             datasetIdKey="id"
