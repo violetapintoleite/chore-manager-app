@@ -440,6 +440,28 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
       },
 
+      // testing out the send email endpoint and set up
+      sendEmail: async () => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': '*'},
+          body: JSON.stringify(),
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/send-email-test",
+            
+            opts
+          );
+          console.log("email sent")
+           
+          return true;
+        } catch (error) {
+          console.log("can't send email");
+        }
+      },
+
     },
   };
 };

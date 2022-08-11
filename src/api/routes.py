@@ -11,11 +11,26 @@ from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_requir
 from flask_jwt_extended import JWTManager
 from sqlalchemy import or_, exc
 from datetime import date, datetime
-from flask_mail import Message
+from flask_mail import Message, Mail
 from dotenv import load_dotenv
 # from api.mail import mail
 
 api = Blueprint('api', __name__)
+
+app = Flask(__name__)
+# mail = Mail(app)
+# mail.init_app(app)
+
+
+#  configuration of mail
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
+# app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
+# app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL'] = True
+# app.config['MAIL_MAX_EMAILS'] = 5
+# mail = Mail(app)
 
 load_dotenv()
 
@@ -228,7 +243,7 @@ def getChoresfromUsersInTeam():
             return jsonify({"msg": "there were no chores found for this user", "user": user.serialize()}), 404
         user_name = User.query.filter_by(id=user.user_id).one_or_none()
 
-        for chore in chores:
+    for chore in chores:
             serialized_chore = chore.serialize()
             serialized_chore["user_name"] = user_name.email
             serialized_chores.append(serialized_chore)
@@ -303,6 +318,25 @@ def changePassword(token):
         access_token = create_access_token(identity=email)
     return jsonify({"access_token": access_token}, "password reset"),201
     
+#test email send
+# @api.route('/send-email-test', methods=['POST'])
+# def send_mail():
+#     password = "123456"
+#     hash_password = generate_password_hash(password)
+#     try:
+#         # if it is a post request
+#         if request.method == 'POST':
+            
+#             # inputing the message in the correct order
+#             msg = Message('Password Reset Request', sender=os.environ['GMAIL_USERNAME'], recipients=["c.martinroffey@hotmail.com"] )
+#             msg.body = "sent from the application"
+#             mail.send(msg)
+#             return jsonify({hash_password})
+#         return
+#     except Exception as e:
+#             return jsonify({'Not Sent'})
    
+   
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -19,6 +19,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import VideoSearch from "./component/YTSearch";
+import SendEmail from "./pages/SendEmail";
 
 //create your first component
 const Layout = () => {
@@ -40,10 +41,9 @@ const Layout = () => {
             <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />
-
             <Route element={<ForgotPassword />} path="/forgot-password" />
             <Route element={<ResetPassword />} path="/reset-password" />
-
+            <Route element={<SendEmail/>} path="/send-email" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />
