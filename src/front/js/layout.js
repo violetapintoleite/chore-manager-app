@@ -8,10 +8,12 @@ import Login from "./pages/Login";
 import Profile from "./pages/profile";
 import { Single } from "./pages/single";
 import { History } from "./pages/history";
-import { Metrics } from "./pages/metrics";
+
 import { TeamMetricsPage } from "./pages/teamMetrics";
+
 import  ForgotPassword from "./pages/ForgotPassword.js";
 import ResetPassword from "./pages/ResetPassword.js";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -35,12 +37,13 @@ const Layout = () => {
             <Route element={<Login />} exact path="/login" />
             <Route element={<Profile />} exact path="/profile" />
             <Route element={<History />} path="/history" />
-            <Route element={<Metrics />} path="/metrics" />
             <Route element={<TeamMetricsPage />} path="/teamMetrics" />
             <Route element={<Single />} path="/single/:theid" />
             <Route element={<VideoSearch />} path="/YTSearch" />
+
             <Route element={<ForgotPassword />} path="/forgot-password" />
             <Route element={<ResetPassword />} path="/reset-password" />
+
             <Route element={<h1>Not found!</h1>} />
           </Routes>
           <Footer />

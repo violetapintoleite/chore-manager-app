@@ -1,18 +1,17 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
-import logo3 from "../../img/logo3.png";
 import "../../styles/modules/buttonstyles.css";
 import "../../styles/modules/navbarstyling.css";
+import "../../styles/modules/iconstyle.css";
 
-
-export const Navbar = ({excludeFromHome=true}) => {
+export const Navbar = ({ excludeFromHome = true }) => {
   const { store, actions, token } = useContext(Context);
   const location = useLocation();
 
-  if (excludeFromHome && location.pathname === "/" ){
-    return null 
-   };
+  if (excludeFromHome && location.pathname === "/") {
+    return null;
+  }
 
   const [scrolled, setScrolled] = useState();
   const initScrollBehaviour = () => {
@@ -24,28 +23,33 @@ export const Navbar = ({excludeFromHome=true}) => {
     window.addEventListener("scroll", () => initScrollBehaviour());
   }, []);
 
-
   useEffect(() => {
     if (store?.token && token != "") {
       actions.checkIfAuthorized();
     }
   }, [store.token]);
-  
 
   return (
-    <nav className={"navbar " + (scrolled > 90 ? "navbar-scrolled fixed-top" : "navbar-scroll")}>
+    <nav
+      className={
+        "navbar " +
+        (scrolled > 90 ? "navbar-scrolled fixed-top " : "navbar-scroll")
+      }
+    >
       <div className="container-md">
-        
         <Link to="/">
           {/* <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span> */}
           {/* <img src={logo3} className="navbar-logo" alt="logo3"/> */}
-          <p className="nav-link navbar-brand logo">Chore Manager</p>
+          <p className="nav-link navbar-brand logo">
+            <i className="fas fa-hand-sparkles"></i>Chore Manager
+          </p>
         </Link>
-         
+
         <div className="d-flex">
           {store.token ? (
 
-            <p className="nav-item dropdown">
+            <ul className="nav-item dropdown">
+
               {" "}
               <a
                 className="dropdown"
@@ -54,40 +58,43 @@ export const Navbar = ({excludeFromHome=true}) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <button className="navbar-toggler btn-color" type="button" data-mdb-toggle="collapse"
-        data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i className="fas fa-bars"></i>
-      </button>
-              </a>
 
+                <button
+                  className="navbar-toggler btn-color"
+                  type="button"
+                  data-mdb-toggle="collapse"
+                  data-mdb-target="#navbarSupportedContent"
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <i className="fas fa-bars"></i>
+                </button>
+
+              </a>
               <ul
                 className="dropdown-menu"
                 aria-labelledby="navbarDropdownMenuLink"
               >
                 <li>
                   {" "}
-                  <Link to="/profile">
-                    <a className="dropdown-item" href="/profile">
-                      Dashboard
-                    </a>{" "}
-                  </Link>
+                  <a className="dropdown-item" href="/profile">
+                    Dashboard
+                  </a>{" "}
                 </li>
                 <li>
                   {" "}
-                  <Link to="/history">
-                    <a className="dropdown-item" href="/history">
-                      My Chores
-                    </a>{" "}
-                  </Link>
+
+                  <a className="dropdown-item" href="/history">
+                    Chores
+                  </a>{" "}
                 </li>
                 <li>
                   {" "}
-                  <Link to="/metrics">
-                    <a className="dropdown-item" href="#">
-                      My Metrics
-                    </a>
-                  </Link>
+                  <a className="dropdown-item" href="/teamMetrics">
+                    Team Metrics
+                  </a>
+
                 </li>
                 <li>
                   {" "}
@@ -101,7 +108,7 @@ export const Navbar = ({excludeFromHome=true}) => {
                   </Link>
                 </li>
               </ul>
-            </p>
+            </ul>
           ) : (
             <p></p>
           )}
@@ -124,6 +131,3 @@ export const Navbar = ({excludeFromHome=true}) => {
     </nav>
   );
 };
-
-
-

@@ -1,16 +1,30 @@
-import React, { useContext, setStore } from "react";
-import { Context } from "../store/appContext";
+import React from "react";
 import { AddChoreForm } from "../component/choreForm";
 import { HistoryofChores } from "../component/historyofChores";
+import VideoSearch from "../component/YTSearch";
 
 export const History = () => {
-  const { store, actions } = useContext(Context);
-  console.log(store.email);
   return (
-    <div className="w-25" style={{ margin: "0 auto" }}>
-      <AddChoreForm />
+    <>
+      <h1 className="text-center">Chores</h1>
+      <div className="d-flex justify-content-center">
+        <div className="alert alert-primary" role="alert">
+          Add the chores you do using the form and browse tutorials or music
+          using the YouTube search!
+        </div>
+      </div>
       <br></br>
-      <HistoryofChores />
-    </div>
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto">
+          <VideoSearch></VideoSearch>
+        </div>
+        <div className="col-md-auto">
+          <AddChoreForm />
+          <br></br>
+          <HistoryofChores />
+          <br></br>
+        </div>
+      </div>
+    </>
   );
 };
