@@ -1,10 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-
-import AddToTeam from "../component/AddToTeam";
-import VideoSearch from "../component/YTSearch";
-
 import { MetricsData } from "../component/metrics";
 import "../../styles/modules/dashboard.css";
 import { TeamMetrics } from "../component/teamMetrics";

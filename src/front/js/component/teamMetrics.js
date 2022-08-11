@@ -192,7 +192,7 @@ export const TeamMetrics = () => {
   return (
 
     <div className="container">
-      <div className="row justify-content-center">
+      <div className="row justify-content-center mt-3">
         <div className="col-sm-3">
           <div class="card m-2">
             <div className="card-body">
@@ -272,7 +272,7 @@ export const TeamMetrics = () => {
         </div>
       </div>
 
-      <div class="row justify-content-center">
+      <div class="row justify-content-center mt-3">
         <div className="col-sm-6">
           <div className="card mb-5 p-3">
             <Bar

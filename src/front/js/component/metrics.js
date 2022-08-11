@@ -81,26 +81,25 @@ export const MetricsData = () => {
   var shopping_min = secondsToMinutes(shopping_time);
 
   return (
-
-  <div className="container">
-      <div class="row">
-        <div class="col-6">
-          <div className="row m-2">
-            <div class="card m-2">
-              <div className="card-body">
-                You did a total of <strong>{total_amount_of_chores}</strong>{" "}
-                chores, which took a total of{" "}
-                <strong>{total_time.slice(0, -3)}H</strong>.
-              </div>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-sm-3">
+          <div class="card m-2">
+            <div className="card-body">
+              Total chores done: <strong>{total_amount_of_chores}</strong>
             </div>
-
-    
-      <div className="row justify-content-md-center">
-        <div className="col-md-auto card m-5 p-3">
-          <div className="card-header">
-            You did <strong>{total_amount_of_chores}</strong> chores in total.
-
           </div>
+        </div>
+        <div className="col-sm-3">
+          <div class="card m-2">
+            <div className="card-body">
+              Total time spent: <strong>{total_time.slice(0, -3)}H</strong>.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto mt-3">
           <div className="row m-2">
             <div class="card m-2">
               <div class="card-body">
@@ -108,22 +107,22 @@ export const MetricsData = () => {
                   <div className="col-3">
                     {" "}
                     <div class="dishes">
-                      Dishes <span className="numbers">{dishes}</span>
+                      Dishes<span className="numbers">{dishes}</span>
                     </div>
                   </div>
                   <div className="col-3">
                     <div class="laundry">
-                      Laundry <span className="numbers">{laundry}</span>
+                      Laundry<span className="numbers">{laundry}</span>
                     </div>
                   </div>
                   <div className="col-3">
                     <div class="cleaning">
-                      Cleaning <span className="numbers">{cleaning}</span>
+                      Cleaning<span className="numbers">{cleaning}</span>
                     </div>
                   </div>
                   <div className="col-3">
                     <div class="shopping">
-                      Shopping <span className="numbers">{shopping}</span>
+                      Shopping<span className="numbers">{shopping}</span>
                     </div>
                   </div>{" "}
                 </div>
