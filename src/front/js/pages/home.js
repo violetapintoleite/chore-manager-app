@@ -54,7 +54,7 @@ export const Home = () => {
           </div>
           {/* end of animation */}
           <div className="container arrows-container">
-          <div class="arrow">
+          <div className="arrow">
                 <span></span>
                 <span></span>
                 <span></span>

@@ -193,7 +193,7 @@ export const TeamMetrics = () => {
 
   return (
     <>
-      <div class="row justify-content-md-center">
+      <div className="row justify-content-md-center">
         {" "}
         <div
           className="col-md-auto card m-5"

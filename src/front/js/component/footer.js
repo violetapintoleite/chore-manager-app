@@ -61,7 +61,7 @@ export const Footer = () => (
                 <i className="fas fa-envelope"></i> info@choremanager.com
               </p>
 
-              <p>
+              <>
                 <section className="d-flex justify-content-between p-4">
                   <div>
                     <a href="https://www.facebook.com/" className=" me-4">
@@ -84,7 +84,7 @@ export const Footer = () => (
                     </a>
                   </div>
                 </section>
-              </p>
+              </>
             </div>
           </div>
         </div>

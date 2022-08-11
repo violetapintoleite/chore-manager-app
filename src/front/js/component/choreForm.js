@@ -22,7 +22,7 @@ export const AddChoreForm = () => {
           value={chore || ""}
           onChange={(e) => setChore(e.target.value)}
         >
-          <option selected>Select a chore</option>
+          <option value>Select a chore</option>
           <option value="Dishes">Dishes</option>
           <option value="Laundry">Laundry</option>
           <option value="Cleaning">Cleaning</option>

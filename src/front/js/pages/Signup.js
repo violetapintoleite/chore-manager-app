@@ -38,7 +38,7 @@ function Signup() {
     <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Sign Up</h1>
         <div>
-          <label class="form-label">Email address</label>
+          <label className="form-label">Email address</label>
           <input
             type="text"
             className="form-control"
