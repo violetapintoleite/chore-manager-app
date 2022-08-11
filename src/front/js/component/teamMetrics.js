@@ -192,12 +192,17 @@ export const TeamMetrics = () => {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-sm-6">
+        <div className="col-sm-3">
           <div class="card m-2">
             <div className="card-body">
-              You and your team did a total of{" "}
-              <strong>{total_amount_of_chores}</strong> chores, which took a
-              total of <strong>{total_time.slice(0, -3)}H</strong>.
+              Total chores done: <strong>{total_amount_of_chores}</strong>
+            </div>
+          </div>
+        </div>
+        <div className="col-sm-3">
+          <div class="card m-2">
+            <div className="card-body">
+              Total time spent: <strong>{total_time.slice(0, -3)}H</strong>.
             </div>
           </div>
         </div>

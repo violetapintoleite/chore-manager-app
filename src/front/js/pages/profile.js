@@ -62,9 +62,7 @@ function Profile() {
             </div>
           ) : (
             <div>
-              <p className="text-center">
-                Your team is <strong>{store.team}</strong>.
-              </p>
+              <h4 className="team text-center mb-3">{store.team}</h4>
               <div className="text-center">
                 <button
                   className="btn btn-primary btn-lg"
