@@ -127,17 +127,24 @@ def deleteAllChores():
 @api.route("/login", methods=["POST"])
 def login():
     request_body = request.get_json(force=True)
-    email = request_body['email']
-    username = request_body['username']
+    identifier = request_body['identifier']
+    # username = request_body['username']
     password = request_body['password']
    
-    user = User.get_by_email(email)
-    if user and username and check_password_hash(user.password, password):
-        access_token = create_access_token(identity=email)
-        return jsonify({"access_token": access_token}),201
-    else:
-        return {"error":"user and password not valid"},400
+    userByEmail = User.get_by_email(identifier)
+    if userByEmail and check_password_hash(userByEmail.password, password):
+        access_token = create_access_token(identity=identifier)
+        return jsonify({"access_token": access_token, "email": identifier, "username": userByEmail.username}),201
+    elif userByEmail:
+        return {"error":"password not valid"},400
    
+    userByUsername = User.get_by_username(identifier)
+    if userByUsername and check_password_hash(userByUsername.password, password):
+        access_token = create_access_token(identity=identifier)
+        return jsonify({"access_token": access_token, "username": identifier,  "email": userByUsername.email}),201
+    elif userByUsername:
+        return {"error":"password not valid"},400
+    return {"error":"no user found"},404
 
 # protected page end point
 @api.route("/profile", methods=["GET"])

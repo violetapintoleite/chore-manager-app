@@ -27,6 +27,11 @@ class User(db.Model):
     def get_by_email(cls, email):
         user = cls.query.filter_by(email=email).one_or_none()
         return user
+    
+    @classmethod
+    def get_by_username(cls, username):
+        user = cls.query.filter_by(username=username).one_or_none()
+        return user
 
 class Chore(db.Model):
     __tablename__ = "Chore"
