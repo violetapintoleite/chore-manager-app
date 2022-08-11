@@ -38,7 +38,9 @@ function AddToTeam() {
               >
 
 
+
                 <option value>Choose your team...</option>
+
                 <option value="The Flinstones">The Flinstones</option>
                 <option value="The Addams">The Addams</option>
                 <option value="The Simpsons">The Simpsons</option>
@@ -50,7 +52,7 @@ function AddToTeam() {
                 type="button"
                 onClick={handleSubmit}
               >
-                Confirm
+                Join
               </button>
             </div>
           </form>
