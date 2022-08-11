@@ -1,4 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from datetime import timedelta
 
 db = SQLAlchemy()
 
@@ -24,9 +27,17 @@ class User(db.Model):
         return User.query.filter_by(email=email).filter_by(password=password).first()
 
     @classmethod
+    def get_token(self):
+       return create_access_token(identity=self.email, expires_delta=timedelta(seconds=300))
+        # return serial.generate_password_hash({'user_id':user.id})
+        # return generate_password_hash({'user_id':user.id})
+        
+
+    @classmethod
     def get_by_email(cls, email):
         user = cls.query.filter_by(email=email).one_or_none()
         return user
+
 
 class Chore(db.Model):
     __tablename__ = "Chore"
@@ -50,7 +61,6 @@ class Chore(db.Model):
         chores = cls.query.filter_by(user_id=user_id).all()
         return chores
     
-
 class Team(db.Model):
     __tablename__ = "Team"
     id = db.Column(db.Integer, primary_key=True)
@@ -69,6 +79,7 @@ class Team(db.Model):
    
 
    # set up a relational table 
+   
 class UsersInTeam(db.Model):
     __tablename__ = "UsersInTeam"
     id = db.Column(db.Integer, primary_key=True)

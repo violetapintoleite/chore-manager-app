@@ -47,7 +47,9 @@ export const Navbar = ({ excludeFromHome = true }) => {
 
         <div className="d-flex">
           {store.token ? (
+
             <ul className="nav-item dropdown">
+
               {" "}
               <a
                 className="dropdown"
@@ -56,6 +58,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
+
                 <button
                   className="navbar-toggler btn-color"
                   type="button"
@@ -67,6 +70,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                 >
                   <i className="fas fa-bars"></i>
                 </button>
+
               </a>
               <ul
                 className="dropdown-menu"
@@ -80,6 +84,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                 </li>
                 <li>
                   {" "}
+
                   <a className="dropdown-item" href="/history">
                     Chores
                   </a>{" "}
@@ -89,6 +94,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                   <a className="dropdown-item" href="/teamMetrics">
                     Team Metrics
                   </a>
+
                 </li>
                 <li>
                   {" "}

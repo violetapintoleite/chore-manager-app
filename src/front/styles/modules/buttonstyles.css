@@ -73,3 +73,9 @@
     transition: all .5s ease;
    font-size: 30px;
 }
+
+input{
+    border: 2px solid rgb(105, 105, 105);
+    border-radius: 3px;
+    
+}

@@ -1,8 +1,13 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
+
+import AddToTeam from "../component/AddToTeam";
+import VideoSearch from "../component/YTSearch";
+
 import { MetricsData } from "../component/metrics";
 import "../../styles/modules/dashboard.css";
+
 
 function Profile() {
   const { store, actions } = useContext(Context);
@@ -19,6 +24,7 @@ function Profile() {
   if (!token || token == "" || token == undefined) navigate("/login");
 
   return (
+
     <div className="text-center">
 
       <h5 className="m-5 slide-in-fwd-center">
@@ -47,6 +53,7 @@ function Profile() {
           <MetricsData />
         </>
       )}
+
     </div>
   );
 }
