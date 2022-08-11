@@ -13,11 +13,14 @@ function Profile() {
     actions.getChoresByUserEmail(store.email);  
   }, [store.email /*store.choreList*/]);
 
+  console.log("username", store.username, store.email);
+
   //redirect to the /login page if there is no token present
   if (!token || token == "" || token == undefined) navigate("/login");
 
   return (
     <div className="text-center">
+
       <h5 className="m-5 slide-in-fwd-center">
         <i className="fas fa-hand-sparkles"></i>Hello{" "}
         <strong>{store.email}</strong>!<i className="fas fa-hand-sparkles"></i>

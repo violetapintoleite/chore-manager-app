@@ -83,7 +83,7 @@ export const MetricsData = () => {
 
   return (
     <>
-      <div class="row justify-content-md-center">
+      <div className="row justify-content-md-center">
         <div className="col-md-auto card m-5 p-3">
           <div className="card-header">
             You did <strong>{total_amount_of_chores}</strong> chores in total.

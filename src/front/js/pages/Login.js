@@ -15,6 +15,7 @@ function Login() {
   if (token && token != "" && token != undefined) navigate("/profile");
   const handleClick = () => {
     actions.login(email, username, password);
+    console.log("handleclick function", email, username, password);
   };
 
   return (
@@ -24,7 +25,7 @@ function Login() {
         <div>
           <label className="form-label">Email address</label>
           <input
-            type="text"
+            type="email"
             className="form-control"
             placeholder="email"
             value={email}

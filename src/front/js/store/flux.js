@@ -79,7 +79,7 @@ const getState = ({ getStore, getActions, setStore }) => {
       logout: () => {
         localStorage.removeItem("token");
         console.log("log out triggered");
-        setStore({ token: null, team: null });
+        setStore({ token: null, team: null, username: null });
         localStorage.removeItem("team");
       },
 
@@ -113,6 +113,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           setStore({
             token: data.access_token,
             email: email,
+            username: username,
             isLoggedIn: true,
           });
 
