@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
-import logo3 from "../../img/logo3.png";
 import "../../styles/modules/buttonstyles.css";
 import "../../styles/modules/navbarstyling.css";
 import "../../styles/modules/iconstyle.css";
@@ -34,7 +33,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
     <nav
       className={
         "navbar " +
-        (scrolled > 90 ? "navbar-scrolled fixed-top" : "navbar-scroll")
+        (scrolled > 90 ? "navbar-scrolled fixed-top " : "navbar-scroll")
       }
     >
       <div className="container-md">
@@ -48,7 +47,9 @@ export const Navbar = ({ excludeFromHome = true }) => {
 
         <div className="d-flex">
           {store.token ? (
+
             <ul className="nav-item dropdown">
+
               {" "}
               <a
                 className="dropdown"
@@ -57,6 +58,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
+
                 <button
                   className="navbar-toggler btn-color"
                   type="button"
@@ -68,6 +70,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                 >
                   <i className="fas fa-bars"></i>
                 </button>
+
               </a>
               <ul
                 className="dropdown-menu"
@@ -81,6 +84,7 @@ export const Navbar = ({ excludeFromHome = true }) => {
                 </li>
                 <li>
                   {" "}
+
                   <a className="dropdown-item" href="/history">
                     Add a Chore
                   </a>{" "}

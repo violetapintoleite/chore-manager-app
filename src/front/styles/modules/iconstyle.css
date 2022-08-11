@@ -1,5 +1,19 @@
-.fas {
+.fa-hand-sparkles {
   font-size: 30px;
-  margin: 10px;
+  margin-right: 10px;
   color: black;
+}
+
+.fa-bars{
+  font-size: 25px;
+}
+
+.fa-bars:hover {
+  font-size: 35px;
+  color: black;
+  transition: 0.5s;
+}
+
+.fa-envelope{
+  font-size: 15px;
 }

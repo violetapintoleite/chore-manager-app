@@ -18,7 +18,7 @@ export const TeamMetricsPage = () => {
       {!store.team ? (
         <div>
           <div className="d-flex justify-content-center">
-            <div class="alert alert-primary" role="alert">
+            <div className="alert alert-primary" role="alert">
               Choose a team from the dropdown below and have clarity on all the
               team members stats!
             </div>

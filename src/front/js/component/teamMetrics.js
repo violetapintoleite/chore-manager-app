@@ -190,6 +190,7 @@ export const TeamMetrics = () => {
   }
 
   return (
+
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-sm-3">
@@ -197,6 +198,7 @@ export const TeamMetrics = () => {
             <div className="card-body">
               Total chores done: <strong>{total_amount_of_chores}</strong>
             </div>
+
           </div>
         </div>
         <div className="col-sm-3">

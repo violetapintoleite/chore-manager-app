@@ -1,26 +1,33 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
-import YTiframe from "../component/YTiframe";
+
+import AddToTeam from "../component/AddToTeam";
 import VideoSearch from "../component/YTSearch";
+
 import { MetricsData } from "../component/metrics";
 import "../../styles/modules/dashboard.css";
 import { TeamMetrics } from "../component/teamMetrics";
 import AddToTeam from "../component/AddToTeam";
 import { Link } from "react-router-dom";
 
+
 function Profile() {
   const { store, actions } = useContext(Context);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
-
+ 
   useEffect(() => {
+
     actions.getChoresByUserEmail(store.email);
 
     if (store.email) {
       actions.getTeamByUserEmail(store.email);
     }
+
   }, [store.email /*store.choreList*/]);
+
+  console.log("username", store.username, store.email);
 
   //redirect to the /login page if there is no token present
   if (!token || token == "" || token == undefined) navigate("/login");
@@ -34,6 +41,7 @@ function Profile() {
   today = mm + "/" + dd + "/" + yyyy;
 
   return (
+
     <div className="body">
       <div className="name-and-date text-end p-2">
         <h5 className="welcome">Welcome back, {store.email}!</h5>
@@ -76,6 +84,7 @@ function Profile() {
           )}
         </div>
       </div>
+
     </div>
   );
 }

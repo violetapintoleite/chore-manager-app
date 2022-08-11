@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import "../../styles/modules/hometext.css";
@@ -15,20 +16,22 @@ function Login() {
   if (token && token != "" && token != undefined) navigate("/profile");
   const handleClick = () => {
     actions.login(email, username, password);
+    console.log("handleclick function", email, username, password);
   };
 
+
   return (
-    <div className="home position-relative">
-      <div className="position-absolute top-50 start-50 translate-middle">
+    <div className="loginandsignuppageheight position-relative">
+    <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Welcome back!</h1>
         <div>
-          <label class="form-label">Email address</label>
+          <label className="form-label">Email address</label>
           <input
-            type="text"
+            type="email"
             className="form-control"
             placeholder="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(event) => setEmail(event.target.value) } 
           />
           <label className="form-label">Username</label>
           <input
@@ -48,6 +51,8 @@ function Login() {
           />
         </div>
         <div>
+          <br/>
+          <div className="text-center">
           <button
             className="btn"
             onClick={handleClick}
@@ -56,6 +61,7 @@ function Login() {
             {" "}
             Submit{" "}
           </button>
+          </div>
         </div>
         <p className="mt-3 text-center">
           {" "}
@@ -66,5 +72,6 @@ function Login() {
     </div>
   );
 }
+
 
 export default Login;

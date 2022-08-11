@@ -81,7 +81,8 @@ export const MetricsData = () => {
   var shopping_min = secondsToMinutes(shopping_time);
 
   return (
-    <div className="container">
+
+  <div className="container">
       <div class="row">
         <div class="col-6">
           <div className="row m-2">
@@ -92,6 +93,13 @@ export const MetricsData = () => {
                 <strong>{total_time.slice(0, -3)}H</strong>.
               </div>
             </div>
+
+    
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto card m-5 p-3">
+          <div className="card-header">
+            You did <strong>{total_amount_of_chores}</strong> chores in total.
+
           </div>
           <div className="row m-2">
             <div class="card m-2">
