@@ -18,19 +18,19 @@ from dotenv import load_dotenv
 api = Blueprint('api', __name__)
 
 app = Flask(__name__)
-# mail = Mail(app)
-# mail.init_app(app)
+mail = Mail(app)
+mail.init_app(app)
 
 
 #  configuration of mail
-# app.config['MAIL_SERVER']='smtp.gmail.com'
-# app.config['MAIL_PORT'] = 465
-# app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
-# app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
-# app.config['MAIL_USE_TLS'] = False
-# app.config['MAIL_USE_SSL'] = True
-# app.config['MAIL_MAX_EMAILS'] = 5
-# mail = Mail(app)
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
+app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+app.config['MAIL_MAX_EMAILS'] = 5
+mail = Mail(app)
 
 load_dotenv()
 
@@ -319,22 +319,22 @@ def changePassword(token):
     return jsonify({"access_token": access_token}, "password reset"),201
     
 #test email send
-# @api.route('/send-email-test', methods=['POST'])
-# def send_mail():
-#     password = "123456"
-#     hash_password = generate_password_hash(password)
-#     try:
-#         # if it is a post request
-#         if request.method == 'POST':
+@api.route('/send-email-test', methods=['POST'])
+def send_mail():
+    # password = "123456"
+    # hash_password = generate_password_hash(password)
+    try:
+        # if it is a post request
+        if request.method == 'POST':
             
-#             # inputing the message in the correct order
-#             msg = Message('Password Reset Request', sender=os.environ['GMAIL_USERNAME'], recipients=["c.martinroffey@hotmail.com"] )
-#             msg.body = "sent from the application"
-#             mail.send(msg)
-#             return jsonify({hash_password})
-#         return
-#     except Exception as e:
-#             return jsonify({'Not Sent'})
+            # inputing the message in the correct order
+            msg = Message('Password Reset Request', sender=['c.martinroffey@gmail.com'], recipients=["c.martinroffey@hotmail.com"] )
+            msg.body = "sent from the application"
+            mail.send(msg)
+            return jsonify()
+        return
+    except Exception as e:
+            return jsonify({'Not Sent'})
    
    
 
