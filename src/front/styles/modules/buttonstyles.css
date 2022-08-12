@@ -1,0 +1,81 @@
+.btn {
+    transition: all .5s ease;
+    color: rgb(47, 47, 47);
+    border: 2px solid rgb(76, 76, 76);
+    line-height: 1;
+    background-color : transparent;
+    outline: none;
+}
+.btn:hover {
+    color: #ffffff;
+    background-color: rgb(29, 29, 29);
+}
+
+.btn-white-styling{
+    transition: all .5s ease;
+    color: rgb(250, 250, 250);
+    border: 2px solid rgb(250, 250, 250);
+    line-height: 1;
+    background-color : transparent;
+    outline: none;
+}
+
+.inspo-button:hover {
+    color: #000000;
+    background-color: #fff;
+}
+
+.inspo-button{
+    transition: all .5s ease;
+    color: rgb(250, 250, 250);
+    border: 2px solid rgb(250, 250, 250);
+    line-height: 1;
+    background-color : transparent;
+    outline: none;
+}
+
+.btn-white-styling:hover {
+    color: #f07e6e;
+    background-color: #fff;
+}
+
+.fab{
+    transition: all .5s ease;
+    color: rgb(47, 47, 47);
+    line-height: 1;
+    background-color : transparent;
+    outline: none;
+}
+
+.fab:hover {
+    color: #ffffff;
+    font-size: 22px;
+    background-color: rgb(29, 29, 29);
+    border: 4px solid rgb(76, 76, 76);
+    border-radius: 3px;
+
+}
+
+/* styling to the logo/title same as above styling */
+.logo{
+    transition: all .5s ease;
+    color: rgb(47, 47, 47);
+    background-color : transparent;
+    outline: none;
+}
+
+.logo:hover {
+    font-size: 30px;
+
+}
+
+.btn-color:hover {
+    transition: all .5s ease;
+   font-size: 30px;
+}
+
+input{
+    border: 2px solid rgb(105, 105, 105);
+    border-radius: 3px;
+    
+}

@@ -1,0 +1,44 @@
+/* homepage nav and full bleed image styling */
+
+ @media (max-width: 991px) {
+    .navbar-scroll {
+      background-color: rgba(255, 255, 255);
+      background: #ffffff;
+    }
+
+   
+       
+    .navbar-scroll .navbar-brand,
+    .navbar-scroll .nav-link,
+    .navbar-scroll .fa-bars {
+      color: #4f4f4f !important;
+    }         
+  }
+  
+  .navbar-brand {
+    font-size: 1.7rem;
+    font-weight: 450;
+  }
+  .navbar-scroll .navbar-brand,
+  .navbar-scroll .nav-link,
+  .navbar-scroll .fa-bars {
+    color: rgb(44, 44, 44);
+  }
+  
+  .navbar-scroll {
+    box-shadow: none;
+
+  }
+  
+  .navbar-scrolled {
+    box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.05);
+    transition: 0.5s;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  
+  .navbar-scrolled .navbar-brand,
+  .navbar-scrolled .nav-link,
+  .navbar-scrolled .fa-bars {
+    color: #4f4f4f;
+  }
+
