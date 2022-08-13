@@ -1,36 +1,19 @@
-
 .font-for-quote {
-  font-weight: 900;
-  font-size: 30px;
+  font-size: 20px;
 }
-
-.quote {
-  height: 100%;
-  max-width: 50%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-
-/* homepage quote styling */
-
-}
-
-.quote-container {
-  height: 55vh;
-  
-} 
 
 .home-page-text {
   font-size: 20px;
 }
 
-.home-page-card-titles{
-font-size: 40px;
+.home-page-card-titles {
+  font-size: 40px;
 }
- /* .quote {
+/* .quote {
   height: 100%;
 } */
 
- /* .quote-and-button {
+/* .quote-and-button {
   height: 75%;
 
 } */
@@ -40,11 +23,9 @@ font-size: 40px;
   font-size: 80px;
 } */
 
-
-hr{
+hr {
   border: 3px solid rgb(255, 255, 255);
 }
-
 
 /* styling for a large graphic on the homepage with multi-layer text animation */
 /* .hometext-container{
@@ -110,8 +91,7 @@ hr{
     left: -10px;
   }  */
 
- 
-  /* @media (max-width: 450px) {
+/* @media (max-width: 450px) {
     #intro {
       height: 950px !important;
     }
@@ -148,7 +128,6 @@ hr{
       font-size: 10rem;
     }
   } */
-
 
 /* .button-test:hover{
     letter-spacing: 3px;
