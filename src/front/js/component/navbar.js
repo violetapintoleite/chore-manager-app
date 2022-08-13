@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 import "../../styles/modules/buttonstyles.css";
 import "../../styles/modules/navbarstyling.css";
 import "../../styles/modules/iconstyle.css";
+import cleaninglogo from "../../img/cleaninglogo.png";
 
 export const Navbar = ({ excludeFromHome = true }) => {
   const { store, actions, token } = useContext(Context);
@@ -41,7 +42,8 @@ export const Navbar = ({ excludeFromHome = true }) => {
           {/* <span className="navbar-brand mb-0 h1" id="logo">Chore Manager</span> */}
           {/* <img src={logo3} className="navbar-logo" alt="logo3"/> */}
           <p className="nav-link navbar-brand logo">
-            <i className="fas fa-hand-sparkles"></i>Chore Manager
+            <img className="nav-bar-logo" src={cleaninglogo}></img>
+           Chore Manager
           </p>
         </Link>
 
