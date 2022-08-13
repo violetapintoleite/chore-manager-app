@@ -84,13 +84,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // creating the login functionality - needs to verify if user exists in DB and generate access token
-      login: async (email, username, password) => {
+      login: async ( identifier, password) => {
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            email: email,
-            username: username,
+            // email: email,
+            identifier: identifier,
             password: password,
           }),
         };
@@ -112,8 +112,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
           setStore({
             token: data.access_token,
-            email: email,
-            username: username,
+            email: data.email,
+            username: data.username,
             isLoggedIn: true,
           });
 
