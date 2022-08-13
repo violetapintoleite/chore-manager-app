@@ -29,9 +29,11 @@ const VideoSearch = () => {
 
   return (
     <div className="container"> 
+
     <div className="card">
       <div className="input-group mb-3">
         <form className="d-flex container" onSubmit={handleSubmit}>
+
           <input
             type="text"
             className="form-control"
@@ -43,6 +45,9 @@ const VideoSearch = () => {
           <p>&nbsp;</p>
           <button
             className="btn"
+
+            onSubmit={handleSubmit}
+
             onClick={handleSubmit}
             type="button"
             id="button-addon2"

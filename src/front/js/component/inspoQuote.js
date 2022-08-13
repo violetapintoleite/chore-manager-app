@@ -29,7 +29,7 @@ function InspoQuote() {
     getQuote();
     setInterval(() => {
       getQuote();
-    }, 3000);
+    }, 10000);
   }, []);
 
   return (

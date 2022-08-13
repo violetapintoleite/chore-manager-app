@@ -1,0 +1,27 @@
+.dishes {
+  color: rgba(240, 126, 110, 0.8);
+}
+
+.laundry {
+  color: rgba(132, 205, 250, 0.8);
+}
+.cleaning {
+  color: rgba(90, 209, 205, 0.8);
+}
+
+.shopping {
+  color: rgb(154, 121, 251, 0.8);
+}
+
+.numbers {
+  font-size: 40px;
+  font-weight: 900;
+}
+
+.card-header {
+  background-color: rgba(191, 187, 187, 0.1);
+}
+
+.totals {
+  font-size: 14px;
+}

@@ -23,29 +23,35 @@ function Signup() {
   };
 
   //email verification
-  const [emailError, setEmailError] = useState("");
+  const [emailError, setEmailError] = useState("Please enter a valid email!");
+
   const validateEmail = (e) => {
     var email = e.target.value;
     if (validator.isEmail(email)) {
-      setEmailError("");
+      setEmailError("Email is valid!");
     } else {
-      setEmailError("Enter valid Email!");
+      setEmailError("Must be a valid email!");
     }
   };
 
   return (
     <div className="loginandsignuppageheight position-relative">
-    <div className="position-absolute top-50 start-50 translate-middle">
+      <div className="position-absolute top-50 start-50 translate-middle">
         <h1 className="mb-3 text-center">Sign Up</h1>
+
         <div>
           <label className="form-label">Email address</label>
           <input
-            type="text"
+            type="email"
             className="form-control"
             placeholder="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)} onInput={validateEmail}
+            onChange={(event) => setEmail(event.target.value)}
+            onInput={(e) => validateEmail(e)}
           />
+          <div className="text-danger">
+            <span className="">{emailError}</span>
+          </div>
           <label className="form-label">Username</label>
           <input
             type="text"
@@ -54,6 +60,13 @@ function Signup() {
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
+          <div className="text-danger">
+            {username == "" || username.length < 2 ? (
+              <span>Username must be at least 2 characters long</span>
+            ) : (
+              <span></span>
+            )}
+          </div>
           <label className="form-label">Password</label>
           <input
             type="password"
@@ -62,30 +75,26 @@ function Signup() {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
+          <div className="text-danger">
+            {password == "" || password.length < 8 ? (
+              <span className="p-2">
+                Password needs to be at least 8 characters long
+              </span>
+            ) : (
+              <span></span>
+            )}
+          </div>
         </div>
-        <div>
-          <br/>
+        <br />
         <div className="text-center">
           <button
-            className="btn m-2"
+            className="btn m-1 "
             onClick={handleClick}
             disabled={password.length < 8 || username.length < 2}
           >
             {" "}
             Submit{" "}
           </button>{" "}
-          <br />
-          <span className="text-danger">{emailError}</span>
-          {username == "" || username.length < 2 ? (
-            <p>"username needs to be at least 2 characters"</p>
-          ) : password == "" || password.length < 8 ? (
-            <p className="p-2">
-              Password needs to be at least 8 characters long
-            </p>
-          ) : (
-            <p></p>
-          )}
-        </div>
         </div>
         <h4 className="mt-3">
           {" "}
@@ -95,4 +104,5 @@ function Signup() {
     </div>
   );
 }
+
 export default Signup;

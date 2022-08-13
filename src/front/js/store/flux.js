@@ -392,6 +392,54 @@ const getState = ({ getStore, getActions, setStore }) => {
           console.log("there's an error deleting the chore");
         }
       },
+
+      // reset PW email post request
+      forgotPasswordRequest: async (email) => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+          }),
+        };
+
+        try {
+          const resp = await fetch(
+            
+            process.env.BACKEND_URL + "/api/forgot-password" + `?email=${email}`,
+            opts
+          );
+
+          return true;
+        } catch (error) {
+          console.log("error requesting the email");
+        }
+      },
+
+      // 
+      resetPasswordRequest: async (email, token) => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json", 
+          Authorization: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDEzOTMzNCwianRpIjoiYzZjNjA3ZmEtNjg0MC00Y2MyLThiMjEtMWJiZGE5ZTgwZjFmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjNAMy5jb20iLCJuYmYiOjE2NjAxMzkzMzQsImV4cCI6MTY2MDE0MDIzNH0.8F-WD-ILXHTubpg4KWOLyNT9iyqN12y07BUsRF50tTE"},
+          body: JSON.stringify({
+            email: email
+          }),
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/reset-password",
+            
+            opts
+          );
+           
+          return true;
+        } catch (error) {
+          console.log("error resetting the password");
+        }
+      },
+
     },
   };
 };

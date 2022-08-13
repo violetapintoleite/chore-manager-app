@@ -1,8 +1,17 @@
-/* homepage quote styling */
 
 .font-for-quote {
   font-weight: 900;
-  font-size: 50px;
+  font-size: 30px;
+}
+
+.quote {
+  height: 100%;
+  max-width: 50%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+/* homepage quote styling */
+
 }
 
 .quote-container {

@@ -28,13 +28,19 @@ function AddToTeam() {
           <form>
             <div className="input-group">
               <select
+
                 className="form-select"
+
                 id="inputGroupSelect04"
                 aria-label="Example select with button addon"
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
               >
+
+
+
                 <option value>Choose your team...</option>
+
                 <option value="The Flinstones">The Flinstones</option>
                 <option value="The Addams">The Addams</option>
                 <option value="The Simpsons">The Simpsons</option>
@@ -42,16 +48,23 @@ function AddToTeam() {
               </select>
               <button
                 className="btn btn-outline-secondary"
+
                 type="button"
                 onClick={handleSubmit}
               >
-                Confirm
+                Join
               </button>
             </div>
           </form>
         </div>
       ) : (
-        <div></div>
+
+        <p>
+          <button className="btn" onClick={() => actions.deleteUserFromTeam()}>
+            Remove myself from the team
+          </button>
+        </p>
+
       )}
     </div>
   );

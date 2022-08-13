@@ -1,9 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { PolarArea } from "react-chartjs-2";
-import { Pie } from "react-chartjs-2";
 import { Doughnut } from "react-chartjs-2";
 import { Chart } from "chart.js/auto";
+import "../../styles/modules/metricsdata.css";
 
 export const MetricsData = () => {
   const { store, actions } = useContext(Context);
@@ -82,73 +81,167 @@ export const MetricsData = () => {
   var shopping_min = secondsToMinutes(shopping_time);
 
   return (
-    <>
-      <div className="row justify-content-md-center">
-        <div className="col-md-auto card m-5 p-3">
-          <div className="card-header">
-            You did <strong>{total_amount_of_chores}</strong> chores in total.
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-sm-3">
+          <div class="card m-2">
+            <div className="card-body">
+              Total chores done: <strong>{total_amount_of_chores}</strong>
+            </div>
           </div>
-          <Doughnut
-            datasetIdKey="id"
-            data={{
-              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-              datasets: [
-                {
-                  id: 1,
-                  label: "Amount of times you did each chore",
-                  data: [dishes, laundry, cleaning, shopping],
-                  backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
-                    "rgba(54, 162, 235, 0.2)",
-                    "rgba(255, 206, 86, 0.2)",
-                    "rgba(75, 192, 192, 0.2)",
-                  ],
-                  borderColor: [
-                    "rgba(255, 99, 132, 1)",
-                    "rgba(54, 162, 235, 1)",
-                    "rgba(255, 206, 86, 1)",
-                    "rgba(75, 192, 192, 1)",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
-            }}
-          />
         </div>
-        <div className="col-md-auto card m-5 p-3">
-          <div className="card-header">
-            Total time spent on chores:{" "}
-            <strong>{total_time.slice(0, -3)}H</strong>
+        <div className="col-sm-3">
+          <div class="card m-2">
+            <div className="card-body">
+              Total time spent: <strong>{total_time.slice(0, -3)}H</strong>.
+            </div>
           </div>
-
-          <Pie
-            datasetIdKey="id"
-            data={{
-              labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
-              datasets: [
-                {
-                  id: 1,
-                  label: "Amount of times you did each chore",
-                  data: [dishes_min, laundry_min, cleaning_min, shopping_min],
-                  backgroundColor: [
-                    "rgba(255, 99, 132, 0.2)",
-                    "rgba(54, 162, 235, 0.2)",
-                    "rgba(255, 206, 86, 0.2)",
-                    "rgba(75, 192, 192, 0.2)",
-                  ],
-                  borderColor: [
-                    "rgba(255, 99, 132, 1)",
-                    "rgba(54, 162, 235, 1)",
-                    "rgba(255, 206, 86, 1)",
-                    "rgba(75, 192, 192, 1)",
-                  ],
-                  borderWidth: 1,
-                },
-              ],
-            }}
-          />
         </div>
       </div>
-    </>
+      <div className="row justify-content-md-center">
+        <div className="col-md-auto mt-3">
+          <div className="row m-2">
+            <div class="card m-2">
+              <div class="card-body">
+                <div className="row text-center">
+                  <div className="col-3">
+                    {" "}
+                    <div class="dishes">
+                      Dishes<span className="numbers">{dishes}</span>
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="laundry">
+                      Laundry<span className="numbers">{laundry}</span>
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="cleaning">
+                      Cleaning<span className="numbers">{cleaning}</span>
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="shopping">
+                      Shopping<span className="numbers">{shopping}</span>
+                    </div>
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>{" "}
+          <div className="row m-2">
+            <div class="card m-2">
+              <div class="card-body">
+                <div className="row text-center">
+                  <div className="col-3">
+                    {" "}
+                    <div class="dishes">
+                      <span className="numbers">{dishes_min}</span>min
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="laundry">
+                      <span className="numbers">{laundry_min}</span>min
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="cleaning">
+                      <span className="numbers">{cleaning_min}</span>min
+                    </div>
+                  </div>
+                  <div className="col-3">
+                    <div class="shopping">
+                      <span className="numbers">{shopping_min}</span>min
+                    </div>
+                  </div>{" "}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="col-6 mt-4">
+          <div class="row">
+            <div className="col card m-2 p-3">
+              <Doughnut
+                datasetIdKey="id"
+                data={{
+                  labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+                  datasets: [
+                    {
+                      id: 1,
+                      label: "Amount of times you did each chore",
+                      data: [dishes, laundry, cleaning, shopping],
+                      backgroundColor: [
+                        "rgba(240, 126, 110, 0.8)",
+                        "rgba(132, 205, 250, 0.8)",
+                        "rgba(90, 209, 205, 0.8)",
+                        "rgb(154, 121, 251, 0.8)",
+                      ],
+                      borderColor: [
+                        "rgba(240, 126, 110, 1)",
+                        "rgba(132, 205, 250, 1)",
+                        "rgba(90, 209, 205, 1)",
+                        "rgb(154, 121, 251, 1)",
+                      ],
+                      borderWidth: 1,
+                    },
+                  ],
+                }}
+                options={{
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: "NUMBER OF TIMES YOU DID THE CHORE",
+                    },
+                  },
+                }}
+              />
+            </div>
+            <div className="col card m-2 p-3">
+              <Doughnut
+                datasetIdKey="id"
+                data={{
+                  labels: ["Dishes", "Laundry", "Cleaning", "Shopping"],
+                  datasets: [
+                    {
+                      id: 1,
+                      label: "Amount of times you did each chore",
+                      data: [
+                        dishes_min,
+                        laundry_min,
+                        cleaning_min,
+                        shopping_min,
+                      ],
+                      backgroundColor: [
+                        "rgba(240, 126, 110, 0.8)",
+                        "rgba(132, 205, 250, 0.8)",
+                        "rgba(90, 209, 205, 0.8)",
+                        "rgb(154, 121, 251, 0.8)",
+                      ],
+                      borderColor: [
+                        "rgba(240, 126, 110, 1)",
+                        "rgba(132, 205, 250, 1)",
+                        "rgba(90, 209, 205, 1)",
+                        "rgb(154, 121, 251, 1)",
+                      ],
+                      borderWidth: 1,
+                    },
+                  ],
+                }}
+                options={{
+                  plugins: {
+                    title: {
+                      display: true,
+                      text: "MIN SPENT DOING EACH CHORE TYPE",
+                    },
+                  },
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };

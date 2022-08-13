@@ -8,10 +8,17 @@ from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import JWTManager
 from sqlalchemy import or_, exc
 from datetime import date, datetime
+from flask_mail import Message
+from dotenv import load_dotenv
+# from api.mail import mail
 
 api = Blueprint('api', __name__)
+
+load_dotenv()
+
 
 # sign up end point (DONE)
 @api.route("/signup", methods=["POST"])
@@ -58,7 +65,6 @@ def getChoresByUserEmail():
 
     return jsonify({"msg": "no user"}), 404
 
-  
 # post chore endpoint 
 @api.route('/chore', methods=['POST'])
 def postChore():
@@ -122,7 +128,6 @@ def deleteAllChores():
      
     return jsonify({"msg": "there is no user"}), 401
 
-
 # login end point
 @api.route("/login", methods=["POST"])
 def login():
@@ -138,6 +143,7 @@ def login():
     elif userByEmail:
         return {"error":"password not valid"},400
    
+
     userByUsername = User.get_by_username(identifier)
     if userByUsername and check_password_hash(userByUsername.password, password):
         access_token = create_access_token(identity=identifier)
@@ -145,15 +151,14 @@ def login():
     elif userByUsername:
         return {"error":"password not valid"},400
     return {"error":"no user found"},404
-
+    
 # protected page end point
 @api.route("/profile", methods=["GET"])
 @jwt_required()
-def get_hello():
+def protected():
    # Access the identity of the current user with get_jwt_identity
     current_user = get_jwt_identity()
     return jsonify(logged_in_as=current_user, message="this is from the backend"), 200
-
 
 # post team endpoint 
 @api.route('/team', methods=['POST'])
@@ -219,6 +224,7 @@ def deleteUserFromTeam():
 # get chores from all users in team of logged in user
 @api.route('/choresofteam', methods=['GET'])
 def getChoresfromUsersInTeam():
+
     team = request.args.get("team", None)
     users = UsersInTeam.get_user_ids_by_team(team.replace("%20", " "))
     if not users:
@@ -238,6 +244,74 @@ def getChoresfromUsersInTeam():
         
     return jsonify({"teamChores" : serialized_chores})
 
+#### -- need to modify  this to the BACKEND URL os.environ['GMAIL_USERNAME']
+# send email function
+def send_mail(user):
+    # token=user.get_token()
+#     msg = Message(
+#                 'Password Reset Request',
+#                 sender=os.environ['GMAIL_USERNAME'],
+#                 recipients=[user.email]
+#                )
+#     msg.body = f''' To reset your password please click the link below
 
+# {url_for('reset-password-request', token=token, _external=True)}
+
+
+# If you didn't request a password reset request, please ignore this message.
+#     '''
+#     mail.send(msg)
+#     print(token)
+    return jsonify({'Sent'})
+
+
+######### # 
+ # get end point to compare if email exists in DB
+ # notes - endpoint is working and passing the email to the payload when not calling the send_mail function 
+@api.route('/forgot-password', methods=['POST'])
+def reset_request(): 
+    request_body = request.get_json(force=True)
+    email = request_body['email']
+
+    user = User.get_by_email(email)
+    if user:
+        # send_mail(user)
+        return jsonify(message="reset email sent"),201
+    else:
+        return jsonify({"error":"email does not exist"},400)
+    
+
+#route to ensure that only user with a valid key can access page to reset password
+@api.route("/reset-password-request/<token>", methods=['GET'])
+def confirmIdentity(token):
+    
+    user = User.get_token(token)
+    if user is None:
+        return jsonify(message="access denied"),401
+    else:
+        url_for('reset-password')
+
+   
+
+@api.route("/reset-password", methods=['POST'])
+@jwt_required()
+def changePassword(token):
+    request_body = request.get_json(force=True)
+    password = request_body['password']
+    hash_password = generate_password_hash(password)
+    email = get_jwt_identity()
+
+    user = User.get_by_email(email)
+    if user is None:
+        return jsonify(message="access denied"),401
+
+    else:
+        user.password=hash_password
+        db.session.commit()
+
+        access_token = create_access_token(identity=email)
+    return jsonify({"access_token": access_token}, "password reset"),201
+    
+   
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

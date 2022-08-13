@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
 import "../../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import "../../styles/modules/hometext.css";
@@ -17,6 +18,7 @@ function Login() {
     actions.login( identifier, password);
     console.log("handleclick function", identifier, password);
   };
+
 
   return (
     <div className="loginandsignuppageheight position-relative">
@@ -70,5 +72,6 @@ function Login() {
     </div>
   );
 }
+
 
 export default Login;
