@@ -16,23 +16,28 @@ from dotenv import load_dotenv
 # from api.mail import mail
 
 api = Blueprint('api', __name__)
-
+load_dotenv()
 app = Flask(__name__)
-mail = Mail(app)
-mail.init_app(app)
+# mail = Mail(app)
+# mail.init_app(app)
 
 
 #  configuration of mail
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
-app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_MAX_EMAILS'] = 5
-mail = Mail(app)
+# app.config['MAIL_SERVER']='smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = os.environ['GMAIL_USERNAME']
+# app.config['MAIL_PASSWORD'] = os.environ['EMAIL_PASSWORD']
+# app.config['MAIL_USE_TLS'] = True
+# # app.config['MAIL_USE_SSL'] = True
+# app.config['MAIL_MAX_EMAILS'] = 5
+# app.config['DEBUG'] = True
 
-load_dotenv()
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
+
+#added the above in a different config
+# app.config.update(MAIL_SERVER = 'smtp.gmail.com', MAIL_PORT= 465, MAIL_USERNAME=os.environ['GMAIL_USERNAME'],MAIL_PASSWORD=os.environ['EMAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True, MAIL_DEBUG=True)
 
 
 # sign up end point (DONE)
@@ -321,21 +326,25 @@ def changePassword(token):
 #test email send
 @api.route('/send-email-test', methods=['POST'])
 def send_mail():
+    app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
+    mail = Mail(app)
+    mail.init_app(app)
+    title= "Subject"
+    body= "Hi everyone"
+    # print(os.environ['GMAIL_USERNAME'])
+    
     # password = "123456"
     # hash_password = generate_password_hash(password)
-    try:
-        # if it is a post request
-        if request.method == 'POST':
-            
-            # inputing the message in the correct order
-            msg = Message('Password Reset Request', sender=['c.martinroffey@gmail.com'], recipients=["c.martinroffey@hotmail.com"] )
-            msg.body = "sent from the application"
-            mail.send(msg)
-            return jsonify()
-        return
-    except Exception as e:
-            return jsonify({'Not Sent'})
-   
+    
+            # inputing the message in the correct order 
+    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=["c.martinroffey@gmail.com"] )
+    msg.body = body.encode("utf-8")
+    # msg.html = msg.encode("utf-8")
+        #working up to here
+        # print(app.config['MAIL_PASSWORD'])
+    mail.send(msg)
+    print("mail sent")
+    return ("return something")
    
 
 if __name__ == "__main__":
