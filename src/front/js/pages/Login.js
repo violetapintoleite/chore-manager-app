@@ -54,7 +54,7 @@ function Login() {
           <button
             className="btn"
             onClick={handleClick}
-            disabled={password.length < 8 || identifier.length < 2}
+            disabled={password.length < 1 || identifier.length < 1}
           >
             {" "}
             Submit{" "}
