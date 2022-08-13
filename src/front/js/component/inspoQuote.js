@@ -33,18 +33,11 @@ function InspoQuote() {
   }, []);
 
   return (
-<div className="container-fluid pt-5">
-    <div className=" container quote text-center align-middle">  
-        <h5 className="quote font-for-quote ">{quote.text}</h5>
-        <h5 className=" ">{quote.author}</h5>
-    </div>
-    <br />
-            <Link to="/signup">
-              <button className=" btn position-relative bottom-0 start-50 translate-middle-x">
-                {" "}
-                Sign Up Now!
-              </button>
-            </Link>
+    <div className="container-fluid">
+      <div className="text-center align-middle">
+        <h5 className="font-for-quote ">"{quote.text}"</h5>
+        <h5>{quote.author}</h5>
+      </div>
     </div>
   );
 }

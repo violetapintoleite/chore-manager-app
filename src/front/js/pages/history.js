@@ -23,7 +23,7 @@ export const History = () => {
           <AddChoreForm />
           <br></br>
           <HistoryofChores />
-          <hr></hr>
+          <hr />
           <br></br>
         </div>
       </div>
