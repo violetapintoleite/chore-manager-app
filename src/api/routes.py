@@ -79,7 +79,7 @@ def createNewUser():
 
     return jsonify({"msg": "error signing up"}), 401
 
-###function to send welcome email on sign up
+###function to send welcome email on sign up (WORKING)
 def send_welcome_email(user):
     app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
     mail = Mail(app)
@@ -90,13 +90,9 @@ def send_welcome_email(user):
     body= f''' Welcome to Chore Manager! Here's what you need to know:
 
      {("Your username is", username)} '''
-
-    
             # inputing the message in the correct order 
     msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=[user.email] )
     msg.body = body
-   
-#    body.encode("utf-8")
     mail.send(msg)
     print("mail sent")
     return ("email sent successfully")
@@ -287,7 +283,7 @@ def getChoresfromUsersInTeam():
 
 #### -- need to modify  this to the BACKEND URL os.environ['GMAIL_USERNAME']
 # send email function
-# def send_mail(user):
+# def send_email(user):
     # token=user.get_token()
 #     msg = Message(
 #                 'Password Reset Request',
@@ -317,12 +313,33 @@ def reset_request():
     user = User.get_by_email(email)
     if user:
         print(email)
-        send_mail(email)
+        send_email(email)
         return jsonify(message="reset email sent"),201
     else:
         return jsonify({"error":"email does not exist"},400)
     
 
+#test email send
+@api.route('/send-email-test', methods=['POST'])
+def send_email(email):
+    app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
+    mail = Mail(app)
+    mail.init_app(app)
+    title= "Subject"
+    # token=email.get_token()
+    token= User.get_token(email)
+    body= "this is the token " + token
+
+
+            # inputing the message in the correct order 
+    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=[email] )
+    msg.body = body
+   
+#    body.encode("utf-8")
+    mail.send(msg)
+    print("mail sent")
+    return ("email sent successfully")
+   
 #route to ensure that only user with a valid key can access page to reset password
 @api.route("/reset-password-request/<token>", methods=['GET'])
 def confirmIdentity(token):
@@ -332,8 +349,6 @@ def confirmIdentity(token):
         return jsonify(message="access denied"),401
     else:
         url_for('reset-password')
-
-   
 
 @api.route("/reset-password", methods=['POST'])
 @jwt_required()
@@ -354,26 +369,6 @@ def changePassword(token):
         access_token = create_access_token(identity=email)
     return jsonify({"access_token": access_token}, "password reset"),201
     
-#test email send
-@api.route('/send-email-test', methods=['POST'])
-def send_email(email):
-    app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
-    mail = Mail(app)
-    mail.init_app(app)
-    title= "Subject"
-    # token=email.get_token()
-    body= "Welcome to Chore Manager!"
-
-    
-            # inputing the message in the correct order 
-    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=[email] )
-    msg.body = body
-   
-#    body.encode("utf-8")
-    mail.send(msg)
-    print("mail sent")
-    return ("email sent successfully")
-   
 
 if __name__ == "__main__":
     app.run(debug=True)
