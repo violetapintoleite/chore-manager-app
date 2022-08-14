@@ -69,6 +69,7 @@ def createNewUser():
     db.session.commit()
 
     access_token = create_access_token(identity=email)
+    send_welcome_email(user)
     return jsonify({"msg": "sign up complete", "access_token" : access_token}), 201
 
     # except SQLAlchemyError: 
@@ -78,6 +79,27 @@ def createNewUser():
 
     return jsonify({"msg": "error signing up"}), 401
 
+###function to send welcome email on sign up
+def send_welcome_email(user):
+    app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
+    mail = Mail(app)
+    mail.init_app(app)
+    username = user.username
+    title= "Subject"
+    # token=email.get_token()
+    body= f''' Welcome to Chore Manager! Here's what you need to know:
+
+     {("Your username is", username)} '''
+
+    
+            # inputing the message in the correct order 
+    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=[user.email] )
+    msg.body = body
+   
+#    body.encode("utf-8")
+    mail.send(msg)
+    print("mail sent")
+    return ("email sent successfully")
 # get request from chore list
 @api.route('/chore', methods=['GET'])
 def getChoresByUserEmail(): 
@@ -281,7 +303,7 @@ def getChoresfromUsersInTeam():
 #     '''
 #     mail.send(msg)
 #     print(token)
-    return jsonify({'Sent'})
+    # return jsonify({'Sent'})
 
 
 ######### # 
@@ -291,11 +313,11 @@ def getChoresfromUsersInTeam():
 def reset_request(): 
     request_body = request.get_json(force=True)
     email = request_body['email']
-
+    
     user = User.get_by_email(email)
     if user:
-        # send_mail(user)
-        send_mail()
+        print(email)
+        send_mail(email)
         return jsonify(message="reset email sent"),201
     else:
         return jsonify({"error":"email does not exist"},400)
@@ -334,21 +356,23 @@ def changePassword(token):
     
 #test email send
 @api.route('/send-email-test', methods=['POST'])
-def send_mail():
+def send_email(email):
     app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
     mail = Mail(app)
     mail.init_app(app)
     title= "Subject"
-    body= "sent using the forgot pw page"
+    # token=email.get_token()
+    body= "Welcome to Chore Manager!"
+
     
             # inputing the message in the correct order 
-    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=["c.martinroffey@gmail.com"] )
+    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=[email] )
     msg.body = body
    
 #    body.encode("utf-8")
     mail.send(msg)
     print("mail sent")
-    return ("return something")
+    return ("email sent successfully")
    
 
 if __name__ == "__main__":
