@@ -265,7 +265,7 @@ def getChoresfromUsersInTeam():
 
 #### -- need to modify  this to the BACKEND URL os.environ['GMAIL_USERNAME']
 # send email function
-def send_mail(user):
+# def send_mail(user):
     # token=user.get_token()
 #     msg = Message(
 #                 'Password Reset Request',
@@ -295,6 +295,7 @@ def reset_request():
     user = User.get_by_email(email)
     if user:
         # send_mail(user)
+        send_mail()
         return jsonify(message="reset email sent"),201
     else:
         return jsonify({"error":"email does not exist"},400)
@@ -338,18 +339,13 @@ def send_mail():
     mail = Mail(app)
     mail.init_app(app)
     title= "Subject"
-    body= "Hi everyone"
-    # print(os.environ['GMAIL_USERNAME'])
-    
-    # password = "123456"
-    # hash_password = generate_password_hash(password)
+    body= "sent using the forgot pw page"
     
             # inputing the message in the correct order 
     msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=["c.martinroffey@gmail.com"] )
-    msg.body = body.encode("utf-8")
-    # msg.html = msg.encode("utf-8")
-        #working up to here
-        # print(app.config['MAIL_PASSWORD'])
+    msg.body = body
+   
+#    body.encode("utf-8")
     mail.send(msg)
     print("mail sent")
     return ("return something")
