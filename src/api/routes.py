@@ -36,6 +36,14 @@ app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
 
+# app.config['MAIL_SERVER']='smtp.mailtrap.io'
+# app.config['MAIL_PORT'] = 2525
+# app.config['MAIL_USERNAME'] = 'eac592c557fb68'
+# app.config['MAIL_PASSWORD'] = '4e9282313cd7c1'
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USE_SSL'] = False
+
+
 #added the above in a different config
 # app.config.update(MAIL_SERVER = 'smtp.gmail.com', MAIL_PORT= 465, MAIL_USERNAME=os.environ['GMAIL_USERNAME'],MAIL_PASSWORD=os.environ['EMAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True, MAIL_DEBUG=True)
 
