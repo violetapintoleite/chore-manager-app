@@ -417,13 +417,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // 
-      resetPasswordRequest: async (email, token) => {
+      resetPasswordRequest: async (password, token) => {
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json", 
           Authorization: "Bearer " + token},
           body: JSON.stringify({
-            email: email
+           password: password
           }),
         };
         console.log(token);

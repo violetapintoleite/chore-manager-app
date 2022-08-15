@@ -364,8 +364,9 @@ def confirmIdentity(token, email):
 
 @api.route("/reset-password", methods=['POST'])
 @jwt_required()
-def changePassword(email):
+def changePassword():
     request_body = request.get_json(force=True)
+    print(request_body)
     password = request_body['password']
     hash_password = generate_password_hash(password)
     email = get_jwt_identity()
@@ -378,8 +379,9 @@ def changePassword(email):
         user.password=hash_password
         db.session.commit()
 
-        access_token = create_access_token(identity=email)
-    return jsonify({"access_token": access_token}, "password reset"),201
+        # access_token = create_access_token(identity=email)
+        #  return jsonify({"access_token": access_token}, "password reset"),201
+    return jsonify("password reset"),201
     
 
 if __name__ == "__main__":
