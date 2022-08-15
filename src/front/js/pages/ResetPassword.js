@@ -1,4 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect} from "react";
+import { useSearchParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useNavigate } from 'react-router-dom';
@@ -6,9 +7,10 @@ import { useNavigate } from 'react-router-dom';
 function ResetPassword() {
 
     const { store, actions } = useContext(Context);
-    const token = localStorage.getItem("token");
     const [email, setEmail] = useState("");
     const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+    const token = searchParams.get("token")
 
     //redirects to profile page if there's a token
 // if(token && token != "" && token != undefined ) navigate('/profile');
@@ -40,7 +42,8 @@ useEffect(() => {
 
 // onclick handler to submit info to backend
 const handleClick = () => {
-  actions.resetPasswordEmailRequest(password, token);
+  
+  actions.resetPasswordRequest(password, token);
 };
 
   return (

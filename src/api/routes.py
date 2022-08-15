@@ -1,18 +1,19 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-import os
-from flask import Flask, request, jsonify, url_for, Blueprint
+import os, urllib.parse
+from flask import Flask, request, jsonify, url_for, Blueprint, redirect
 from api.models import db, User, Chore, Team, UsersInTeam
 from api.utils import generate_sitemap, APIException
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_sqlalchemy import SQLAlchemy
-from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required, decode_token
 from flask_jwt_extended import JWTManager
 from sqlalchemy import or_, exc
 from datetime import date, datetime
 from flask_mail import Message, Mail
 from dotenv import load_dotenv
+
 # from api.mail import mail
 
 api = Blueprint('api', __name__)
@@ -325,34 +326,45 @@ def send_email(email):
     app.config.update(MAIL_SERVER = os.environ['MAIL_SERVER'], MAIL_PORT= os.environ['MAIL_PORT'], MAIL_USERNAME=os.environ['MAIL_USERNAME'],MAIL_PASSWORD=os.environ['MAIL_PASSWORD'], MAIL_USE_SSL=False, MAIL_USE_TLS=True)
     mail = Mail(app)
     mail.init_app(app)
-    title= "Subject"
-    # token=email.get_token()
+    title= "Reset password request for "
     token= User.get_token(email)
-    body= "this is the token " + token
+    email = email
+  
+    body= f''' Please click on this link to reset your password:
+    
+    {url_for('api.confirmIdentity', token=token, email=email, _external=True)} '''
 
 
             # inputing the message in the correct order 
-    msg = Message(subject=title, sender=os.environ['MAIL_USERNAME'], recipients=[email] )
+    msg = Message(subject=title + email, sender=os.environ['MAIL_USERNAME'], recipients=[email] )
     msg.body = body
    
 #    body.encode("utf-8")
+   
     mail.send(msg)
     print("mail sent")
     return ("email sent successfully")
    
 #route to ensure that only user with a valid key can access page to reset password
-@api.route("/reset-password-request/<token>", methods=['GET'])
-def confirmIdentity(token):
+@api.route('/reset-password-request/<token>/<email>', methods=['GET'])
+def confirmIdentity(token, email):
+    # print ("this email is coming from the passed parameter ", email)
+    identity = decode_token(token)
+    print (identity['sub'])
+    user = User.get_by_email(identity['sub'])
+   
+    # print("this is the token from the user function ", user)
+    # print("this token is coming from the passed parameters ", token)
     
-    user = User.get_token(token)
     if user is None:
-        return jsonify(message="access denied"),401
+      return jsonify(message="access denied"),401
     else:
-        url_for('reset-password')
+        return redirect(f'''{os.environ['RESET_PASSWORD_URL']}?token={token}''')
+
 
 @api.route("/reset-password", methods=['POST'])
 @jwt_required()
-def changePassword(token):
+def changePassword(email):
     request_body = request.get_json(force=True)
     password = request_body['password']
     hash_password = generate_password_hash(password)

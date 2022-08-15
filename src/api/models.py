@@ -31,7 +31,10 @@ class User(db.Model):
        return create_access_token(identity=email, expires_delta=timedelta(seconds=300))
         # return serial.generate_password_hash({'user_id':user.id})
         # return generate_password_hash({'user_id':user.id})
-        
+
+    @staticmethod
+    def verify_token(cls, token):
+       return create_access_token(identity=email, expires_delta=timedelta(seconds=600))
 
     @classmethod
     def get_by_email(cls, email):

@@ -421,11 +421,12 @@ const getState = ({ getStore, getActions, setStore }) => {
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json", 
-          Authorization: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDEzOTMzNCwianRpIjoiYzZjNjA3ZmEtNjg0MC00Y2MyLThiMjEtMWJiZGE5ZTgwZjFmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjNAMy5jb20iLCJuYmYiOjE2NjAxMzkzMzQsImV4cCI6MTY2MDE0MDIzNH0.8F-WD-ILXHTubpg4KWOLyNT9iyqN12y07BUsRF50tTE"},
+          Authorization: "Bearer " + token},
           body: JSON.stringify({
             email: email
           }),
         };
+        console.log(token);
 
         try {
           const resp = await fetch(
