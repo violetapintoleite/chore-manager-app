@@ -417,15 +417,16 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       // 
-      resetPasswordRequest: async (email, token) => {
+      resetPasswordRequest: async (password, token) => {
         const opts = {
           method: "POST",
           headers: { "Content-Type": "application/json", 
-          Authorization: "Bearer " + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJmcmVzaCI6ZmFsc2UsImlhdCI6MTY2MDEzOTMzNCwianRpIjoiYzZjNjA3ZmEtNjg0MC00Y2MyLThiMjEtMWJiZGE5ZTgwZjFmIiwidHlwZSI6ImFjY2VzcyIsInN1YiI6IjNAMy5jb20iLCJuYmYiOjE2NjAxMzkzMzQsImV4cCI6MTY2MDE0MDIzNH0.8F-WD-ILXHTubpg4KWOLyNT9iyqN12y07BUsRF50tTE"},
+          Authorization: "Bearer " + token},
           body: JSON.stringify({
-            email: email
+           password: password
           }),
         };
+        console.log(token);
 
         try {
           const resp = await fetch(
@@ -437,6 +438,28 @@ const getState = ({ getStore, getActions, setStore }) => {
           return true;
         } catch (error) {
           console.log("error resetting the password");
+        }
+      },
+
+      // testing out the send email endpoint and set up
+      sendEmail: async () => {
+        const opts = {
+          method: "POST",
+          headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': '*'},
+          body: JSON.stringify(),
+        };
+
+        try {
+          const resp = await fetch(
+            process.env.BACKEND_URL + "/api/send-email-test",
+            
+            opts
+          );
+          console.log("email sent")
+           
+          return true;
+        } catch (error) {
+          console.log("can't send email");
         }
       },
 
