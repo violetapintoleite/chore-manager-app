@@ -328,11 +328,10 @@ def send_email(email):
     mail.init_app(app)
     title= "Reset password request for "
     token= User.get_token(email)
-    email = email
-  
+    email = email  
     body= f''' Please click on this link to reset your password:
     
-    {url_for('api.confirmIdentity', token=token, email=email, _external=True)} '''
+    {url_for('api.confirmIdentity', token=token, email=email, _external=True)}'''
 
 
             # inputing the message in the correct order 

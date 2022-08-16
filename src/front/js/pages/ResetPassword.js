@@ -46,6 +46,7 @@ const handleClick = () => {
   actions.resetPasswordRequest(password, token);
   let goToLogin = "/login"
   navigate(goToLogin);
+  alert("Thanks for resubmitting your password")
 };
 
   return (
