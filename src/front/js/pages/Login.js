@@ -49,6 +49,7 @@ function Login() {
             value={password}
             onChange={(event) => setPassword(event.target.value)}
           />
+          <p className="pt-2">Forgot Password? <a href="/forgot-password">Click here to reset</a></p>
         </div>
         <div>
           <br/>
@@ -62,6 +63,7 @@ function Login() {
             Submit{" "}
           </button>
           </div>
+
         </div>
         <p className="mt-3 text-center">
           {" "}
