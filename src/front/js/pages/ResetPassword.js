@@ -44,6 +44,8 @@ useEffect(() => {
 const handleClick = () => {
   
   actions.resetPasswordRequest(password, token);
+  let goToLogin = "/login"
+  navigate(goToLogin);
 };
 
   return (

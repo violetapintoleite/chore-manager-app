@@ -380,7 +380,7 @@ def changePassword():
         db.session.commit()
 
         # access_token = create_access_token(identity=email)
-        #  return jsonify({"access_token": access_token}, "password reset"),201
+        # return jsonify({"access_token": access_token}, "password reset"),201
     return jsonify("password reset"),201
     
 
