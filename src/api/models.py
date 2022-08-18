@@ -27,11 +27,14 @@ class User(db.Model):
         return User.query.filter_by(email=email).filter_by(password=password).first()
 
     @classmethod
-    def get_token(self):
-       return create_access_token(identity=self.email, expires_delta=timedelta(seconds=300))
+    def get_token(cls, email):
+       return create_access_token(identity=email, expires_delta=timedelta(seconds=300))
         # return serial.generate_password_hash({'user_id':user.id})
         # return generate_password_hash({'user_id':user.id})
-        
+
+    @staticmethod
+    def verify_token(cls, token):
+       return create_access_token(identity=email, expires_delta=timedelta(seconds=600))
 
     @classmethod
     def get_by_email(cls, email):

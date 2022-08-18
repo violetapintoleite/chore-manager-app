@@ -20,8 +20,8 @@ flask-admin = "*"
 pip = "*"
 install = "*"
 flask-jwt-extended = "*"
-flask-mail = "*"
 itsdangerous = "*"
+flask-mail = "==0.9.0"
 
 [requires]
 python_version = "3.8"

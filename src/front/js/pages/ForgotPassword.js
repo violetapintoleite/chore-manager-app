@@ -16,6 +16,8 @@ function ForgotPassword() {
 
 const handleClick = () => {
   actions.forgotPasswordRequest(email);
+  let confirmationPage= '/pw-reset-confirmation';
+  navigate(confirmationPage);
 };
 
 //email verification
@@ -34,7 +36,7 @@ const [emailError, setEmailError] = useState('')
     <div>
         <div className='container text-center align-items-center'>
         <h1 className="mb-3">Forgot Password</h1>
-        <p>Enter your password to get a password recovery email</p>
+        <p>Enter your email to get a password recovery email</p>
         <input type="email" className="m-1" placeholder="email" value={email} onChange={(event) => setEmail(event.target.value)} onInput= {(e) => validateEmail(e)} /> 
         <button className="btn m-1" onClick={handleClick}> Submit </button> 
         <br/>
